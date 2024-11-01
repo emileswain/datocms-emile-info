@@ -23,6 +23,9 @@ export async function recordToWebsiteRoute(
     case 'page': {
       return `/page/${await recordToSlug(item, itemTypeApiKey, locale)}`;
     }
+    case 'project': {
+      return `/project/${await recordToSlug(item, itemTypeApiKey, locale)}`;
+    }
     case 'article': {
       return `/article/${await recordToSlug(item, itemTypeApiKey, locale)}`;
     }
@@ -38,6 +41,9 @@ export async function recordToSlug(
 ): Promise<string | null> {
   switch (itemTypeApiKey) {
     case 'article': {
+      return item.attributes.slug as string;
+    }
+    case 'project': {
       return item.attributes.slug as string;
     }
     case 'page': {
