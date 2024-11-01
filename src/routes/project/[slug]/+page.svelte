@@ -29,8 +29,10 @@
 
     <!--  <h1>{page.title}</h1>-->
     <div class="project">
-
-        <ResponsiveImage data={project.heroImage.responsiveImage}/>
+        <figure>
+            <ResponsiveImage data={project.heroImage.responsiveImage}/>
+            <!--        <ResponsiveImage data={project.heroImage.responsiveImage}/>-->
+        </figure>
         <h1>{project.title} </h1>
         <div class="content">
             <StructuredText
@@ -84,6 +86,28 @@
         font-weight: bold;
         font-family: 'Arial';
         z-index: -1;
+    }
+
+    figure {
+        display: flex;
+    }
+    :global(figure > picture:first-child > img) {
+        width: 100% !important;
+        height: unset !important;
+        filter: unset !important;
+        margin-left: unset !important;
+        mask-image: linear-gradient(to right,
+            black 0%,
+            black 60%,
+            transparent 60%,
+            transparent 65%,
+            black 65%,
+            black 80%,
+            transparent 80%,
+            transparent 85%,
+            black 85%,
+            black 100%);
+        mask-size: 100%
     }
 
     :global(body) {
