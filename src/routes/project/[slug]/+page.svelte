@@ -29,11 +29,12 @@
 
     <!--  <h1>{page.title}</h1>-->
     <div class="project">
-        <ResponsiveImage data={project.heroImage.responsiveImage}/>
 
+        <ResponsiveImage data={project.heroImage.responsiveImage}/>
+        <h1>{project.title} </h1>
         <div class="content">
             <StructuredText
-                    data={project.structuredText}
+                    data={project.content}
                     components={[
               // Although the component knows how to convert all "standard" elements
               // (headings, bullet lists, etc.) into HTML, it's possible to customize
@@ -52,11 +53,12 @@
   <!--<footer>Published at {page._firstPublishedAt}</footer>-->
 {/if}
 
-<style>
-    .project{
+
+<style lang="css">
+   .project{
         padding: 120px;
    }
-   .project  :global(a){
+   .project :global(a){
             color: #FFF;
             text-decoration: none;
             font-family: 'Roboto';
@@ -65,6 +67,7 @@
    .project :global(p){
             color: #FFF;
         }
+
     .content{
         display: flex;
         flex-direction: column;

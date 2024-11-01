@@ -36,7 +36,7 @@ const query = graphql(
             }
         }
         _firstPublishedAt
-        structuredText {
+        content {
           value
           blocks {
             ... on RecordInterface {
