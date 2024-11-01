@@ -17,11 +17,14 @@ export async function recordToWebsiteRoute(
   locale: string,
 ): Promise<string | null> {
   switch (itemTypeApiKey) {
-    case 'page': {
+    case 'homepage': {
       return '/';
     }
+    case 'page': {
+      return `/page/${await recordToSlug(item, itemTypeApiKey, locale)}`;
+    }
     case 'article': {
-      return `/blog/${await recordToSlug(item, itemTypeApiKey, locale)}`;
+      return `/article/${await recordToSlug(item, itemTypeApiKey, locale)}`;
     }
     default:
       return null;
@@ -36,6 +39,12 @@ export async function recordToSlug(
   switch (itemTypeApiKey) {
     case 'article': {
       return item.attributes.slug as string;
+    }
+    case 'page': {
+      return item.attributes.slug as string;
+    }
+    case 'homepage': {
+      return "/" as string;
     }
     default:
       return null;

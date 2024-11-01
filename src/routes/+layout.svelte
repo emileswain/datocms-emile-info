@@ -12,6 +12,7 @@
   <!--    rel="stylesheet"-->
   <!--    href="https://cdn.jsdelivr.net/gh/datocms/nextjs-starter-kit/src/app/global.css"-->
   <!--  />-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </svelte:head>
 
 <!--
@@ -38,44 +39,46 @@
     font-family: 'Inter', Helvetica, Arial, serif;
   }
   :global(html) {
-    height: 1000%;
-    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: auto;
+    /*scrollbar-gutter: stable;*/
   }
   :global(body) {
     margin: 0;
     padding: 0;
-    /*https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient*/
-    background: linear-gradient(#f8f6f6, #00021a);
     height: 100%;
-    width: 100%;
+    width: auto;
+    display: flex;
   }
 
   .container {
     width: 100%;
-    max-width: 1140px;
+    /*max-width: 1140px;*/
     margin-right: auto;
     margin-left: auto;
     padding-right: 15px;
     padding-left: 15px;
   }
-  @media (min-width: 500px) {
-    .container {
-      max-width: 460px;
-    }
-  }
-  @media (min-width: 768px) {
-    .container {
-      max-width: 720px;
-    }
-  }
-  @media (min-width: 992px) {
-    .container {
-      max-width: 960px;
-    }
-  }
-  @media (min-width: 1200px) {
-    .container {
-      max-width: 1140px;
-    }
-  }
+  /*@media (min-width: 500px) {*/
+  /*  .container {*/
+  /*    max-width: 460px;*/
+  /*  }*/
+  /*}*/
+  /*@media (min-width: 768px) {*/
+  /*  .container {*/
+  /*    max-width: 720px;*/
+  /*  }*/
+  /*}*/
+  /*@media (min-width: 992px) {*/
+  /*  .container {*/
+  /*    max-width: 960px;*/
+  /*  }*/
+  /*}*/
+  /*@media (min-width: 1200px) {*/
+  /*  .container {*/
+  /*    max-width: 1140px;*/
+  /*  }*/
+  /*}*/
 </style>

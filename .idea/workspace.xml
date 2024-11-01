@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="tweeks" />
+    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="tweeks">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/Block/ImageBlock/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/Block/ImageBlock/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/datocms/recordInfo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/datocms/recordInfo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/+layout.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+layout.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/page/[slug]/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/page/[slug]/+page.svelte" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +38,7 @@
     <property name="project.structure.side.proportion" value="0.2643857" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
-    <property name="ts.external.directory.path" value="G:\workspace_websites\datocms-brixton-climbers-club\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="G:\workspace_websites\datocms-emile-info\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -66,7 +72,7 @@
       <workItem from="1729784703461" duration="596000" />
       <workItem from="1730304976791" duration="598000" />
       <workItem from="1730380446597" duration="3836000" />
-      <workItem from="1730388822890" duration="1131000" />
+      <workItem from="1730388822890" duration="13999000" />
     </task>
     <task id="LOCAL-00001" summary="tweeks">
       <created>1729525638478</created>
