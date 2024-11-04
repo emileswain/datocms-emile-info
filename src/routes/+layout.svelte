@@ -12,7 +12,10 @@
   <!--    rel="stylesheet"-->
   <!--    href="https://cdn.jsdelivr.net/gh/datocms/nextjs-starter-kit/src/app/global.css"-->
   <!--  />-->
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<!--  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
 </svelte:head>
 
 <!--
@@ -36,7 +39,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
   * {
-    font-family: 'Inter', Helvetica, Arial, serif;
+    font-family: 'Roboto Flex','Inter', Helvetica, Arial, serif;
   }
   :global(html) {
     margin: 0;

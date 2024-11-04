@@ -18,6 +18,25 @@
     export let data: ProjectData;
     $: subscription = querySubscription(data.subscription);
     $: project = $subscription.data?.project;
+
+
+    let size = 70;
+    let barWidth = 2;
+    // function up() {
+    //     size += 5;
+    // }
+    //
+    // function down() {
+    //     size -= 5;
+    //
+    // }
+    // function upBar() {
+    //     barWidth += 2;
+    // }
+    //
+    // function downBar() {
+    //     barWidth -= 2;
+    // }
 </script>
 
 {#if project}
@@ -26,21 +45,25 @@
       meta tags based on the `_seoMetaTags` present in a DatoCMS GraphQL query.
     -->
     <Head data={project._seoMetaTags}/>
+    <!--    <button on:click={up}>up</button>-->
+    <!--    <button on:click={down}>down</button>-->
+    <!--    <button on:click={upBar}>up Bar</button>-->
+    <!--    <button on:click={downBar}>down Bar</button>-->
 
     <!--  <h1>{page.title}</h1>-->
-    <div class="project">
-        <figure>
+    <div class="project" style="--bar-start:{size}; --blur-start:{100-size}; --bar-width:{barWidth}">
+        <figure class="heroImageContainer">
             <ResponsiveImage data={project.heroImage.responsiveImage}/>
-            <!--        <ResponsiveImage data={project.heroImage.responsiveImage}/>-->
+            <div class="blurBox">
+            </div>
         </figure>
         <h1>{project.title} </h1>
+        <!--        <p>{size}</p>-->
+        <!--        <p>barWidth: {barWidth}</p>-->
         <div class="content">
             <StructuredText
                     data={project.content}
                     components={[
-              // Although the component knows how to convert all "standard" elements
-              // (headings, bullet lists, etc.) into HTML, it's possible to customize
-              // the rendering of each node:
               [isCode, Code],
               [isHeading, HeadingWithAnchorLink],
               [isBlock, Block],
@@ -49,7 +72,7 @@
             ]}
           />
         </div>
-        <div class="title">NIKE</div>
+        <div class="client-title">NIKE</div>
     </div>
 
   <!--<footer>Published at {page._firstPublishedAt}</footer>-->
@@ -60,10 +83,16 @@
    .project{
         padding: 120px;
    }
+   :global(h1){
+            color: #FFF;
+            text-decoration: none;
+            font-family: 'Roboto Flex';
+            font-weight: 100;
+        }
    .project :global(a){
             color: #FFF;
             text-decoration: none;
-            font-family: 'Roboto';
+
             font-weight: light;
         }
    .project :global(p){
@@ -76,7 +105,7 @@
         align-items: start;
         max-width: 350px;
     }
-    .title{
+    .client-title{
         position: absolute;
         top: 50%;
         left: 50%;
@@ -91,24 +120,55 @@
     figure {
         display: flex;
     }
-    :global(figure > picture:first-child > img) {
+    .heroImageContainer{
+         display: flex;
+         position: relative;
+    }
+
+    .blurBox
+    {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(4px);
+        left: calc(var(--bar-start) * 1%);
+        right: 0;
+        top: 0;
+        bottom: 0;
+        --blur-width:calc(var(--bar-width)/(var(--blur-start)/100.0));
+        mask-image:
+            repeating-linear-gradient(
+                to right,
+                transparent 0,
+                transparent calc( var(--blur-width) * 1%),
+                black calc( var(--blur-width) * 1%),
+                black calc(( var(--blur-width)*2) * 1%)
+          );
+    }
+
+    :global(.heroImageContainer > picture:first-child > img) {
         width: 100% !important;
         height: unset !important;
         filter: unset !important;
         margin-left: unset !important;
-        mask-image: linear-gradient(to right,
-            black 0%,
-            black 60%,
-            transparent 60%,
-            transparent 65%,
-            black 65%,
-            black 80%,
-            transparent 80%,
-            transparent 85%,
-            black 85%,
-            black 100%);
+        /*--bar-width: 4;
+        --bar-start: 60;*/
+        mask-image: linear-gradient(
+                to right,
+                black 0%,
+                black calc(var(--bar-start) * 1%),
+                transparent calc(var(--bar-start) * 1%),
+                transparent 100%
+            )
+            ,repeating-linear-gradient(
+                to right,
+                transparent calc(var(--bar-start) * 1%),
+                transparent  calc((var(--bar-start) + var(--bar-width)) * 1%),
+                black calc((var(--bar-start) + var(--bar-width)) * 1%),
+                black calc((var(--bar-start) + var(--bar-width)*2) * 1%)
+          );
         mask-size: 100%
     }
+
 
     :global(body) {
         box-sizing: border-box;
@@ -116,7 +176,9 @@
         border-style: solid;
        border-color: #FFF;
        background-color: #000;
-       overflow: hidden;
+       overflow-x: hidden;
+       overflow-y: auto;
+       height: auto;
     }
     :global(figure)
     {
