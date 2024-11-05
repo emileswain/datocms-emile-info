@@ -49,7 +49,10 @@
     <!--    <button on:click={down}>down</button>-->
     <!--    <button on:click={upBar}>up Bar</button>-->
     <!--    <button on:click={downBar}>down Bar</button>-->
-
+    <!--    <div class="client-title">NIKE</div>-->
+    <div class="title-wrapper">
+        <div class="client-title">NIKE</div>
+    </div>
     <!--  <h1>{page.title}</h1>-->
     <div class="project" style="--bar-start:{size}; --blur-start:{100-size}; --bar-width:{barWidth}">
         <figure class="heroImageContainer">
@@ -70,63 +73,104 @@
               [isInlineItem, InlineItem],
               [isItemLink, ItemLink],
             ]}
-          />
+            />
         </div>
-        <div class="client-title">NIKE</div>
+
     </div>
 
-  <!--<footer>Published at {page._firstPublishedAt}</footer>-->
+    <!--<footer>Published at {page._firstPublishedAt}</footer>-->
 {/if}
 
 
 <style lang="css">
-   .project{
+
+    :global(body) {
+        border-width: 20px;
+        border-style: solid;
+        border-color: #FFF;
+        background-color: #000;
+    }
+
+    :global(figure) {
+        width: 460px;
+        margin: 0;
+        padding: 0;
+    }
+
+    :global(h1) {
+        color: #FFF;
+        text-decoration: none;
+        font-family: 'Roboto Flex';
+        font-weight: 100;
+    }
+
+    :global(a) {
+        color: #FFF;
+        text-decoration: none;
+        font-weight: lighter;
+    }
+
+    :global(p) {
+        color: #FFF;
+    }
+
+    /*
+    Page specific.
+    */
+    .project {
+        width: 100%;
+        position: relative;
         padding: 120px;
-   }
-   :global(h1){
-            color: #FFF;
-            text-decoration: none;
-            font-family: 'Roboto Flex';
-            font-weight: 100;
-        }
-   .project :global(a){
-            color: #FFF;
-            text-decoration: none;
+        overflow: hidden;
+        z-index: 2;
+    }
 
-            font-weight: light;
-        }
-   .project :global(p){
-            color: #FFF;
-        }
-
-    .content{
+    .content {
         display: flex;
         flex-direction: column;
         align-items: start;
         max-width: 350px;
+        z-index: 2;
     }
-    .client-title{
+
+    .title-wrapper {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 0;
+        height: 100vh;
+        /*width: 100vh;*/
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    .client-title {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%) rotate(30deg);
+        transform: translate(-50%, -50%) rotate(20deg);
         font-size: 50vw;
         color: #040404;
         font-weight: bold;
         font-family: 'Arial';
-        z-index: -1;
+        z-index: 1;
+        /*height: 100vh;*/
+        white-space: nowrap;
+        clip-path: inset(0, 0, 0, 0);
     }
 
     figure {
         display: flex;
     }
-    .heroImageContainer{
-         display: flex;
-         position: relative;
+
+    .heroImageContainer {
+        display: flex;
+        position: relative;
     }
 
-    .blurBox
-    {
+    .blurBox {
         position: absolute;
         background: rgba(0, 0, 0, 0.2);
         backdrop-filter: blur(4px);
@@ -134,15 +178,14 @@
         right: 0;
         top: 0;
         bottom: 0;
-        --blur-width:calc(var(--bar-width)/(var(--blur-start)/100.0));
-        mask-image:
-            repeating-linear-gradient(
+        --blur-width: calc(var(--bar-width) / (var(--blur-start) / 100.0));
+        mask-image: repeating-linear-gradient(
                 to right,
                 transparent 0,
-                transparent calc( var(--blur-width) * 1%),
-                black calc( var(--blur-width) * 1%),
-                black calc(( var(--blur-width)*2) * 1%)
-          );
+                transparent calc(var(--blur-width) * 1%),
+                black calc(var(--blur-width) * 1%),
+                black calc((var(--blur-width) * 2) * 1%)
+        );
     }
 
     :global(.heroImageContainer > picture:first-child > img) {
@@ -158,32 +201,14 @@
                 black calc(var(--bar-start) * 1%),
                 transparent calc(var(--bar-start) * 1%),
                 transparent 100%
-            )
-            ,repeating-linear-gradient(
+        ), repeating-linear-gradient(
                 to right,
                 transparent calc(var(--bar-start) * 1%),
-                transparent  calc((var(--bar-start) + var(--bar-width)) * 1%),
+                transparent calc((var(--bar-start) + var(--bar-width)) * 1%),
                 black calc((var(--bar-start) + var(--bar-width)) * 1%),
-                black calc((var(--bar-start) + var(--bar-width)*2) * 1%)
-          );
+                black calc((var(--bar-start) + var(--bar-width) * 2) * 1%)
+        );
         mask-size: 100%
     }
 
-
-    :global(body) {
-        box-sizing: border-box;
-        border-width: 20px;
-        border-style: solid;
-       border-color: #FFF;
-       background-color: #000;
-       overflow-x: hidden;
-       overflow-y: auto;
-       height: auto;
-    }
-    :global(figure)
-    {
-        width: 460px;
-        margin: 0;
-        padding: 0;
-    }
 </style>
