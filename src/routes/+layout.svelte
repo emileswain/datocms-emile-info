@@ -56,7 +56,10 @@
     padding: 0;
     /*scrollbar-gutter: stable;*/
 }
+:global(h1, h2, h3, h4, h5, h6, h7 ){
+    margin-bottom: 12px;
 
+}
 :global(img, picture, video, canvas, svg ){
     display: block;
     max-width: 100%;

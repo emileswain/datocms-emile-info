@@ -41,6 +41,13 @@ const query = graphql(
           }
         }
       }
+      allProjects {
+        id
+        title
+        slug
+        _status
+        _firstPublishedAt
+      }
     }
   `,
   [TagFragment, BlockFragment, ItemLinkFragment, InlineItemFragment],

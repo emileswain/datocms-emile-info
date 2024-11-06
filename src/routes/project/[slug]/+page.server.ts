@@ -24,11 +24,14 @@ const query = graphql(
         title
         slug
         client
-        border {
-          cssRgb
+        bgBorder {
+          hex
         }
-        fill{
-          cssRgb
+        bgFill{
+          hex
+        }
+        clientTextFill{
+          hex
         }
         heroImage {
             responsiveImage{

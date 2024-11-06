@@ -2473,6 +2473,16 @@ type PageRecord implements RecordInterface {
   title: String!
 }
 
+union ProjectModelContentBlocksField = ImageBlockRecord | ImageByTextBlockRecord | ImageGalleryBlockRecord | VideoBlockRecord
+
+type ProjectModelContentField {
+  blocks: [ProjectModelContentBlocksField!]!
+  links: [ProjectModelContentLinksField!]!
+  value: JsonField!
+}
+
+union ProjectModelContentLinksField = HomepageRecord | PageRecord | ProjectRecord
+
 input ProjectModelFilter {
   _createdAt: CreatedAtFilter
   id: ItemIdFilter
@@ -2483,14 +2493,15 @@ input ProjectModelFilter {
   _status: StatusFilter
   _updatedAt: UpdatedAtFilter
   _isValid: BooleanFilter
-  border: ColorFilter
+  bgBorder: ColorFilter
+  bgFill: ColorFilter
   client: StringFilter
-  fill: ColorFilter
+  clientTextFill: ColorFilter
+  content: StructuredTextFilter
   heroImage: FileFilter
   seoAnalysis: JsonFilter
   seoSettingsSocial: SeoFilter
   slug: SlugFilter
-  structuredText: StructuredTextFilter
   title: StringFilter
   OR: [ProjectModelFilter]
   AND: [ProjectModelFilter]
@@ -2521,16 +2532,6 @@ enum ProjectModelOrderBy {
   title_DESC
 }
 
-union ProjectModelStructuredTextBlocksField = ImageBlockRecord | ImageByTextBlockRecord | ImageGalleryBlockRecord | VideoBlockRecord
-
-type ProjectModelStructuredTextField {
-  blocks: [ProjectModelStructuredTextBlocksField!]!
-  links: [ProjectModelStructuredTextLinksField!]!
-  value: JsonField!
-}
-
-union ProjectModelStructuredTextLinksField = HomepageRecord | PageRecord | ProjectRecord
-
 """Record of type 📝 Project (project)"""
 type ProjectRecord implements RecordInterface {
   _createdAt: DateTime!
@@ -2551,15 +2552,16 @@ type ProjectRecord implements RecordInterface {
   _status: ItemStatus!
   _unpublishingScheduledAt: DateTime
   _updatedAt: DateTime!
-  border: ColorField
+  bgBorder: ColorField
+  bgFill: ColorField
   client: String
-  fill: ColorField
+  clientTextFill: ColorField
+  content: ProjectModelContentField!
   heroImage: FileField
   id: ItemId!
   seoAnalysis: JsonField
   seoSettingsSocial: SeoField
   slug: String
-  structuredText: ProjectModelStructuredTextField!
   title: String!
 }
 
