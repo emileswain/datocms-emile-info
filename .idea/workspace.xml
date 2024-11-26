@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="Client logo text css corrected.">
-      <change afterPath="$PROJECT_DIR$/src/lib/colorUtils.ts" afterDir="false" />
+    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="Added sub nav to homepage and styled project pages.">
+      <change afterPath="$PROJECT_DIR$/src/lib/components/Icon/index.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/images/icons/back.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/images/icons/home.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/images/icons/next.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/stores/projectstore.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/schema.graphql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/+layout.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+layout.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+page.server.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+page.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/project/[slug]/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/project/[slug]/+page.server.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/project/[slug]/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/project/[slug]/+page.svelte" afterDir="false" />
@@ -42,7 +44,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="C:/NVPACK/android-sdk-windows" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/routes" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/lib/images/icons" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -53,6 +55,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\workspace_websites\datocms-emile-info\src\lib\images\icons" />
+      <recent name="G:\workspace_websites\datocms-emile-info\src\lib\components\Icon" />
       <recent name="G:\workspace_websites\datocms-emile-info\src\routes" />
       <recent name="G:\workspace_websites\datocms-brixton-climbers-club\src\lib\components\Block\ImageByTextBlock" />
     </key>
@@ -70,7 +74,8 @@
       <workItem from="1730304976791" duration="598000" />
       <workItem from="1730380446597" duration="3836000" />
       <workItem from="1730388822890" duration="19084000" />
-      <workItem from="1730718517490" duration="34199000" />
+      <workItem from="1730718517490" duration="35498000" />
+      <workItem from="1732633006377" duration="16460000" />
     </task>
     <task id="LOCAL-00001" summary="tweeks">
       <created>1729525638478</created>
@@ -128,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1730809027710</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added sub nav to homepage and styled project pages.">
+      <created>1730894691197</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1730894691197</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,6 +165,7 @@
     <MESSAGE value="different image mask lines." />
     <MESSAGE value="Styled image banding effect." />
     <MESSAGE value="Client logo text css corrected." />
-    <option name="LAST_COMMIT_MESSAGE" value="Client logo text css corrected." />
+    <MESSAGE value="Added sub nav to homepage and styled project pages." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added sub nav to homepage and styled project pages." />
   </component>
 </project>

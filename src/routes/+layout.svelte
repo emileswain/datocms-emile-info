@@ -24,103 +24,206 @@
 -->
 <Head data={$subscription.data?._site.faviconMetaTags}/>
 
-<header>
-    <!--  <h1>DatoCMS + SvelteKit Starter Kit</h1>-->
-    <nav>
-        <!--    <DraftModeToggler />-->
-    </nav>
-</header>
+<!--<header>-->
+<!--    &lt;!&ndash;  <h1>DatoCMS + SvelteKit Starter Kit</h1>&ndash;&gt;-->
+<!--    <nav>-->
+<!--        hello-->
+<!--        &lt;!&ndash;    <DraftModeToggler />&ndash;&gt;-->
+<!--    </nav>-->
+<!--</header>-->
 
 <div class="container">
     <slot/>
 </div>
 
-<style > /* CSS Reset */
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+<style>
+    /* ########################################################################################### */
+    /* CSS Reset */
+    /* global styling further down */
+    /* ########################################################################################### */
+    @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
-
-:global(*, *::before, *::after) {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-:global(html, body) {
-    height: 100%;
-    width: 100%;
-    font-family: 'Roboto Flex', 'Inter', Helvetica, Arial, serif;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    margin: 0;
-    padding: 0;
-    /*scrollbar-gutter: stable;*/
-}
-:global(h1, h2, h3, h4, h5, h6, h7 ){
-    margin-bottom: 12px;
-
-}
-:global(img, picture, video, canvas, svg ){
-    display: block;
-    max-width: 100%;
-}
-
-:global(button, input, select, textarea ){
-    font-family: inherit;
-}
-
-/* Remove default padding */
-:global(ul, ol) {
-    padding: 0;
-}
-
-/* Make images easier to work with */
-:global(img) {
-    max-width: 100%;
-    display: block;
-}
-
-/* Inherit fonts for inputs and buttons */
-:global(input, button, textarea, select){
-    font: inherit;
-}
-
-/* Remove all animations and transitions for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-    :global( *, *::before, *::after ){
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+    :global(*, *::before, *::after) {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
     }
-}
 
-.container {
-    width: 100%;
-    /*max-width: 1140px;*/
-    margin-right: auto;
-    margin-left: auto;
-}
+    :global(html, body) {
+        height: 100%;
+        width: 100%;
+        font-family: 'Roboto Flex', 'Inter', Helvetica, Arial, serif;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        margin: 0;
+        padding: 0;
+        /*scrollbar-gutter: stable;*/
+    }
 
+    :global(h1, h2, h3, h4, h5, h6, h7 ) {
+        margin-bottom: 12px;
 
-/*@media ( min-width: 500px) {*/
-/*  .container {*/
-/*    max-width: 460px;*/
-/*  }*/
-/*}*/
-/*@media (min-width: 768px) {*/
-/*  .container {*/
-/*    max-width: 720px;*/
-/*  }*/
-/*}*/
-/*@media (min-width: 992px) {*/
-/*  .container {*/
-/*    max-width: 960px;*/
-/*  }*/
-/*}*/
-/*@media (min-width: 1200px) {*/
-/*  .container {*/
-/*    max-width: 1140px;*/
-/*  }*/
-/*}*/
+    }
+
+    :global(img, picture, video, canvas, svg ) {
+        display: block;
+        max-width: 100%;
+    }
+
+    :global(button, input, select, textarea ) {
+        font-family: inherit;
+    }
+
+    /* Remove default padding */
+    :global(ul, ol) {
+        padding: 0;
+    }
+
+    /* Make images easier to work with */
+    :global(img) {
+        max-width: 100%;
+        display: block;
+    }
+
+    /* Inherit fonts for inputs and buttons */
+    :global(input, button, textarea, select) {
+        font: inherit;
+    }
+
+    /* Remove all animations and transitions for people that prefer not to see them */
+    @media (prefers-reduced-motion: reduce) {
+        :global( *, *::before, *::after ) {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+
+    /* ########################################################################################### */
+    /*  Global element styles */
+    /* ########################################################################################### */
+
+    :global(body) {
+        --text-color: #000000;
+        --bg-fill: #FFFFFF;
+        --border-fill: #333333;
+
+        /*--text-color: #FFFFFF;*/
+        /*--bg-fill: #000000;*/
+        /*--border-fill: #333333;*/
+
+        /* colour is stroke colour */
+        --icon-color: #000000;
+        --icon-fill: #000000;
+    }
+
+    /*
+        .container
+        Child of <body> wraps all pages that use this layout.
+        <body>
+            <div style=".container">
+                <div class="homepage|projectpage|blogpage|etc" />
+    */
+    .container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    /*
+        figure
+        use variables to style max, min widths.
+    */
+    :global(figure) {
+        max-width: 460px;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 1rem;
+    }
+
+    /*
+        h1
+        use variables to style colour, font size, etc
+    */
+    :global(h1) {
+        color: var(--text-color);
+        text-decoration: none;
+        font-family: 'Roboto Flex';
+        font-weight: 100;
+        margin-bottom: 1rem;
+    }
+
+    /*
+        a links
+        use variables to style colour, font size, etc
+    */
+    :global(a) {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: lighter;
+        margin-bottom: 1rem;
+    }
+
+    /*
+        P
+        use variables to style colour, font size, etc
+    */
+    :global(p) {
+        color: var(--text-color);
+        /*margin-bottom: 16px;*/
+        margin-bottom: 1rem;
+        letter-spacing: 1px;
+        font-weight: 100;
+    }
+
+    /* Styling utils used in say routes/project/slug/+page.svelte to fill space.*/
+    :global(.remaining-space) {
+        flex: 1; /* Allow the container to grow and fill the remaining space */
+        display: flex;
+        flex-direction: column;
+        height: 1px; /* This fixes a weird behaviour.*/
+    }
+
+    /*
+        nav
+    */
+    :global(nav) {
+        background-color: #333;
+        color: #fff;
+    }
+
+    :global(nav a ){
+        color: #fff;
+        text-decoration: none;
+    }
+
+    :global(nav a:hover ){
+        background-color: #575757;
+    }
+
+    /*@media ( min-width: 500px) {*/
+    /*  .container {*/
+    /*    max-width: 460px;*/
+    /*  }*/
+    /*}*/
+    /*@media (min-width: 768px) {*/
+    /*  .container {*/
+    /*    max-width: 720px;*/
+    /*  }*/
+    /*}*/
+    /*@media (min-width: 992px) {*/
+    /*  .container {*/
+    /*    max-width: 960px;*/
+    /*  }*/
+    /*}*/
+    /*@media (min-width: 1200px) {*/
+    /*  .container {*/
+    /*    max-width: 1140px;*/
+    /*  }*/
+    /*}*/
 </style>

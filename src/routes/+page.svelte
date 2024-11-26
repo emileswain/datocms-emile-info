@@ -16,28 +16,34 @@
 
     export let data: PageData;
     $: subscription = querySubscription(data.subscription);
-    $: page = $subscription.data?.homepage;
+    $: homepage = $subscription.data?.homepage;
     $: projects = $subscription.data?.allProjects;
+
 </script>
 
-{#if page}
+{#if homepage}
     <!--
         The <Head> component provided by @datocms/svelte automates the creation of
         meta tags based on the `_seoMetaTags` present in a DatoCMS GraphQL query.
       -->
-    <Head data={page._seoMetaTags}/>
+    <Head data={homepage._seoMetaTags}></Head>
 
-    <!--  <h1>{page.title}</h1>-->
-
+    <header>
+        <!--  <h1>DatoCMS + SvelteKit Starter Kit</h1>-->
+        <!--        <nav>-->
+        <!--            <Icon type="home"/>-->
+        <!--            &lt;!&ndash;    <DraftModeToggler />&ndash;&gt;-->
+        <!--        </nav>-->
+    </header>
     <!--
         Structured Text is a JSON format similar to HTML, but with the advantage
         of a significantly reduced and tailored set of possible tags
         for editorial content, along with the capability to create hyperlinks
         to other DatoCMS records and embed custom DatoCMS blocks.
       -->
-    <div class="homepage" data-sveltekit-preload-data="tap">
+    <div class="home-page" data-sveltekit-preload-data="tap">
         <StructuredText
-                data={page.structuredText}
+                data={homepage.structuredText}
                 components={[
         // Although the component knows how to convert all "standard" elements
         // (headings, bullet lists, etc.) into HTML, it's possible to customize
@@ -51,7 +57,7 @@
     />
 
     {#if projects }
-   <ul> {#each projects as project}
+   <ul> {#each projects as project, i}
     <li>
         <a href="/project/{project.slug}" rel="no-prefetch">{project.title}</a>
     </li>
@@ -62,33 +68,9 @@
    {/if}
   </div>
 
-  <!--<footer>Published at {page._firstPublishedAt}</footer>-->
 {/if}
 
 <style>
-  :global(p) {
-    margin: 0;
-    padding: 0;
-    margin-bottom: 1rem;
-  }
-  :global(figure) {
-    margin: 0;
-    padding: 0;
-    margin-bottom: 1rem;
-  }
-  :global(figure > picture > img) {
-    margin: 0;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0;
-    max-height: 200px;
-    width: auto !important;
-  }
-  :global(figure) {
-    text-align: start;
-  }
 
-  :global(.container div:last-of-type > figure) {
-    text-align: center;
-  }
+
 </style>

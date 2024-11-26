@@ -58,6 +58,9 @@ const query = graphql(
           }
         }
       }
+      allProjects{
+        slug
+      }
     }
   `,
     [TagFragment, BlockFragment, ItemLinkFragment, InlineItemFragment, ResponsiveImageFragment],

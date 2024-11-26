@@ -14,26 +14,60 @@
     import Code from '$lib/components/Code/index.svelte';
     import type {ProjectData} from './$types';
     import ResponsiveImage from "$lib/components/ResponsiveImage/index.svelte";
-    import {onMount} from 'svelte';
+    import {onMount, afterUpdate} from 'svelte';
     import {ColorUtils} from '$lib/colorUtils';
+    import Icon from "../../../lib/components/Icon/index.svelte";
+
 
     export let data: ProjectData;
     $: subscription = querySubscription(data.subscription);
     $: project = $subscription.data?.project;
+    $: projects = $subscription.data?.allProjects;
+    let prevProjectSlug = "";
+    let nextProjectSlug = "";
 
 
-    onMount(() => {
+    function updateProjectStyles() {
         if (project) {
-            let root = document.querySelector("body")
+            let root = document.querySelector(".project-page")
             root.style.setProperty('--bg-fill', project.bgFill.hex);
             root.style.setProperty('--border-fill', project.bgBorder.hex);
             root.style.setProperty('--text-fill', project.clientTextFill.hex);
-
             let themeMode = ColorUtils.getContrastTheme(project.bgFill.hex);
-
             root.style.setProperty('--text-color', themeMode == 'light' ? "#FFF" : "#000");
+
+            // icons
+            root.style.setProperty('--icon-color', themeMode == 'light' ? "#FFF" : "#000");
+             root.style.setProperty('--icon-fill', themeMode == 'light' ? "transparent" : "transparent");
         }
-    });
+    }
+
+    function getProjectSlugs(projects, slug) {
+        const index = projects.findIndex(project => project.slug === slug);
+        const currentIndex = index !== -1 ? index : 0;
+        const prevIndex = (currentIndex - 1 + projects.length) % projects.length;
+        const nextIndex = (currentIndex + 1) % projects.length;
+        return {currentSlug: projects[currentIndex].slug, prevSlug: projects[prevIndex].slug, nextSlug: projects[nextIndex].slug};
+    }
+
+    let itemList = [];
+    onMount(() => {
+        console.log("Project.onMount():  ", project.slug);
+            updateProjectStyles();
+            const {currentSlug, prevSlug, nextSlug} = getProjectSlugs(projects, project.slug);
+            prevProjectSlug = prevSlug;
+            nextProjectSlug = nextSlug;
+        }
+    )
+
+    afterUpdate(() => {
+        console.log("Project.afterUpdate():  ", project.slug);
+        updateProjectStyles();
+        const {currentSlug, prevSlug, nextSlug} = getProjectSlugs(projects, project.slug);
+        prevProjectSlug = prevSlug;
+        nextProjectSlug = nextSlug;
+    })
+
 
     let size = 70;
     let barWidth = 2;
@@ -66,113 +100,97 @@
     <!--    <button on:click={upBar}>up Bar</button>-->
     <!--    <button on:click={downBar}>down Bar</button>-->
     <!--    <div class="client-title">NIKE</div>-->
-
-    <div class="title-wrapper">
-        <div class="client-title">{project.client}</div>
-    </div>
-    <!--  <h1>{page.title}</h1>-->
-    <div class="project" style="--bar-start:{size}; --blur-start:{100-size}; --bar-width:{barWidth}">
-        <div class="headline">
-            <figure class="heroImageContainer">
-                <ResponsiveImage data={project.heroImage.responsiveImage}/>
-                <div class="blurBox">
-                </div>
-            </figure>
-            <h1>{project.title} </h1>
+    <div class="project-page">
+        <div class="title-wrapper">
+            <div class="client-title">{project.client}</div>
         </div>
-        <div class="remaining-space">
-            <div class="content">
-                <StructuredText
-                        data={project.content}
-                        components={[
+        <!--  <h1>{page.title}</h1>-->
+        <div class="project" style="--bar-start:{size}; --blur-start:{100-size}; --bar-width:{barWidth}">
+            <div class="headline">
+                <figure class="heroImageContainer">
+                    <ResponsiveImage data={project.heroImage.responsiveImage}/>
+                    <div class="blurBox">
+                    </div>
+                </figure>
+                <h1>{project.title} </h1>
+            </div>
+            <div class="remaining-space">
+                <div class="content">
+                    <StructuredText
+                            data={project.content}
+                            components={[
               [isCode, Code],
               [isHeading, HeadingWithAnchorLink],
               [isBlock, Block],
               [isInlineItem, InlineItem],
               [isItemLink, ItemLink],
             ]}
-                />
+                    />
+                </div>
             </div>
+
         </div>
-
+        <div class="project-nav">
+            <a href="/">
+                <Icon type="home"/>
+            </a>
+            <a href="/project/{nextProjectSlug}" rel="no-prefetch">
+                <Icon type="next"/>
+            </a>
+            <a href="/project/{prevProjectSlug}" rel="no-prefetch">
+                <Icon type="back"/>
+            </a>
+        </div>
     </div>
-
     <!--<footer>Published at {page._firstPublishedAt}</footer>-->
 {/if}
 
 
 <style lang="css">
 
-    :global(body) {
+    .project-page {
         --text-color: var(--text-color);
-        background-color: var(--bg-fill);
         border-width: 20px;
         border-style: solid;
         border-color: var(--border-fill);
         background-color: var(--bg-fill);
-    }
-
-    :global(figure) {
-        width: 460px;
-        margin: 0;
-        padding: 0;
-        margin-bottom: 16px;
-    }
-
-    :global(h1) {
-        color: var(--text-color);
-        text-decoration: none;
-        font-family: 'Roboto Flex';
-        font-weight: 100;
-        margin-bottom: 12px;
-    }
-
-    :global(a) {
-        color: var(--text-color);
-        text-decoration: none;
-        font-weight: lighter;
-        margin-bottom: 16px;
-    }
-
-    :global(p) {
-        color: var(--text-color);
-        margin-bottom: 16px;
-        letter-spacing: 0.5px;
-        font-weight: 100;
-    }
-
-    :global(.container) {
-        display: flex;
+        overflow-y: auto;
+        /* not sure why, but some pages from the cms wouldn't render correctly without width and height set. */
+        width: 100%;
         height: 100%;
     }
 
+    .project-page::-webkit-scrollbar {
+        display: none;
+    }
 
     /*
     Page specific.
     */
     .project {
+        transition: padding 0.5s ease;
         display: flex;
         flex-direction: column;
         flex: 1;
         width: 100%;
         position: relative;
-        padding-top: 120px;
-        padding-left: 120px;
-        padding-right: 120px;
+        padding-top: 60px;
+        padding-left: 60px;
+        padding-right: 60px;
         overflow: hidden;
         z-index: 2;
     }
 
-    .headline {
-        flex-shrink: 0;
+    @media (min-width: 700px) {
+        .project {
+            padding-top: 120px;
+            padding-left: 120px;
+            padding-right: 120px;
+        }
     }
 
-    .remaining-space {
-        flex: 1; /* Allow the container to grow and fill the remaining space */
-        display: flex;
-        flex-direction: column;
-        height: 1px; /* This fixes a weird behaviour.*/
-
+    .headline {
+        flex-shrink: 0;
     }
 
     .content {
@@ -187,22 +205,29 @@
         column-gap: 16px;
     }
 
-    /*:global(.content  h3) {*/
-    /*    clear: both;*/
-    /*}*/
-
-    :global(.content *) {
-        max-width: 350px;
+    /*
+     :global .project-page xyz seems to be the only way to style elements that are dynamically added by code.
+     Note that you should avoid styling such as :global(p) as this will style all subsequent pages loaded.
+     instead make sure to include the .project-page selector.
+     */
+    :global( .project-page .content  *) {
+        max-width: 460px;
     }
 
+    /*
+        Very specific setup to get text to sit behind content at an angle and fit the page width.
+        .title-wrapper and .client-title work together to get the effect I wanted, angle text
+        that scales to fit the dimensions of the window.
+        Note: Angle elements break overflows and sizing of parent/sibling elements, hence the pain.
+        Also, the element needs to sit above the coloured border of the .page-content styling, but
+        below everythign else.
+    */
     .title-wrapper {
         position: absolute;
         top: 0;
         bottom: 0;
         left: 0;
         right: 0;
-        /*height: 100vh;*/
-        /*width: 100vh;*/
         overflow: hidden;
         pointer-events: none;
     }
@@ -213,15 +238,27 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%) rotate(20deg);
-        font-size: 50vw;
+        font-size: 45vw;
         color: var(--text-fill);
         font-weight: bold;
-        font-family: 'Arial';
+        font-family: 'Arial', sans-serif; /*THis is the text that sits behind everything, it should be the client font.*/
         z-index: 1;
-        /*height: 100vh;*/
         white-space: nowrap;
     }
 
+    /* End of title css */
+
+    /********/
+    /* project page side nav*/
+    /********/
+    .project-nav {
+        position: absolute;
+        top: 50%;
+        bottom: 50%;
+        z-index: 2;
+    }
+
+    /* Try to move this somewhere its styling for the barred image.*/
     figure {
         display: flex;
     }
@@ -249,7 +286,7 @@
         );
     }
 
-    :global(.heroImageContainer > picture:first-child > img) {
+    :global(.project-page .heroImageContainer > picture:first-child > img) {
         width: 100% !important;
         height: unset !important;
         filter: unset !important;
