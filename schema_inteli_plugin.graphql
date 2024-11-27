@@ -230,6 +230,7 @@ type HomepageRecord implements RecordInterface {
     _unpublishingScheduledAt: DateTime
     _updatedAt: DateTime!
     id: ItemId!
+    profileImage: FileField
     seoAnalysis: JsonField
     seoSettingsSocial: SeoField
     structuredText: HomepageModelStructuredTextField!
@@ -419,6 +420,12 @@ type ProjectModelContentField {
     value: JsonField!
 }
 
+type ProjectModelShortDescriptionField {
+    blocks: [String!]!
+    links: [String!]!
+    value: JsonField!
+}
+
 "Record of type  Project (project)"
 type ProjectRecord implements RecordInterface {
     _createdAt: DateTime!
@@ -446,6 +453,7 @@ type ProjectRecord implements RecordInterface {
     id: ItemId!
     seoAnalysis: JsonField
     seoSettingsSocial: SeoField
+    shortDescription: ProjectModelShortDescriptionField
     slug: String
     title: String!
 }
@@ -2880,6 +2888,7 @@ input ProjectModelFilter {
     id: ItemIdFilter
     seoAnalysis: JsonFilter
     seoSettingsSocial: SeoFilter
+    shortDescription: StructuredTextFilter
     slug: SlugFilter
     title: StringFilter
 }

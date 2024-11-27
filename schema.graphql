@@ -358,6 +358,7 @@ type HomepageRecord implements RecordInterface {
   _unpublishingScheduledAt: DateTime
   _updatedAt: DateTime!
   id: ItemId!
+  profileImage: FileField
   seoAnalysis: JsonField
   seoSettingsSocial: SeoField
   structuredText: HomepageModelStructuredTextField!
@@ -2403,11 +2404,11 @@ input PageModelFilter {
   _status: StatusFilter
   _updatedAt: UpdatedAtFilter
   _isValid: BooleanFilter
-  seoAnalysis: JsonFilter
   seoSettingsSocial: SeoFilter
-  slug: SlugFilter
   structuredText: StructuredTextFilter
+  seoAnalysis: JsonFilter
   title: StringFilter
+  slug: SlugFilter
   OR: [PageModelFilter]
   AND: [PageModelFilter]
 }
@@ -2493,16 +2494,17 @@ input ProjectModelFilter {
   _status: StatusFilter
   _updatedAt: UpdatedAtFilter
   _isValid: BooleanFilter
+  clientTextFill: ColorFilter
+  client: StringFilter
+  title: StringFilter
+  slug: SlugFilter
   bgBorder: ColorFilter
   bgFill: ColorFilter
-  client: StringFilter
-  clientTextFill: ColorFilter
-  content: StructuredTextFilter
   heroImage: FileFilter
   seoAnalysis: JsonFilter
   seoSettingsSocial: SeoFilter
-  slug: SlugFilter
-  title: StringFilter
+  content: StructuredTextFilter
+  shortDescription: StructuredTextFilter
   OR: [ProjectModelFilter]
   AND: [ProjectModelFilter]
 }
@@ -2530,6 +2532,12 @@ enum ProjectModelOrderBy {
   client_DESC
   title_ASC
   title_DESC
+}
+
+type ProjectModelShortDescriptionField {
+  blocks: [String!]!
+  links: [String!]!
+  value: JsonField!
 }
 
 """Record of type 📝 Project (project)"""
@@ -2561,6 +2569,7 @@ type ProjectRecord implements RecordInterface {
   id: ItemId!
   seoAnalysis: JsonField
   seoSettingsSocial: SeoField
+  shortDescription: ProjectModelShortDescriptionField
   slug: String
   title: String!
 }

@@ -101,6 +101,12 @@
         }
     }
 
+    /* Why the marker sits outside disrespecting everyone's layout i dont know. what nasty will this do. */
+    :global(li)
+    {
+        list-style-position: inside;
+    }
+
     /* ########################################################################################### */
     /*  Global element styles */
     /* ########################################################################################### */
@@ -117,6 +123,24 @@
         /* colour is stroke colour */
         --icon-color: #000000;
         --icon-fill: #000000;
+
+        /* Layout parameters */
+        --page-margin: 18px;
+        --bloc-margin-bottom: 18px;
+
+        /* Button styling parameters
+         */
+        --btn-color-fill:rgba(0, 0, 0, 0.37);
+        --btn-color-fill--hover:#cfe5d9;
+        --btn-color-stroke:#fff;
+        --btn-color-stroke--hover:#fff;
+    }
+
+    @media (min-width: 700px) {
+        :global(body) {
+            --page-margin: 32px;
+            --bloc-margin-bottom: 32px;
+        }
     }
 
     /*
