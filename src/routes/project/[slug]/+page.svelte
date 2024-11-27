@@ -39,6 +39,8 @@
             // icons
             root.style.setProperty('--icon-color', themeMode == 'light' ? "#FFF" : "#000");
              root.style.setProperty('--icon-fill', themeMode == 'light' ? "transparent" : "transparent");
+
+             root.style.setProperty('--letter-count',project.client.length);
         }
     }
 
@@ -131,24 +133,24 @@
 
         </div>
         <div class="project-nav">
-            <a href="/">
+            <a href="/" aria-label="home">
                 <Icon type="home"/>
             </a>
-            <a href="/project/{nextProjectSlug}" rel="no-prefetch">
+            <a href="/project/{nextProjectSlug}" rel="no-prefetch" aria-label="next">
                 <Icon type="next"/>
             </a>
-            <a href="/project/{prevProjectSlug}" rel="no-prefetch">
+            <a href="/project/{prevProjectSlug}" rel="no-prefetch" aria-label="prev">
                 <Icon type="back"/>
             </a>
         </div>
     </div>
-    <!--<footer>Published at {page._firstPublishedAt}</footer>-->
 {/if}
 
 
 <style lang="css">
 
     .project-page {
+        --letter-count: 5;
         --text-color: var(--text-color);
         border-width: 20px;
         border-style: solid;
@@ -238,6 +240,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%) rotate(20deg);
+        /*font-size: calc(  (45 + (6 * (5 - var(--letter-count)  ) ) ) * 1vw );*/
         font-size: 45vw;
         color: var(--text-fill);
         font-weight: bold;
@@ -256,6 +259,7 @@
         top: 50%;
         bottom: 50%;
         z-index: 2;
+        margin-left: 18px;
     }
 
     /* Try to move this somewhere its styling for the barred image.*/
