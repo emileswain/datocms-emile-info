@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="Added sub nav to homepage and styled project pages.">
-      <change afterPath="$PROJECT_DIR$/src/lib/components/Icon/index.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/images/icons/back.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/images/icons/home.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/images/icons/next.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/stores/projectstore.ts" afterDir="false" />
+    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="Various tweeks and updates to layouts and styles.">
+      <change afterPath="$PROJECT_DIR$/.graphqlconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schema_inteli_plugin.graphql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/+layout.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+layout.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+page.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/project/[slug]/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/project/[slug]/+page.server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/project/[slug]/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/project/[slug]/+page.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +68,8 @@
       <workItem from="1730380446597" duration="3836000" />
       <workItem from="1730388822890" duration="19084000" />
       <workItem from="1730718517490" duration="35498000" />
-      <workItem from="1732633006377" duration="16460000" />
+      <workItem from="1732633006377" duration="17483000" />
+      <workItem from="1732712628486" duration="5748000" />
     </task>
     <task id="LOCAL-00001" summary="tweeks">
       <created>1729525638478</created>
@@ -140,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1730894691197</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Various tweeks and updates to layouts and styles.">
+      <created>1732650557228</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1732650557228</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,6 +167,7 @@
     <MESSAGE value="Styled image banding effect." />
     <MESSAGE value="Client logo text css corrected." />
     <MESSAGE value="Added sub nav to homepage and styled project pages." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added sub nav to homepage and styled project pages." />
+    <MESSAGE value="Various tweeks and updates to layouts and styles." />
+    <option name="LAST_COMMIT_MESSAGE" value="Various tweeks and updates to layouts and styles." />
   </component>
 </project>
