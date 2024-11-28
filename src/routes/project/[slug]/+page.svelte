@@ -200,6 +200,7 @@
 
     .content {
         display: flex;
+        flex: 1 1 auto;
         flex-direction: column;
         flex-wrap: wrap;
         align-items: start;

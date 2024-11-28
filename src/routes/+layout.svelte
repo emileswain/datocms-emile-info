@@ -208,10 +208,12 @@
 
     /* Styling utils used in say routes/project/slug/+page.svelte to fill space.*/
     :global(.remaining-space) {
-        flex: 1; /* Allow the container to grow and fill the remaining space */
-        display: flex;
-        flex-direction: column;
-        height: 1px; /* This fixes a weird behaviour.*/
+
+        /*flex: 1; !* Allow the container to grow and fill the remaining space *!*/
+        /*display: flex;*/
+        /*flex-direction: column;*/
+        /*height: 1px; !* This fixes a weird behaviour.*!*/
+
     }
 
     /*
