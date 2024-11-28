@@ -180,7 +180,7 @@
         padding-left: 60px;
         padding-right: 60px;
         overflow: hidden;
-        z-index: 2;
+        /*z-index: 2;*/
     }
 
     @media (min-width: 700px) {
@@ -202,7 +202,7 @@
         align-items: start;
         align-content: flex-start;
         /*max-width: 350px;*/
-        z-index: 2;
+        /*z-index: 2;*/
         height: 100%;
         column-gap: 16px;
     }
@@ -245,7 +245,7 @@
         color: var(--text-fill);
         font-weight: bold;
         font-family: 'Arial', sans-serif; /*THis is the text that sits behind everything, it should be the client font.*/
-        z-index: 1;
+        /*z-index: 1;*/
         white-space: nowrap;
     }
 
@@ -258,7 +258,7 @@
         position: absolute;
         top: 50%;
         bottom: 50%;
-        z-index: 2;
+        /*z-index: 2;*/
         margin-left: 18px;
     }
 
