@@ -18,6 +18,7 @@
     import {ColorUtils} from '$lib/colorUtils';
     import Icon from "../../../lib/components/Icon/index.svelte";
 
+    // just in case it becomes a problem https://github.com/lazd/iNoBounce
 
     export let data: ProjectData;
     $: subscription = querySubscription(data.subscription);
@@ -173,7 +174,7 @@
         transition: padding 0.5s ease;
         display: flex;
         flex-direction: column;
-        flex: 1;
+        flex: 1 1 auto;
         width: 100%;
         position: relative;
         padding-top: 60px;
