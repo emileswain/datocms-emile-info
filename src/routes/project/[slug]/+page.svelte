@@ -244,9 +244,9 @@
 
     @media (min-width: 700px) {
         .project {
-            padding-top: 120px;
-            padding-left: 120px;
-            padding-right: 120px;
+            padding-top: calc(var(--page-margin) * 2);
+            padding-left: calc(var(--page-margin) * 2);
+            padding-right: calc(var(--page-margin) * 2);
         }
     }
 

@@ -125,7 +125,7 @@
         --icon-fill: #000000;
 
         /* Layout parameters */
-        --page-max-content-width:460px;
+        --page-max-content-width:300px;
         --page-margin: 18px;
         --bloc-margin-bottom: 18px;
         --page-border-thickness: 15px; /* used on project page.*/
@@ -138,6 +138,17 @@
         --btn-color-stroke--hover:#fff;
     }
 
+    /* applied when over 540 */
+    @media (min-width: 500px) {
+        :global(body) {
+            --page-max-content-width:460px;
+            --page-margin: 32px;
+            --bloc-margin-bottom: 32px;
+            --page-border-thickness: 20px;  /* used on project page.*/
+        }
+    }
+
+    /* applied when over 700 */
     @media (min-width: 700px) {
         :global(body) {
             --page-margin: 32px;
