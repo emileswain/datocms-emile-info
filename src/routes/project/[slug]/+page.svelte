@@ -117,6 +117,7 @@
                 </figure>
                 <h1>{project.title} </h1>
             </div>
+<!--  rebuild this as it doesn't work oniOS chrome. -->
             <div class="remaining-space">
                 <div class="content">
                     <StructuredText
