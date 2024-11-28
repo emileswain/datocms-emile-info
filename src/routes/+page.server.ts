@@ -47,23 +47,21 @@ const query = graphql(
             ...InlineItemFragment
           }
         }
-      }
-      allProjects {
-        id
-        title
-        shortDescription{
-          value
-        }
-        slug
-        heroImage{
-          alt
-          responsiveImage{
-            src
+        projects{
+          title
+          shortDescription {
+            value
+          }
+          slug
+          heroImage{
+            alt
+            responsiveImage{
+              src
+            }
           }
         }
-        _status
-        _firstPublishedAt
       }
+      
     }
   `,
   [TagFragment, BlockFragment, ItemLinkFragment, InlineItemFragment, ImageBlockFragment],

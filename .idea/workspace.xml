@@ -3,7 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="wip fix layout issue on ios.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/schema.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schema_inteli_plugin.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/schema_inteli_plugin.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/datocms/graphql-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/datocms/graphql-env.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/+layout.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+layout.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+page.server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/project/[slug]/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/project/[slug]/+page.server.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/project/[slug]/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/project/[slug]/+page.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +75,7 @@
       <workItem from="1730388822890" duration="19084000" />
       <workItem from="1730718517490" duration="35498000" />
       <workItem from="1732633006377" duration="17483000" />
-      <workItem from="1732712628486" duration="27839000" />
+      <workItem from="1732712628486" duration="37171000" />
     </task>
     <task id="LOCAL-00001" summary="tweeks">
       <created>1729525638478</created>
@@ -197,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1732798111436</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="wip fix layout issue on ios.">
+      <created>1732798580406</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1732798580406</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -23,7 +23,9 @@
     export let data: ProjectData;
     $: subscription = querySubscription(data.subscription);
     $: project = $subscription.data?.project;
+    $: copyBlocs = $subscription.data?.project.copy;
     $: projects = $subscription.data?.allProjects;
+
     let prevProjectSlug = "";
     let nextProjectSlug = "";
 
@@ -39,9 +41,9 @@
 
             // icons
             root.style.setProperty('--icon-color', themeMode == 'light' ? "#FFF" : "#000");
-             root.style.setProperty('--icon-fill', themeMode == 'light' ? "transparent" : "transparent");
+            root.style.setProperty('--icon-fill', themeMode == 'light' ? "transparent" : "transparent");
 
-             root.style.setProperty('--letter-count',project.client.length);
+            root.style.setProperty('--letter-count', project.client.length);
         }
     }
 
@@ -55,7 +57,7 @@
 
     let itemList = [];
     onMount(() => {
-        console.log("Project.onMount():  ", project.slug);
+            console.log("Project.onMount():  ", project.slug);
             updateProjectStyles();
             const {currentSlug, prevSlug, nextSlug} = getProjectSlugs(projects, project.slug);
             prevProjectSlug = prevSlug;
@@ -116,33 +118,49 @@
                     </div>
                 </figure>
                 <h1>{project.title} </h1>
-            </div>
-<!--  rebuild this as it doesn't work oniOS chrome. -->
-            <div class="remaining-space">
-                <div class="content">
-                    <StructuredText
-                            data={project.content}
-                            components={[
-              [isCode, Code],
-              [isHeading, HeadingWithAnchorLink],
-              [isBlock, Block],
-              [isInlineItem, InlineItem],
-              [isItemLink, ItemLink],
-            ]}
-                    />
+                <div class="pills">
+                    <div class="pill">AR</div>
+                    {#each project.featurePills.split(",") as pill , i}
+                        <div class="pill">{pill}</div>
+                    {/each}
                 </div>
+
             </div>
+            <div class="content-bloc-column">
+                {#each copyBlocs as copybloc , i}
+                    <div class="copy-bloc">
+                        <h1>{copybloc.header}</h1>
+                        <StructuredText data={copybloc.content.value}/>
+                    </div>
+                {/each}
+
+            </div>
+            <!--  rebuild this as it doesn't work oniOS chrome. -->
+            <!--            <div class="remaining-space">-->
+            <!--                <div class="content">-->
+            <!--                    <StructuredText-->
+            <!--                            data={project.content}-->
+            <!--                            components={[-->
+            <!--              [isCode, Code],-->
+            <!--              [isHeading, HeadingWithAnchorLink],-->
+            <!--              [isBlock, Block],-->
+            <!--              [isInlineItem, InlineItem],-->
+            <!--              [isItemLink, ItemLink],-->
+            <!--            ]}-->
+            <!--                    />-->
+            <!--                </div>-->
+            <!--            </div>-->
 
         </div>
         <div class="project-nav">
+            <a href="/project/{prevProjectSlug}" rel="no-prefetch" aria-label="prev">
+                <Icon type="back"/>
+            </a>
             <a href="/" aria-label="home">
                 <Icon type="home"/>
             </a>
             <a href="/project/{nextProjectSlug}" rel="no-prefetch" aria-label="next">
                 <Icon type="next"/>
-            </a>
-            <a href="/project/{prevProjectSlug}" rel="no-prefetch" aria-label="prev">
-                <Icon type="back"/>
             </a>
         </div>
     </div>
@@ -151,10 +169,45 @@
 
 <style lang="css">
 
+    /***********************************************************/
+    /* Copy blocs */
+    /***********************************************************/
+    .content-bloc-column {
+        /*display: grid;*/
+        /*grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));*/
+        display: flex;
+        flex: 1 1 0;
+        /*flex-wrap: wrap;*/
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .copy-bloc {
+        min-width: calc(var(--page-max-content-width) - (var(--page-margin) * 2));
+        max-width: var(--page-max-content-width);
+        height: fit-content;
+    }
+
+    @media (min-width: 700px) {
+        .content-bloc-column {
+            flex-direction: row;
+        }
+
+        .copy-bloc {
+
+        }
+    }
+
+    /***********************************************************/
+    /* Main page layout. */
+    /***********************************************************/
+
     .project-page {
         --letter-count: 5;
         --text-color: var(--text-color);
-        border-width: 20px;
+        border-width: var(--page-border-thickness);
         border-style: solid;
         border-color: var(--border-fill);
         background-color: var(--bg-fill);
@@ -179,8 +232,8 @@
         width: 100%;
         position: relative;
         padding-top: 60px;
-        padding-left: 60px;
-        padding-right: 60px;
+        padding-left: var(--page-margin);
+        padding-right: var(--page-margin);
         /*overflow: hidden;*/
         /*z-index: 2;*/
         /* disable ios scroll bounce */
@@ -218,7 +271,7 @@
      instead make sure to include the .project-page selector.
      */
     :global( .project-page .content  *) {
-        max-width: 460px;
+        max-width: var(--page-max-content-width);
     }
 
     /*
@@ -260,11 +313,25 @@
     /* project page side nav*/
     /********/
     .project-nav {
+        /*position: absolute;*/
+        /*top: 50%;*/
+        /*bottom: 50%;*/
+        /*!*z-index: 2;*!*/
+        /*margin-left: 18px;*/
+
         position: absolute;
-        top: 50%;
-        bottom: 50%;
-        /*z-index: 2;*/
-        margin-left: 18px;
+        display: flex;
+        margin: 0;
+        background: var(--bg-fill);
+        left: var(--page-border-thickness);
+        right: var(--page-border-thickness);
+        bottom: var(--page-border-thickness);
+        width: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 16px;
+        gap: 16px;
     }
 
     /* Try to move this somewhere its styling for the barred image.*/
@@ -317,5 +384,37 @@
         );
         mask-size: 100%
     }
+
+    .pills {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+    }
+
+    .pill {
+        display: inline-block;
+        padding: 8px 8px;
+        /*min-width: 42px;*/
+        min-height: 32px;
+        /*border-radius: 25px;*/
+        /*background-color: var(--btn-color-fill);*/
+        /*border: 2px solid var(--btn-color-stroke);*/
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 400;
+        transition: background-color 0.3s, border-color 0.3s;
+        justify-self: flex-start;
+    }
+
+    /*.button-link:hover {*/
+    /*    background-color:var(--btn-color-fill--hover); !* Darker fill color on hover *!*/
+    /*    border-color: var(--btn-color-stroke--hover); !* Darker border color on hover *!*/
+    /*    color: #2e3330*/
+    /*}*/
 
 </style>

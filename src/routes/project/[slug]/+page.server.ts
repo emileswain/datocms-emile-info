@@ -16,53 +16,60 @@ import {ResponsiveImageFragment} from "../../../lib/components/ResponsiveImage/f
  */
 const query = graphql(
     /* GraphQL */ `
-    query ProjectQuery($slug: String!) {
-      project(filter: { slug: { eq: $slug } }) {
-        _seoMetaTags {
-          ...TagFragment
-        }
-        title
-        slug
-        client
-        bgBorder {
-          hex
-        }
-        bgFill{
-          hex
-        }
-        clientTextFill{
-          hex
-        }
-        heroImage {
-            responsiveImage{
-                ... ResponsiveImageFragment
+        query ProjectQuery($slug: String!) {
+            project(filter: { slug: { eq: $slug } }) {
+                _seoMetaTags {
+                    ...TagFragment
+                }
+                title
+                slug
+                client
+                bgBorder {
+                    hex
+                }
+                bgFill{
+                    hex
+                }
+                featurePills
+                copy{
+                    header
+                    content {
+                        value
+                    }
+                }
+                clientTextFill{
+                    hex
+                }
+                heroImage {
+                    responsiveImage{
+                        ... ResponsiveImageFragment
+                    }
+                }
+                _firstPublishedAt
+                content {
+                    value
+                    blocks {
+                        ... on RecordInterface {
+                            id
+                            __typename
+                        }
+                        ...BlockFragment
+                    }
+                    links {
+                        ... on RecordInterface {
+                            id
+                            __typename
+                        }
+                        ...ItemLinkFragment
+                        ...InlineItemFragment
+                    }
+                }
+            }
+            allProjects{
+                slug
             }
         }
-        _firstPublishedAt
-        content {
-          value
-          blocks {
-            ... on RecordInterface {
-              id
-              __typename
-            }
-            ...BlockFragment
-          }
-          links {
-            ... on RecordInterface {
-              id
-              __typename
-            }
-            ...ItemLinkFragment
-            ...InlineItemFragment
-          }
-        }
-      }
-      allProjects{
-        slug
-      }
-    }
-  `,
+    `,
     [TagFragment, BlockFragment, ItemLinkFragment, InlineItemFragment, ResponsiveImageFragment],
 );
 

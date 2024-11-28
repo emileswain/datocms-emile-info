@@ -17,7 +17,9 @@
     export let data: PageData;
     $: subscription = querySubscription(data.subscription);
     $: homepage = $subscription.data?.homepage;
-    $: projects = $subscription.data?.allProjects;
+    // $: projects = $subscription.data?.allProjects;
+
+    $: projects = $subscription.data?.homepage.projects;
 
     $: pages = [{title: "work"}, {title: "projects"}, {title: "other"}]
 </script>
@@ -250,15 +252,15 @@
             align-items: flex-start; /* Align to the right */
         }
     }
-
     .project-image-bloc
     {
         height:100%;
         align-items: self-start;
     }
     .project-image {
-        max-width: 100%;
-        max-height: 100%;
+        width: 460px;
+        height: 263px;
+
         border-radius: 28px;
         border: 5px solid white;
         display: block;
@@ -281,10 +283,12 @@
         .project-image {
             /*max-width: 512px;*/
             /*max-height: 288px;*/
-            max-width: 100%;
-            max-height: 100%;
+            /*max-width: 100%;*/
+            /*max-height: 100%;*/
             /*min-width: 512px;*/
             /*min-height: 288px;*/
+            width: 460px;
+            height: 263px;
         }
         .project-blurb
         {

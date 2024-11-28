@@ -98,6 +98,8 @@ interface RecordInterface {
     id: ItemId!
 }
 
+union ContentBlocModelContentLinksField = PageRecord | ProjectRecord
+
 union HomepageModelStructuredTextBlocksField = ImageBlockRecord | ImageByTextBlockRecord | ImageGalleryBlockRecord | VideoBlockRecord
 
 union HomepageModelStructuredTextLinksField = HomepageRecord | PageRecord
@@ -121,6 +123,35 @@ type ColorField {
     green: IntType!
     hex: String!
     red: IntType!
+}
+
+type ContentBlocModelContentField {
+    blocks: [String!]!
+    links: [ContentBlocModelContentLinksField!]!
+    value: JsonField!
+}
+
+"Block of type content bloc (content_bloc)"
+type ContentBlocRecord implements RecordInterface {
+    _createdAt: DateTime!
+    "Editing URL"
+    _editingUrl: String
+    _firstPublishedAt: DateTime
+    _isValid: BooleanType!
+    _modelApiKey: String!
+    _publicationScheduledAt: DateTime
+    _publishedAt: DateTime
+    "Generates SEO and Social card meta tags to be used in your frontend"
+    _seoMetaTags(
+        "The locale to use to fetch the field's content"
+        locale: SiteLocale
+    ): [Tag!]!
+    _status: ItemStatus!
+    _unpublishingScheduledAt: DateTime
+    _updatedAt: DateTime!
+    content: ContentBlocModelContentField
+    header: String
+    id: ItemId!
 }
 
 type FileField implements FileFieldInterface {
@@ -230,7 +261,9 @@ type HomepageRecord implements RecordInterface {
     _unpublishingScheduledAt: DateTime
     _updatedAt: DateTime!
     id: ItemId!
+    pages: [PageRecord!]!
     profileImage: FileField
+    projects: [ProjectRecord!]!
     seoAnalysis: JsonField
     seoSettingsSocial: SeoField
     structuredText: HomepageModelStructuredTextField!
@@ -449,6 +482,8 @@ type ProjectRecord implements RecordInterface {
     client: String
     clientTextFill: ColorField
     content: ProjectModelContentField!
+    copy: [ContentBlocRecord!]!
+    featurePills: String
     heroImage: FileField
     id: ItemId!
     seoAnalysis: JsonField
@@ -1085,6 +1120,8 @@ enum ProjectModelOrderBy {
     _updatedAt_DESC
     client_ASC
     client_DESC
+    featurePills_ASC
+    featurePills_DESC
     id_ASC
     id_DESC
     title_ASC
@@ -2884,6 +2921,7 @@ input ProjectModelFilter {
     client: StringFilter
     clientTextFill: ColorFilter
     content: StructuredTextFilter
+    featurePills: StringFilter
     heroImage: FileFilter
     id: ItemIdFilter
     seoAnalysis: JsonFilter

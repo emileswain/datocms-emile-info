@@ -69,7 +69,7 @@
 
     :global(img, picture, video, canvas, svg ) {
         display: block;
-        max-width: 100%;
+        /*max-width: 100%;*/
     }
 
     :global(button, input, select, textarea ) {
@@ -81,9 +81,8 @@
         padding: 0;
     }
 
-    /* Make images easier to work with */
+    /*  */
     :global(img) {
-        max-width: 100%;
         display: block;
     }
 
@@ -126,8 +125,10 @@
         --icon-fill: #000000;
 
         /* Layout parameters */
+        --page-max-content-width:460px;
         --page-margin: 18px;
         --bloc-margin-bottom: 18px;
+        --page-border-thickness: 20px; /* used on project page.*/
 
         /* Button styling parameters
          */

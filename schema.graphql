@@ -43,6 +43,39 @@ input ColorFilter {
   exists: BooleanType
 }
 
+type ContentBlocModelContentField {
+  blocks: [String!]!
+  links: [ContentBlocModelContentLinksField!]!
+  value: JsonField!
+}
+
+union ContentBlocModelContentLinksField = PageRecord | ProjectRecord
+
+"""Block of type content bloc (content_bloc)"""
+type ContentBlocRecord implements RecordInterface {
+  _createdAt: DateTime!
+
+  """Editing URL"""
+  _editingUrl: String
+  _firstPublishedAt: DateTime
+  _isValid: BooleanType!
+  _modelApiKey: String!
+  _publicationScheduledAt: DateTime
+  _publishedAt: DateTime
+
+  """Generates SEO and Social card meta tags to be used in your frontend"""
+  _seoMetaTags(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+  ): [Tag!]!
+  _status: ItemStatus!
+  _unpublishingScheduledAt: DateTime
+  _updatedAt: DateTime!
+  content: ContentBlocModelContentField
+  header: String
+  id: ItemId!
+}
+
 """Specifies how to filter by creation datetime"""
 input CreatedAtFilter {
   """
@@ -358,7 +391,9 @@ type HomepageRecord implements RecordInterface {
   _unpublishingScheduledAt: DateTime
   _updatedAt: DateTime!
   id: ItemId!
+  pages: [PageRecord!]!
   profileImage: FileField
+  projects: [ProjectRecord!]!
   seoAnalysis: JsonField
   seoSettingsSocial: SeoField
   structuredText: HomepageModelStructuredTextField!
@@ -2495,15 +2530,16 @@ input ProjectModelFilter {
   _updatedAt: UpdatedAtFilter
   _isValid: BooleanFilter
   clientTextFill: ColorFilter
-  client: StringFilter
   title: StringFilter
   slug: SlugFilter
   bgBorder: ColorFilter
   bgFill: ColorFilter
+  seoSettingsSocial: SeoFilter
+  featurePills: StringFilter
+  client: StringFilter
+  content: StructuredTextFilter
   heroImage: FileFilter
   seoAnalysis: JsonFilter
-  seoSettingsSocial: SeoFilter
-  content: StructuredTextFilter
   shortDescription: StructuredTextFilter
   OR: [ProjectModelFilter]
   AND: [ProjectModelFilter]
@@ -2528,10 +2564,12 @@ enum ProjectModelOrderBy {
   _updatedAt_DESC
   _isValid_ASC
   _isValid_DESC
-  client_ASC
-  client_DESC
   title_ASC
   title_DESC
+  featurePills_ASC
+  featurePills_DESC
+  client_ASC
+  client_DESC
 }
 
 type ProjectModelShortDescriptionField {
@@ -2565,6 +2603,8 @@ type ProjectRecord implements RecordInterface {
   client: String
   clientTextFill: ColorField
   content: ProjectModelContentField!
+  copy: [ContentBlocRecord!]!
+  featurePills: String
   heroImage: FileField
   id: ItemId!
   seoAnalysis: JsonField
