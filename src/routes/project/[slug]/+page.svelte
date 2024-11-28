@@ -182,6 +182,8 @@
         height: 100%;
         width: 100%;
         gap: 10px;
+        /* 16 is the bottom nav padding dimension*/
+        margin-bottom: calc(var(--page-border-thickness) * 2 + (16 * 2) * 1px + 20px);
     }
 
     .copy-bloc {
@@ -333,7 +335,9 @@
         padding: 16px;
         gap: 16px;
     }
-
+    .project-nav a{
+        margin-bottom: unset;
+    }
     /* Try to move this somewhere its styling for the barred image.*/
     figure {
         display: flex;

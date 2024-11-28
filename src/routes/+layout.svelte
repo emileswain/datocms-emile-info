@@ -128,7 +128,7 @@
         --page-max-content-width:460px;
         --page-margin: 18px;
         --bloc-margin-bottom: 18px;
-        --page-border-thickness: 20px; /* used on project page.*/
+        --page-border-thickness: 15px; /* used on project page.*/
 
         /* Button styling parameters
          */
@@ -142,6 +142,7 @@
         :global(body) {
             --page-margin: 32px;
             --bloc-margin-bottom: 32px;
+            --page-border-thickness: 20px;  /* used on project page.*/
         }
     }
 
