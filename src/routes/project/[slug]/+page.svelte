@@ -179,8 +179,10 @@
         padding-top: 60px;
         padding-left: 60px;
         padding-right: 60px;
-        overflow: hidden;
+        /*overflow: hidden;*/
         /*z-index: 2;*/
+        /* disable ios scroll bounce */
+        overscroll-behavior: none;
     }
 
     @media (min-width: 700px) {
