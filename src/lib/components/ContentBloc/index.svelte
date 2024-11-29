@@ -23,7 +23,7 @@
     }
 
     .content-maxWidth{
-        max-width: var(--page-max-content-width);
+
     }
 
     .content-align-bottom{
@@ -39,5 +39,26 @@
     .flush{
         margin-left:0;
         margin-right:0;
+    }
+
+    @media ( min-width: 500px) {
+        .content-maxWidth {
+
+        }
+    }
+    @media (min-width: 768px) {
+        .content-maxWidth {
+            max-width: var(--page-max-content-width);
+        }
+    }
+    @media (min-width: 992px) {
+        .content-maxWidth {
+            max-width: var(--page-max-content-width);
+        }
+    }
+    @media (min-width: 1200px) {
+        .content-maxWidth-maxWidthbloc {
+            max-width: var(--page-max-content-width);
+        }
     }
 </style>
