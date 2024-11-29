@@ -52,8 +52,8 @@
     }
 
     :global(html, body) {
-        height: 100%;
-        width: 100%;
+        height: auto;
+        width: auto;
         font-family: 'Roboto Flex', 'Inter', Helvetica, Arial, serif;
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;

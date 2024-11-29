@@ -217,8 +217,8 @@
         background-color: var(--bg-fill);
         overflow-y: auto;
         /* not sure why, but some pages from the cms wouldn't render correctly without width and height set. */
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
     }
 
     .project-page::-webkit-scrollbar {

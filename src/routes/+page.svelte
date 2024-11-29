@@ -13,6 +13,11 @@
     import ItemLink from '$lib/components/ItemLink/index.svelte';
     import Code from '$lib/components/Code/index.svelte';
     import type {PageData} from './$types';
+    import PageBloc from "../lib/components/PageBloc/index.svelte";
+    import LayoutBloc from "../lib/components/LayoutBloc/index.svelte";
+    import ContentBloc from "../lib/components/ContentBloc/index.svelte";
+    import TopNav from "../lib/components/TopNav/index.svelte";
+    import Link from "../lib/components/Link/index.svelte";
 
     export let data: PageData;
     $: subscription = querySubscription(data.subscription);
@@ -31,30 +36,14 @@
       -->
     <Head data={homepage._seoMetaTags}></Head>
 
-    <header>
-    </header>
-
-    <div class="home-page" data-sveltekit-preload-data="tap">
-        <div class="home-header">
-            <ul>
-                <li>
-                    <p>Emile Swain</p>
-                </li>
-                <li class="expand"></li>
-                <!--{#each pages as page, i}-->
-                <!--    <li>-->
-                <!--        &lt;!&ndash;                        <a href="/page/{page.title}" rel="no-prefetch">{page.title}</a>&ndash;&gt;-->
-                <!--        <a href="/" rel="no-prefetch">{page.title}</a>-->
-                <!--    </li>-->
-                <!--{/each}-->
-            </ul>
-        </div>
-        <div class="content-wrapper-bloc">
-            <div class="layout-bloc-row profile-bloc">
-                <div class="content-bloc">
+    <TopNav>Emile swain</TopNav>
+    <PageBloc class="home-page">
+        <LayoutBloc>
+            <LayoutBloc direction="row" collapseRow="true">
+                <ContentBloc useMaxWidth="true">
                     <img class="profile-image" src={homepage.profileImage.responsiveImage.src} alt={homepage.profileImage.alt?? "profile image"}/>
-                </div>
-                <div class="content-bloc blurb-bloc">
+                </ContentBloc>
+                <ContentBloc useMaxWidth="true" align="bottom">
                     <StructuredText
                             data={homepage.structuredText}
                             components={[
@@ -64,148 +53,71 @@
                         [isInlineItem, InlineItem],
                         [isItemLink, ItemLink],
                       ]}/>
-                </div>
-            </div>
+                </ContentBloc>
+            </LayoutBloc>
 
-            <div class="layout-bloc-column">
-                <div class="content-bloc profile-nav section-header">
-                    <h1>Projects</h1>
-                </div>
-            </div>
-            <div class="layout-bloc-column project-links-bloc">
+            <LayoutBloc>
+                <ContentBloc>
+                    <h1 class="section-header">Projects</h1>
+                </ContentBloc>
+            </LayoutBloc>
+
+            <LayoutBloc>
                 {#if projects }
                     {#each projects as project, i}
-                        <div class="content-bloc layout-bloc-row project-bloc">
-                            <div class="content-bloc project-image-bloc">
-                                <img class="project-image" src={project.heroImage.responsiveImage.src} alt={project.heroImage.alt?? "profile image"}/>
-                            </div>
-                            <div class="content-bloc project-blurb">
+                        <LayoutBloc direction="row" alternateDirection="true" collapseRow="true">
+                            <ContentBloc >
+                                <img class="project-image" src={project.heroImage.responsiveImage.src} alt={project.heroImage.alt?? "image of project"}/>
+                            </ContentBloc>
+                            <ContentBloc useMaxWidth="true">
                                 <h1>{project.title}</h1>
                                 <StructuredText data={project.shortDescription}/>
-                                <a class="button-link" href="/project/{project.slug}" rel="no-prefetch">Explore</a>
-                            </div>
-                        </div>
+                                <Link  href="/project/{project.slug}" rel="no-prefetch">Explore</Link>
+                            </ContentBloc>
+                        </LayoutBloc>
                     {/each}
                 {:else}
                     <p>Loading projects...</p>
                 {/if}
+            </LayoutBloc>
 
-            </div>
+            <LayoutBloc>
+                <ContentBloc>
+                    <h1 class="section-header">Side Projects</h1>
+                </ContentBloc>
+            </LayoutBloc>
 
-            <div class="layout-bloc-column">
-                <div class="content-bloc profile-nav section-header">
-                    <h1>Side projects</h1>
-                </div>
-            </div>
-            <div class="layout-bloc-column side-project-links-bloc">
-                <div class="content-bloc profile-nav">
-                    <ul>
-                    {#each homepage.pages as page, i}
-                        <!--                        <a href="/page/{page.title}" rel="no-prefetch">{page.title}</a>-->
-                        <li><a href="/page/{page.slug}" rel="no-prefetch">{page.title}</a></li>
-                    {/each}
-                    </ul>
-                </div>
-            </div>
+            <LayoutBloc>
+                {#each homepage.pages as page, i}
+                    <!--                        <a href="/page/{page.title}" rel="no-prefetch">{page.title}</a>-->
+<!--                    <li><a href="/page/{page.slug}" rel="no-prefetch">{page.title}</a></li>-->
+                    <ContentBloc>
+                        <h1>{page.title}</h1>
+                        <StructuredText data={page.shortDescription}/>
+                        <Link  href="/page/{page.slug}" rel="no-prefetch">Explore</Link>
+                    </ContentBloc>
+                {/each}
+            </LayoutBloc>
 
-        </div>
-    </div>
-    <!-- End homepage -->
+        </LayoutBloc>
+    </PageBloc>
+
 {/if}
 
 <style lang="css">
-    .section-header h1{
-        font-size: 4rem;
-        margin-bottom: unset;
-    }
-    .home-page {
-        /*width: auto;*/
-        height: 100%;
-        /*min-height: auto;*/
-        /*min-width: 100%;*/
-        overflow-y: auto;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
+    /*.section-header {*/
+    /*    font-size: 4rem;*/
+    /*    margin-bottom: unset;*/
+    /*}*/
+
+    /* global required to override the class properties that are applied to the PageBloc */
+    :global(.container){
+        /*height: 100%;*/
+        /*overflow-y: auto;*/
+        /*min-height: 100vh;*/
+        /*display: flex;*/
+        /*flex-direction: column;*/
         background: radial-gradient(circle at top left, white, rgb(176, 196, 185));
-    }
-
-    .content-wrapper-bloc {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .content-bloc {
-        display: flex;
-        justify-content: center; /* Centers the image horizontally */
-        align-items: center; /* Centers the image vertically */
-        z-index: 2;
-        flex-grow: 1;
-        flex-shrink: 1;
-        flex-basis: 0;
-        box-sizing: border-box;
-        margin-bottom: var(--bloc-margin-bottom);
-    }
-
-    .layout-bloc-column {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        flex-shrink: 1;
-        flex-basis: 0;
-        box-sizing: border-box;
-        padding-left: var(--page-margin);
-        padding-right: var(--page-margin);
-    }
-
-    .layout-bloc-row {
-        display: flex;
-        flex-direction: row;
-        flex-grow: 1;
-        flex-shrink: 1;
-        flex-basis: 0;
-        box-sizing: border-box;
-        padding-left: var(--page-margin);
-        padding-right: var(--page-margin);
-    }
-
-    /*********************************************************** */
-    /* CMS structured text copy */
-    /*********************************************************** */
-    .blurb-bloc {
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-end;
-        max-width: 512px;
-    }
-
-    /*********************************************************** */
-    /* Project links bloc */
-    /*********************************************************** */
-    .project-links-bloc {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    /*********************************************************** */
-    /* Profile Bloc */
-    /*********************************************************** */
-    .profile-bloc {
-        flex-direction: column;
-        max-width: 1024px;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 16px;
-    }
-
-
-    @media (min-width: 700px) {
-        .profile-bloc {
-            flex-direction: row;
-            margin-bottom: 32px;
-        }
-
     }
 
     .profile-image {
@@ -215,42 +127,9 @@
         max-height: 100%;
     }
 
-    /*********************************************************** */
-    /* Header */
-    /*********************************************************** */
-    .project-bloc {
-        flex-direction: column;
-        width: 100%;
-        margin-bottom: 16px;
-        max-width: 1024px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-
-    @media (min-width: 700px) {
-        .project-bloc {
-            flex-direction: row;
-            margin-bottom: 32px;
-        }
-
-        .project-bloc:nth-child(odd) {
-            align-items: flex-start; /* Default alignment */
-        }
-
-        .project-bloc:nth-child(even) {
-            flex-direction: row-reverse; /* Reverse the order of child items */
-            align-items: flex-start; /* Align to the right */
-        }
-    }
-
-    .project-image-bloc {
-        height: 100%;
-        align-items: self-start;
-    }
 
     .project-image {
-        width: 460px;
+        width: 100%;
         height: 263px;
 
         border-radius: 28px;
@@ -260,103 +139,17 @@
         object-fit: cover;
     }
 
-    .project-blurb {
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        max-width: 512px;
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-        height: 100%;
-    }
-
-    .profile-nav {
-        width: 100%;
-        max-width: 1024px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-left: var(--page-margin);
-        padding-right: var(--page-margin);
-        display: flex;
-        flex-direction: row;
-        flex: 1 1 0;
-        justify-content: flex-start;
-        gap: 16px;
-    }
+    /*:global(.flush) > img*/
+    /*{*/
+    /*    border:unset;*/
+    /*    border-radius: 0;*/
+    /*}*/
 
     @media (min-width: 700px) {
         .project-image {
-            /*max-width: 512px;*/
-            /*max-height: 288px;*/
-            /*max-width: 100%;*/
-            /*max-height: 100%;*/
-            /*min-width: 512px;*/
-            /*min-height: 288px;*/
             width: 460px;
             height: 263px;
         }
-
-        .project-blurb {
-            margin-left: 20px;
-            margin-right: 20px;
-        }
-    }
-
-    /*********************************************************** */
-    /* Header */
-    /*********************************************************** */
-    .home-header {
-        padding: 10px;
-        z-index: 10;
-    }
-
-    .home-header ul {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .home-header ul li {
-
-        flex: 0 1 auto;
-        margin-right: 1rem;
-    }
-
-    .home-header ul li p {
-        margin-bottom: 0;
-    }
-
-    .home-header ul li.expand {
-        flex: 1 1 auto; /* This ensures the element expands to take up available space */
-    }
-
-    /*********************************************************** */
-    /* Header */
-    /*********************************************************** */
-    .button-link {
-        display: inline-block;
-        padding: 10px 20px;
-        border-radius: 25px; /* Adjust for more or less rounded corners */
-        background-color: var(--btn-color-fill); /* Fill color */
-        border: 4px solid var(--btn-color-stroke); /* Border color */
-        color: white; /* Text color */
-        text-align: center;
-        text-decoration: none; /* Remove underline */
-        font-size: 16px; /* Adjust font size as needed */
-        font-weight: 400;
-        transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for hover effects */
-        justify-self: flex-start;
-        /*margin-top: auto; !* push item to bottom of flex column*!*/
-    }
-
-    .button-link:hover {
-        background-color: var(--btn-color-fill--hover); /* Darker fill color on hover */
-        border-color: var(--btn-color-stroke--hover); /* Darker border color on hover */
-        color: #2e3330
     }
 
 </style>

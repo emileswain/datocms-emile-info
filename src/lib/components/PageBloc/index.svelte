@@ -3,11 +3,15 @@
 
 </script>
 
-<div class="page-bloc {direction}">
+<div class="page-bloc {$$restProps.class} direction-{direction} ">
     <slot></slot>
 </div>
 
+<!--
+    Fill page
+-->
 <style>
+
     .page-bloc {
         display: flex;
         flex: 1 1 0;
@@ -19,17 +23,17 @@
         height:max-content;
     }
 
-    .column {
+    .direction-column {
         flex-direction: column;
     }
-    .row {
+    .direction-row {
         flex-direction: row;
     }
 
 
     @media ( min-width: 500px) {
       .page-bloc {
-        max-width: 460px;
+        max-width: 100%;
       }
     }
     @media (min-width: 768px) {

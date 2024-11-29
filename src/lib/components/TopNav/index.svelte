@@ -15,9 +15,10 @@
         margin-right: auto;
         margin-bottom: var(--bloc-margin-bottom);
         padding: 8px;
-        width:auto;
+        width: inherit;
         height: fit-content;
         min-height: 90px;
+        align-content: flex-start;
     }
 
 </style>
