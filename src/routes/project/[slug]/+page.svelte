@@ -218,7 +218,8 @@
         overflow-y: auto;
         /* not sure why, but some pages from the cms wouldn't render correctly without width and height set. */
         width: 100vw;
-        height: 100vh;
+        min-height: 100vh;
+        max-height: 100vh;
     }
 
     .project-page::-webkit-scrollbar {

@@ -57,7 +57,7 @@
         }
     }
     @media (min-width: 1200px) {
-        .content-maxWidth-maxWidthbloc {
+        .content-maxWidth {
             max-width: var(--page-max-content-width);
         }
     }
