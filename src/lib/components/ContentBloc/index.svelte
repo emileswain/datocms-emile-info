@@ -19,6 +19,7 @@
         margin: 0 var(--page-margin)  var(--page-margin) var(--bloc-margin-bottom) ;
         width:auto;
         height:fit-content;
+        flex: 1 1 0;
     }
 
     .content-maxWidth{
