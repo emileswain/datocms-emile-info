@@ -17,6 +17,7 @@
     import {onMount, afterUpdate} from 'svelte';
     import {ColorUtils} from '$lib/colorUtils';
     import Icon from "../../../lib/components/Icon/index.svelte";
+    import Pill from "../../../lib/components/Pill/index.svelte";
 
     // just in case it becomes a problem https://github.com/lazd/iNoBounce
 
@@ -120,13 +121,11 @@
                 <h1>{project.title} </h1>
                 {#if project.featurePills.length > 0}
                 <div class="pills">
-<!--                    <div class="pill">AR</div>-->
                     {#each project.featurePills.split(",") as pill , i}
-                        <div class="pill">{pill}</div>
+                       <Pill  label="{pill}"/>
                     {/each}
                 </div>
                 {/if}
-
             </div>
             <div class="content-bloc-column">
                 {#each copyBlocs as copybloc , i}
@@ -217,9 +216,9 @@
         background-color: var(--bg-fill);
         overflow-y: auto;
         /* not sure why, but some pages from the cms wouldn't render correctly without width and height set. */
-        width: 100vw;
-        min-height: 100vh;
-        max-height: 100vh;
+        width: 100dvw;
+        min-height: 100dvh;
+        max-height: 100dvh;
     }
 
     .project-page::-webkit-scrollbar {
@@ -253,22 +252,19 @@
         }
     }
 
-    .headline {
-        flex-shrink: 0;
-    }
 
-    .content {
-        display: flex;
-        flex: 1 1 auto;
-        flex-direction: column;
-        flex-wrap: wrap;
-        align-items: start;
-        align-content: flex-start;
-        /*max-width: 350px;*/
-        /*z-index: 2;*/
-        height: 100%;
-        column-gap: 16px;
-    }
+    /*.content {*/
+    /*    display: flex;*/
+    /*    flex: 1 1 auto;*/
+    /*    flex-direction: column;*/
+    /*    flex-wrap: wrap;*/
+    /*    align-items: start;*/
+    /*    align-content: flex-start;*/
+    /*    !*max-width: 350px;*!*/
+    /*    !*z-index: 2;*!*/
+    /*    height: 100%;*/
+    /*    column-gap: 16px;*/
+    /*}*/
 
     /*
      :global .project-page xyz seems to be the only way to style elements that are dynamically added by code.
@@ -401,27 +397,5 @@
         flex-wrap: wrap;
     }
 
-    .pill {
-        display: inline-block;
-        padding: 8px 8px;
-        /*min-width: 42px;*/
-        min-height: 32px;
-        /*border-radius: 25px;*/
-        /*background-color: var(--btn-color-fill);*/
-        /*border: 2px solid var(--btn-color-stroke);*/
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 400;
-        transition: background-color 0.3s, border-color 0.3s;
-        justify-self: flex-start;
-    }
-
-    /*.button-link:hover {*/
-    /*    background-color:var(--btn-color-fill--hover); !* Darker fill color on hover *!*/
-    /*    border-color: var(--btn-color-stroke--hover); !* Darker border color on hover *!*/
-    /*    color: #2e3330*/
-    /*}*/
 
 </style>
