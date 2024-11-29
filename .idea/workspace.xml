@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="project nav re-positioned.">
+    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="adjusting page dimensions.">
+      <change afterPath="$PROJECT_DIR$/src/lib/components/Button/index.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/components/ContentBloc/index.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/components/LayoutBloc/index.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/components/Link/index.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/components/PageBloc/index.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/components/TopNav/index.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/components/[slug]/+page.server.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/components/[slug]/+page.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schema_inteli_plugin.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/schema_inteli_plugin.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/Code/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/Code/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/datocms/commonFragments.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/datocms/commonFragments.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/+layout.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+layout.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+page.server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/page/[slug]/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/page/[slug]/+page.server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/page/[slug]/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/page/[slug]/+page.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/project/[slug]/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/project/[slug]/+page.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +52,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="C:/NVPACK/android-sdk-windows" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/lib/images/icons" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/routes/components" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -48,10 +63,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\workspace_websites\datocms-emile-info\src\lib\images\icons" />
-      <recent name="G:\workspace_websites\datocms-emile-info\src\lib\components\Icon" />
-      <recent name="G:\workspace_websites\datocms-emile-info\src\routes" />
-      <recent name="G:\workspace_websites\datocms-brixton-climbers-club\src\lib\components\Block\ImageByTextBlock" />
+      <recent name="G:\workspace_websites\datocms-emile-info\src\routes\components" />
+      <recent name="G:\workspace_websites\datocms-emile-info\src\lib\components\TopNav" />
+      <recent name="G:\workspace_websites\datocms-emile-info\src\lib\components\Link" />
+      <recent name="G:\workspace_websites\datocms-emile-info\src\lib\components\Button" />
+      <recent name="G:\workspace_websites\datocms-emile-info\src\lib\components\PageBloc" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -69,7 +85,7 @@
       <workItem from="1730388822890" duration="19084000" />
       <workItem from="1730718517490" duration="35498000" />
       <workItem from="1732633006377" duration="17483000" />
-      <workItem from="1732712628486" duration="39212000" />
+      <workItem from="1732712628486" duration="53000000" />
     </task>
     <task id="LOCAL-00001" summary="tweeks">
       <created>1729525638478</created>
@@ -218,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1732813884019</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="adjusting page dimensions.">
+      <created>1732814848376</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1732814848376</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,6 +276,7 @@
     <MESSAGE value="wip fix layout issue on ios." />
     <MESSAGE value="Project page renders bloc content from cms." />
     <MESSAGE value="project nav re-positioned." />
-    <option name="LAST_COMMIT_MESSAGE" value="project nav re-positioned." />
+    <MESSAGE value="adjusting page dimensions." />
+    <option name="LAST_COMMIT_MESSAGE" value="adjusting page dimensions." />
   </component>
 </project>

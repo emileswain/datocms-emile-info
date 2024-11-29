@@ -118,12 +118,14 @@
                     </div>
                 </figure>
                 <h1>{project.title} </h1>
+                {#if project.featurePills.length > 0}
                 <div class="pills">
-                    <div class="pill">AR</div>
+<!--                    <div class="pill">AR</div>-->
                     {#each project.featurePills.split(",") as pill , i}
                         <div class="pill">{pill}</div>
                     {/each}
                 </div>
+                {/if}
 
             </div>
             <div class="content-bloc-column">

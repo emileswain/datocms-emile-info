@@ -16,6 +16,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
 </svelte:head>
 
 <!--
@@ -129,6 +131,7 @@
         --page-margin: 18px;
         --bloc-margin-bottom: 18px;
         --page-border-thickness: 15px; /* used on project page.*/
+        --page-gap: 8px;
 
         /* Button styling parameters
          */

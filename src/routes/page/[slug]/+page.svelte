@@ -13,6 +13,11 @@
     import ItemLink from '$lib/components/ItemLink/index.svelte';
     import Code from '$lib/components/Code/index.svelte';
     import type {PageData} from './$types';
+    import LayoutBloc from "../../../lib/components/LayoutBloc/index.svelte";
+    import ContentBloc from "../../../lib/components/ContentBloc/index.svelte";
+    import PageBloc from "../../../lib/components/PageBloc/index.svelte";
+    import Link from "../../../lib/components/Link/index.svelte";
+    import TopNav from "../../../lib/components/TopNav/index.svelte";
 
     export let data: PageData;
     $: subscription = querySubscription(data.subscription);
@@ -24,29 +29,34 @@
       The <Head> component provided by @datocms/svelte automates the creation of
       meta tags based on the `_seoMetaTags` present in a DatoCMS GraphQL query.
     -->
-    <Head data={page._seoMetaTags}/>
+    <Head data={page._seoMetaTags}>
+        <title></title>
 
-    <!--  <h1>{page.title}</h1>-->
-    <div class="page">
-        <div class="content">
-            <StructuredText
-                    data={page.structuredText}
-                    components={[
-              [isCode, Code],
-              [isHeading, HeadingWithAnchorLink],
-              [isBlock, Block],
-              [isInlineItem, InlineItem],
-              [isItemLink, ItemLink],
-            ]}
-          />
-        </div>
-        <div class="title">NIKE</div>
-    </div>
+    </Head>
 
+    <PageBloc class="article-page">
+        <TopNav></TopNav>
+        <LayoutBloc>
+            <ContentBloc>
+               <h1>{page.title}</h1>
+                <p>{page.shortDescription}</p>
+            </ContentBloc>
+            <LayoutBloc direction="column" >
+                {#each page.content as content, i}
+                    <ContentBloc>
+                        <h1>{content.header}</h1>
+                        <StructuredText data={content.content} components={[
+                        [isCode, Code],
+                      ]}/>
+                    </ContentBloc>
+                {/each}
+            </LayoutBloc>
+        </LayoutBloc>
+    </PageBloc>
 
 {/if}
-
 
 <style lang="css">
 
 </style>
+

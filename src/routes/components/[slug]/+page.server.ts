@@ -6,7 +6,6 @@ import { graphql } from '$lib/datocms/graphql';
 import { generateRealtimeSubscription } from '$lib/datocms/queries';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import {ContentBlocFragment} from "../../../lib/datocms/commonFragments";
 
 /**
  * The GraphQL query that will be executed for this route to generate the page
@@ -22,11 +21,7 @@ const query = graphql(
           ...TagFragment
         }
         title
-        shortDescription
         _firstPublishedAt
-        content{
-          ...ContentBlocFragment
-        }
         structuredText {
           value
           blocks {
@@ -48,7 +43,7 @@ const query = graphql(
       }
     }
   `,
-  [TagFragment, BlockFragment, ItemLinkFragment, InlineItemFragment, ContentBlocFragment],
+  [TagFragment, BlockFragment, ItemLinkFragment, InlineItemFragment],
 );
 
 /**

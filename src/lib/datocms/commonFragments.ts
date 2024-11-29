@@ -1,4 +1,4 @@
-import { graphql } from '$lib/datocms/graphql';
+import {graphql} from '$lib/datocms/graphql';
 
 /*
  * This file lists a series of fragments not related to any specific
@@ -12,3 +12,12 @@ export const TagFragment = graphql(`
     content
   }
 `);
+
+export const ContentBlocFragment = graphql(`
+  fragment ContentBlocFragment on ContentBlocRecord {
+    header
+      content {
+        value
+      }
+    }
+  `);

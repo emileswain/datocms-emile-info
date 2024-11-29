@@ -47,6 +47,10 @@ const query = graphql(
             ...InlineItemFragment
           }
         }
+        pages{
+          title
+          slug
+        }
         projects{
           title
           shortDescription {
