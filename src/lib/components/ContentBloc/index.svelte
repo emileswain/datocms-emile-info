@@ -1,10 +1,24 @@
+<svelte:window bind:scrollY bind:innerHeight/>
 <script lang="ts">
-    import { fade } from 'svelte/transition';
+    import {fade} from 'svelte/transition';
+
     export let flush = false;
     export let useMaxWidth = false;
     export let align = "top";
     import {onMount,} from 'svelte';
-    export let numberWang: number  = 0;
+
+    export let numberWang: number = 0;
+
+    // WIP - animate when in view.
+    let element;
+    let height;
+    let scrollY;
+    let innerHeight;
+
+    $: offset = (element && element.offsetTop)
+    $: result = scrollY / (offset + height) * 100
+    $: inView = offset - scrollY < innerHeight * 0.9;
+    // end WIP.
 
     let loaded = false;
     onMount(() => loaded = true);
@@ -16,11 +30,10 @@
 <!--        <slot></slot>-->
 <!--    </div>-->
 <!--{/key}-->
-
 {#if loaded}
-    <div in:fade={{delay: (500  * numberWang), duration: 500}} class="content-bloc {flush ? 'flush' : ''} {useMaxWidth ? 'content-maxWidth' : ''}  {align === 'bottom' ? 'content-align-bottom' : 'content-align-top'}">
-        <slot></slot>
-    </div>
+        <div bind:this="{element}" bind:clientHeight="{height}" in:fade={{delay: (500  * numberWang), duration: 500}} class="content-bloc {flush ? 'flush' : ''} {useMaxWidth ? 'content-maxWidth' : ''}  {align === 'bottom' ? 'content-align-bottom' : 'content-align-top'}">
+            <slot></slot>
+        </div>
 {:else}
     <div class="content-bloc {flush ? 'flush' : ''} {useMaxWidth ? 'content-maxWidth' : ''}  {align === 'bottom' ? 'content-align-bottom' : 'content-align-top'}">
         <slot></slot>

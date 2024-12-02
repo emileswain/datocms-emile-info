@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="Fixed a link underline and graphql bug">
-      <change afterPath="$PROJECT_DIR$/Readme-animations.md" afterDir="false" />
+    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="Added reference articles for animating and issues with SSR, SSG etc.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme-animations.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme-animations.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/components/ContentBloc/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ContentBloc/index.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/+layout.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+layout.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+page.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/page/[slug]/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/page/[slug]/+page.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/project/[slug]/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/project/[slug]/+page.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +70,7 @@
       <workItem from="1730388822890" duration="19084000" />
       <workItem from="1730718517490" duration="35498000" />
       <workItem from="1732633006377" duration="17483000" />
-      <workItem from="1732712628486" duration="76250000" />
+      <workItem from="1732712628486" duration="79655000" />
     </task>
     <task id="LOCAL-00001" summary="tweeks">
       <created>1729525638478</created>
@@ -286,7 +282,28 @@
       <option name="project" value="LOCAL" />
       <updated>1733150830115</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Added basic fade animation.">
+      <created>1733165151189</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1733165151189</updated>
+    </task>
+    <task id="LOCAL-00032" summary="removed the hidden as it may affect seo. Need to check for animation glitches.">
+      <created>1733166063467</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1733166063467</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Added reference articles for animating and issues with SSR, SSG etc.">
+      <created>1733166089342</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1733166089342</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,9 +321,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Project page styling tests." />
-    <MESSAGE value="Added Project section" />
-    <MESSAGE value="Updating project data properties." />
     <MESSAGE value="different image mask lines." />
     <MESSAGE value="Styled image banding effect." />
     <MESSAGE value="Client logo text css corrected." />
@@ -329,6 +343,9 @@
     <MESSAGE value="trying dvd units" />
     <MESSAGE value="Addressing issue with mobile layout due to incorect width sizing on mobile." />
     <MESSAGE value="Fixed a link underline and graphql bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed a link underline and graphql bug" />
+    <MESSAGE value="Added basic fade animation." />
+    <MESSAGE value="removed the hidden as it may affect seo. Need to check for animation glitches." />
+    <MESSAGE value="Added reference articles for animating and issues with SSR, SSG etc." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added reference articles for animating and issues with SSR, SSG etc." />
   </component>
 </project>
