@@ -49,8 +49,14 @@
                 {#each page.content as content, i}
                     <ContentBloc>
                         <h1>{content.header}</h1>
-                        <StructuredText data={content.content} components={[
+                        <StructuredText
+                                data={content.content}
+                                components={[
                         [isCode, Code],
+                        [isHeading, HeadingWithAnchorLink],
+                        [isBlock, Block],
+                        [isInlineItem, InlineItem],
+                        [isItemLink, ItemLink],
                       ]}/>
                     </ContentBloc>
                 {/each}

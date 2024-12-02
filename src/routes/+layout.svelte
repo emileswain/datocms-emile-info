@@ -1,4 +1,5 @@
 <script lang="ts">
+    import 'sanitize.css';
     import {Head, querySubscription} from '@datocms/svelte';
     import type {LayoutData} from './$types';
     import DraftModeToggler from '$lib/components/DraftModeToggler/index.svelte';
@@ -39,6 +40,8 @@
 </div>
 
 <style>
+
+
     /* ########################################################################################### */
     /* CSS Reset */
     /* global styling further down */
@@ -66,7 +69,6 @@
 
     :global(h1, h2, h3, h4, h5, h6, h7 ) {
         margin-bottom: 12px;
-
     }
 
     :global(img, picture, video, canvas, svg ) {
@@ -208,6 +210,10 @@
         text-decoration: none;
         font-weight: lighter;
         margin-bottom: 1rem;
+    }
+
+    :global(p a) {
+        text-decoration: underline;
     }
 
     /*

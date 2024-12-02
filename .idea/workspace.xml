@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="trying dvd units">
+    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="Addressing issue with mobile layout due to incorect width sizing on mobile.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/ContentBloc/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ContentBloc/index.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/PageBloc/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/PageBloc/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/datocms/commonFragments.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/datocms/commonFragments.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/+layout.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+layout.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/page/[slug]/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/page/[slug]/+page.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +73,7 @@
       <workItem from="1730388822890" duration="19084000" />
       <workItem from="1730718517490" duration="35498000" />
       <workItem from="1732633006377" duration="17483000" />
-      <workItem from="1732712628486" duration="65692000" />
+      <workItem from="1732712628486" duration="69019000" />
     </task>
     <task id="LOCAL-00001" summary="tweeks">
       <created>1729525638478</created>
@@ -269,7 +271,14 @@
       <option name="project" value="LOCAL" />
       <updated>1732910318050</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Addressing issue with mobile layout due to incorect width sizing on mobile.">
+      <created>1733144549499</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1733144549499</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,6 +320,7 @@
     <MESSAGE value="Only apply max width on wide breakpoints." />
     <MESSAGE value="seriously. android chrome reports wrong height. kmn" />
     <MESSAGE value="trying dvd units" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying dvd units" />
+    <MESSAGE value="Addressing issue with mobile layout due to incorect width sizing on mobile." />
+    <option name="LAST_COMMIT_MESSAGE" value="Addressing issue with mobile layout due to incorect width sizing on mobile." />
   </component>
 </project>
