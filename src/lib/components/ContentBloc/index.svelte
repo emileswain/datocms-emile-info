@@ -20,6 +20,10 @@
         width:auto;
         height:fit-content;
         flex: 1 1 0;
+
+        /*Added to avoid scroll behaviour on parent element. (on page/slug )*/
+        overflow-x: clip;
+        max-width: 100vw;
     }
 
     .content-maxWidth{

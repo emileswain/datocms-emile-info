@@ -21,6 +21,8 @@
         padding: 0;
         width:auto;
         height:max-content;
+        /*Added to fix mobile x scroll issue when child content wider than page.*/
+        max-width: 100vw;
     }
 
     .direction-column {
