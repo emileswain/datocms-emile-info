@@ -9,6 +9,7 @@
     let loaded = false;
     onMount(() => loaded = true);
 </script>
+<!-- Investigate SSR approach for animations. -->
 
 <!--{#key numberWang}-->
 <!--    <div in:fade={{delay: 500 * key, duration: 500}} class="content-bloc {flush ? 'flush' : ''} {useMaxWidth ? 'content-maxWidth' : ''}  {align === 'bottom' ? 'content-align-bottom' : 'content-align-top'}">-->
@@ -20,9 +21,8 @@
     <div in:fade={{delay: (500  * numberWang), duration: 500}} class="content-bloc {flush ? 'flush' : ''} {useMaxWidth ? 'content-maxWidth' : ''}  {align === 'bottom' ? 'content-align-bottom' : 'content-align-top'}">
         <slot></slot>
     </div>
-<!-- Investigate SSR approach for animations. -->
 {:else}
-    <div style="visibility:hidden" class="content-bloc {flush ? 'flush' : ''} {useMaxWidth ? 'content-maxWidth' : ''}  {align === 'bottom' ? 'content-align-bottom' : 'content-align-top'}">
+    <div class="content-bloc {flush ? 'flush' : ''} {useMaxWidth ? 'content-maxWidth' : ''}  {align === 'bottom' ? 'content-align-bottom' : 'content-align-top'}">
         <slot></slot>
     </div>
 {/if}
