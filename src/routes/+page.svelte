@@ -40,10 +40,10 @@
     <PageBloc class="home-page">
         <LayoutBloc>
             <LayoutBloc direction="row" collapseRow="true">
-                <ContentBloc useMaxWidth="true">
+                <ContentBloc numberWang="0"  useMaxWidth="true">
                     <img class="profile-image" src={homepage.profileImage.responsiveImage.src} alt={homepage.profileImage.alt?? "profile image"}/>
                 </ContentBloc>
-                <ContentBloc useMaxWidth="true" align="bottom">
+                <ContentBloc numberWang="0" useMaxWidth="true" align="bottom">
                     <StructuredText
                             data={homepage.structuredText}
                             components={[
@@ -66,10 +66,10 @@
                 {#if projects }
                     {#each projects as project, i}
                         <LayoutBloc direction="row" alternateDirection="true" collapseRow="true">
-                            <ContentBloc >
+                            <ContentBloc numberWang="{i+1}">
                                 <img class="project-image" src={project.heroImage.responsiveImage.src} alt={project.heroImage.alt?? "image of project"}/>
                             </ContentBloc>
-                            <ContentBloc useMaxWidth="true">
+                            <ContentBloc numberWang="{i+1}" useMaxWidth="true">
                                 <h1>{project.title}</h1>
                                 <StructuredText data={project.shortDescription}/>
                                 <Link  href="/project/{project.slug}" rel="no-prefetch">Explore</Link>

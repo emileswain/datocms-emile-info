@@ -97,12 +97,12 @@
 
     /* Remove all animations and transitions for people that prefer not to see them */
     @media (prefers-reduced-motion: reduce) {
-        :global( *, *::before, *::after ) {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-            scroll-behavior: auto !important;
-        }
+        /*:global( *, *::before, *::after ) {*/
+        /*    animation-duration: 0.01ms !important;*/
+        /*    animation-iteration-count: 1 !important;*/
+        /*    transition-duration: 0.01ms !important;*/
+        /*    scroll-behavior: auto !important;*/
+        /*}*/
     }
 
     /* Why the marker sits outside disrespecting everyone's layout i dont know. what nasty will this do. */
@@ -143,7 +143,7 @@
         --btn-color-stroke--hover:#fff;
     }
 
-    /* applied when over 540 */
+    /* applied when over 500 */
     @media (min-width: 500px) {
         :global(body) {
             --page-max-content-width:460px;

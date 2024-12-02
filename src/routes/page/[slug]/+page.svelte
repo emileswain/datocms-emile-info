@@ -41,13 +41,13 @@
             </a>
         </TopNav>
         <LayoutBloc>
-            <ContentBloc>
+            <ContentBloc >
                 <h1>{page.title}</h1>
                 <p>{page.shortDescription}</p>
             </ContentBloc>
             <LayoutBloc direction="column">
                 {#each page.content as content, i}
-                    <ContentBloc>
+                    <ContentBloc numberWang="{i+1}">
                         <h1>{content.header}</h1>
                         <StructuredText
                                 data={content.content}

@@ -219,6 +219,8 @@
         width: 100dvw;
         min-height: 100dvh;
         max-height: 100dvh;
+        /* Animation   */
+        transition: background-color 300ms ease-out, border-color 300ms ease-out;
     }
 
     .project-page::-webkit-scrollbar {
@@ -306,6 +308,8 @@
         font-family: 'Arial', sans-serif; /*THis is the text that sits behind everything, it should be the client font.*/
         /*z-index: 1;*/
         white-space: nowrap;
+        /* Animation   */
+        transition: color 300ms ease-out;
     }
 
     /* End of title css */
