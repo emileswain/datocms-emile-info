@@ -14,12 +14,19 @@ import { graphql } from '$lib/datocms/graphql';
  */
 
 export const InlineItemFragment = graphql(/* GraphQL */ `
-  fragment InlineItemFragment on HomepageRecord {
+  fragment InlineItemFragment on RecordInterface {
     ... on RecordInterface {
       id
       __typename
     }
-    ... on HomepageRecord {
+#    ... on HomepageRecord {
+#      title
+#    }
+    ... on ProjectRecord {
+      title
+    }
+    ... on PageRecord
+    {
       title
     }
   }

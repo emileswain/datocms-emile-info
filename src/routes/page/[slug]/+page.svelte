@@ -14,11 +14,12 @@
     import Code from '$lib/components/Code/index.svelte';
     import type {PageData} from './$types';
     import LayoutBloc from "../../../lib/components/LayoutBloc/index.svelte";
-    import ContentBloc from "../../../lib/components/ContentBloc/index.svelte";
+    import ContentBloc from "../../../lib/components/BlockLayout/ContentBloc/index.svelte";
     import PageBloc from "../../../lib/components/PageBloc/index.svelte";
     import Link from "../../../lib/components/Link/index.svelte";
     import TopNav from "../../../lib/components/TopNav/index.svelte";
     import Icon from "../../../lib/components/Icon/index.svelte";
+    import BlockLayout from "../../../lib/components/BlockLayout/index.svelte";
 
     export let data: PageData;
     $: subscription = querySubscription(data.subscription);
@@ -46,7 +47,11 @@
                 <p>{page.shortDescription}</p>
             </ContentBloc>
             <LayoutBloc direction="column">
-                {#each page.content as content, i}
+                {#each page.content as content , i}
+                    <BlockLayout data="{content}">
+                    </BlockLayout>
+                {/each}
+                <!--{#each page.content as content, i}
                     <ContentBloc numberWang="{i+1}">
                         <h1>{content.header}</h1>
                         <StructuredText
@@ -59,7 +64,7 @@
                         [isItemLink, ItemLink],
                       ]}/>
                     </ContentBloc>
-                {/each}
+                {/each}-->
             </LayoutBloc>
         </LayoutBloc>
     </PageBloc>

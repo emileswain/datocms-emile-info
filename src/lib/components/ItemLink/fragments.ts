@@ -19,10 +19,15 @@ export const ItemLinkFragment = graphql(/* GraphQL */ `
       id
       __typename
     }
-    ... on HomepageRecord {
-      title
-    }
+#    ... on HomepageRecord {
+#      title
+#    }
     ... on PageRecord {
+      title
+      slug
+    }
+    ... on ProjectRecord
+    {
       title
       slug
     }

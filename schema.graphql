@@ -43,13 +43,15 @@ input ColorFilter {
   exists: BooleanType
 }
 
-type ContentBlocModelContentField {
-  blocks: [String!]!
-  links: [ContentBlocModelContentLinksField!]!
+union ContentBlocModelStructuredTextBlocksField = ImageBlockRecord | ImageByTextBlockRecord | ImageGalleryBlockRecord | VideoBlockRecord
+
+type ContentBlocModelStructuredTextField {
+  blocks: [ContentBlocModelStructuredTextBlocksField!]!
+  links: [ContentBlocModelStructuredTextLinksField!]!
   value: JsonField!
 }
 
-union ContentBlocModelContentLinksField = PageRecord | ProjectRecord
+union ContentBlocModelStructuredTextLinksField = PageRecord | ProjectRecord
 
 """Block of type content bloc (content_bloc)"""
 type ContentBlocRecord implements RecordInterface {
@@ -71,9 +73,9 @@ type ContentBlocRecord implements RecordInterface {
   _status: ItemStatus!
   _unpublishingScheduledAt: DateTime
   _updatedAt: DateTime!
-  content: ContentBlocModelContentField
   header: String
   id: ItemId!
+  structuredText: ContentBlocModelStructuredTextField
 }
 
 """Specifies how to filter by creation datetime"""
@@ -2429,6 +2431,8 @@ input OrientationFilter {
   neq: UploadOrientation
 }
 
+union PageModelContentField = ContentBlocRecord | SectionBlockRecord
+
 input PageModelFilter {
   _createdAt: CreatedAtFilter
   id: ItemIdFilter
@@ -2439,11 +2443,11 @@ input PageModelFilter {
   _status: StatusFilter
   _updatedAt: UpdatedAtFilter
   _isValid: BooleanFilter
-  seoSettingsSocial: SeoFilter
-  structuredText: StructuredTextFilter
-  seoAnalysis: JsonFilter
   title: StringFilter
+  shortDescription: TextFilter
   slug: SlugFilter
+  seoAnalysis: JsonFilter
+  seoSettingsSocial: SeoFilter
   OR: [PageModelFilter]
   AND: [PageModelFilter]
 }
@@ -2471,16 +2475,6 @@ enum PageModelOrderBy {
   title_DESC
 }
 
-union PageModelStructuredTextBlocksField = ImageBlockRecord | ImageByTextBlockRecord | ImageGalleryBlockRecord | VideoBlockRecord
-
-type PageModelStructuredTextField {
-  blocks: [PageModelStructuredTextBlocksField!]!
-  links: [PageModelStructuredTextLinksField!]!
-  value: JsonField!
-}
-
-union PageModelStructuredTextLinksField = HomepageRecord | PageRecord
-
 """Record of type 📝 Page (page)"""
 type PageRecord implements RecordInterface {
   _createdAt: DateTime!
@@ -2501,23 +2495,19 @@ type PageRecord implements RecordInterface {
   _status: ItemStatus!
   _unpublishingScheduledAt: DateTime
   _updatedAt: DateTime!
+  content: [PageModelContentField!]!
   id: ItemId!
   seoAnalysis: JsonField
   seoSettingsSocial: SeoField
+  shortDescription(
+    """Process content as markdown"""
+    markdown: Boolean
+  ): String
   slug: String
-  structuredText: PageModelStructuredTextField!
   title: String!
 }
 
-union ProjectModelContentBlocksField = ImageBlockRecord | ImageByTextBlockRecord | ImageGalleryBlockRecord | VideoBlockRecord
-
-type ProjectModelContentField {
-  blocks: [ProjectModelContentBlocksField!]!
-  links: [ProjectModelContentLinksField!]!
-  value: JsonField!
-}
-
-union ProjectModelContentLinksField = HomepageRecord | PageRecord | ProjectRecord
+union ProjectModelContentField = ContentBlocRecord | SectionBlockRecord
 
 input ProjectModelFilter {
   _createdAt: CreatedAtFilter
@@ -2529,18 +2519,18 @@ input ProjectModelFilter {
   _status: StatusFilter
   _updatedAt: UpdatedAtFilter
   _isValid: BooleanFilter
-  clientTextFill: ColorFilter
-  title: StringFilter
-  slug: SlugFilter
   bgBorder: ColorFilter
-  bgFill: ColorFilter
-  seoSettingsSocial: SeoFilter
-  featurePills: StringFilter
   client: StringFilter
-  content: StructuredTextFilter
+  bgFill: ColorFilter
   heroImage: FileFilter
   seoAnalysis: JsonFilter
+  seoSettingsSocial: SeoFilter
+  title: StringFilter
+  clientTextFill: ColorFilter
   shortDescription: StructuredTextFilter
+  featurePills: StringFilter
+  company: StringFilter
+  slug: SlugFilter
   OR: [ProjectModelFilter]
   AND: [ProjectModelFilter]
 }
@@ -2564,12 +2554,14 @@ enum ProjectModelOrderBy {
   _updatedAt_DESC
   _isValid_ASC
   _isValid_DESC
+  client_ASC
+  client_DESC
   title_ASC
   title_DESC
   featurePills_ASC
   featurePills_DESC
-  client_ASC
-  client_DESC
+  company_ASC
+  company_DESC
 }
 
 type ProjectModelShortDescriptionField {
@@ -2602,8 +2594,8 @@ type ProjectRecord implements RecordInterface {
   bgFill: ColorField
   client: String
   clientTextFill: ColorField
-  content: ProjectModelContentField!
-  copy: [ContentBlocRecord!]!
+  company: String
+  content: [ProjectModelContentField!]!
   featurePills: String
   heroImage: FileField
   id: ItemId!
@@ -2953,6 +2945,32 @@ type SchemaMigrationRecord implements RecordInterface {
   name: String!
 }
 
+"""Block of type Section Block (section_block)"""
+type SectionBlockRecord implements RecordInterface {
+  _createdAt: DateTime!
+
+  """Editing URL"""
+  _editingUrl: String
+  _firstPublishedAt: DateTime
+  _isValid: BooleanType!
+  _modelApiKey: String!
+  _publicationScheduledAt: DateTime
+  _publishedAt: DateTime
+
+  """Generates SEO and Social card meta tags to be used in your frontend"""
+  _seoMetaTags(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+  ): [Tag!]!
+  _status: ItemStatus!
+  _unpublishingScheduledAt: DateTime
+  _updatedAt: DateTime!
+  blocs: [ContentBlocRecord!]!
+  collapsed: BooleanType!
+  header: String
+  id: ItemId!
+}
+
 type SeoField {
   description: String
   image: FileField
@@ -3092,6 +3110,30 @@ type Tag {
   attributes: MetaTagAttributes
   content: String
   tag: String!
+}
+
+"""Specifies how to filter text fields"""
+input TextFilter {
+  """Filter records based on a regular expression"""
+  matches: StringMatchesFilter
+
+  """Exclude records based on a regular expression"""
+  notMatches: StringMatchesFilter
+
+  """
+  Filter records with the specified field set as blank (null or empty string)
+  """
+  isBlank: BooleanType
+
+  """
+  Filter records with the specified field present (neither null, nor empty string)
+  """
+  isPresent: BooleanType
+
+  """
+  Filter records with the specified field defined (i.e. with any value) or not [DEPRECATED]
+  """
+  exists: BooleanType
 }
 
 """Specifies how to filter by upload type"""

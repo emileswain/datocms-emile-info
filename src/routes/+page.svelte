@@ -15,7 +15,7 @@
     import type {PageData} from './$types';
     import PageBloc from "../lib/components/PageBloc/index.svelte";
     import LayoutBloc from "../lib/components/LayoutBloc/index.svelte";
-    import ContentBloc from "../lib/components/ContentBloc/index.svelte";
+    import ContentBloc from "../lib/components/BlockLayout/ContentBloc/index.svelte";
     import TopNav from "../lib/components/TopNav/index.svelte";
     import Link from "../lib/components/Link/index.svelte";
 

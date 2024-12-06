@@ -9,7 +9,7 @@
           "user-agent": "JS GraphQL",
           "X-Exclude-Invalid": "true",
           "Authorization": "Bearer ${env:PRIVATE_DATOCMS_PUBLISHED_CONTENT_CDA_TOKEN}",
-          "X-Environment": "main"
+          "X-Environment": "${env:NEXT_DATOCMS_ENVIRONMENT}"
         },
         "introspect": true
       }

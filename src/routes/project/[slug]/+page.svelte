@@ -18,13 +18,14 @@
     import {ColorUtils} from '$lib/colorUtils';
     import Icon from "../../../lib/components/Icon/index.svelte";
     import Pill from "../../../lib/components/Pill/index.svelte";
+    import BlockLayout from "../../../lib/components/BlockLayout/index.svelte";
 
     // just in case it becomes a problem https://github.com/lazd/iNoBounce
 
     export let data: ProjectData;
     $: subscription = querySubscription(data.subscription);
     $: project = $subscription.data?.project;
-    $: copyBlocs = $subscription.data?.project.copy;
+    $: projectContent = $subscription.data?.project.content;
     $: projects = $subscription.data?.allProjects;
 
     let prevProjectSlug = "";
@@ -120,20 +121,25 @@
                 </figure>
                 <h1>{project.title} </h1>
                 {#if project.featurePills.length > 0}
-                <div class="pills">
-                    {#each project.featurePills.split(",") as pill , i}
-                       <Pill  label="{pill}"/>
-                    {/each}
-                </div>
+                    <div class="pills">
+                        {#each project.featurePills.split(",") as pill , i}
+                            <Pill label="{pill}"/>
+                        {/each}
+                    </div>
                 {/if}
             </div>
             <div class="content-bloc-column">
-                {#each copyBlocs as copybloc , i}
-                    <div class="copy-bloc">
-                        <h1>{copybloc.header}</h1>
-                        <StructuredText data={copybloc.content.value}/>
-                    </div>
+
+                <!--{#if copyBlocs}-->
+                {#each projectContent as content , i}
+                    <BlockLayout data="{content}">
+                    </BlockLayout>
                 {/each}
+<!--                        <div class="copy-bloc">-->
+<!--                            <h1>{copybloc.header}</h1>-->
+<!--                            <StructuredText data={copybloc.content.value}/>-->
+<!--                        </div>-->
+                <!--{/if}-->
 
             </div>
             <!--  rebuild this as it doesn't work oniOS chrome. -->
@@ -216,9 +222,9 @@
         background-color: var(--bg-fill);
         overflow-y: auto;
         /* not sure why, but some pages from the cms wouldn't render correctly without width and height set. */
-        width: 100dvw;
-        min-height: 100dvh;
-        max-height: 100dvh;
+        width: 100 dvw;
+        min-height: 100 dvh;
+        max-height: 100 dvh;
         /* Animation   */
         transition: background-color 300ms ease-out, border-color 300ms ease-out;
     }
@@ -338,9 +344,11 @@
         padding: 16px;
         gap: 16px;
     }
-    .project-nav a{
+
+    .project-nav a {
         margin-bottom: unset;
     }
+
     /* Try to move this somewhere its styling for the barred image.*/
     figure {
         display: flex;

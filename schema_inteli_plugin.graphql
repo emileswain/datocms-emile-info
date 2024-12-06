@@ -98,19 +98,15 @@ interface RecordInterface {
     id: ItemId!
 }
 
-union ContentBlocModelContentLinksField = PageRecord | ProjectRecord
+union ContentBlocModelStructuredTextBlocksField = ImageBlockRecord | ImageByTextBlockRecord | ImageGalleryBlockRecord | VideoBlockRecord
+
+union ContentBlocModelStructuredTextLinksField = PageRecord | ProjectRecord
 
 union HomepageModelStructuredTextBlocksField = ImageBlockRecord | ImageByTextBlockRecord | ImageGalleryBlockRecord | VideoBlockRecord
 
 union HomepageModelStructuredTextLinksField = HomepageRecord | PageRecord
 
-union PageModelStructuredTextBlocksField = ImageBlockRecord | ImageByTextBlockRecord | ImageGalleryBlockRecord | VideoBlockRecord
-
-union PageModelStructuredTextLinksField = HomepageRecord | PageRecord
-
-union ProjectModelContentBlocksField = ImageBlockRecord | ImageByTextBlockRecord | ImageGalleryBlockRecord | VideoBlockRecord
-
-union ProjectModelContentLinksField = HomepageRecord | PageRecord | ProjectRecord
+union ProjectModelContentField = ContentBlocRecord | SectionBlockRecord
 
 type CollectionMetadata {
     count: IntType!
@@ -125,9 +121,9 @@ type ColorField {
     red: IntType!
 }
 
-type ContentBlocModelContentField {
-    blocks: [String!]!
-    links: [ContentBlocModelContentLinksField!]!
+type ContentBlocModelStructuredTextField {
+    blocks: [ContentBlocModelStructuredTextBlocksField!]!
+    links: [ContentBlocModelStructuredTextLinksField!]!
     value: JsonField!
 }
 
@@ -149,9 +145,9 @@ type ContentBlocRecord implements RecordInterface {
     _status: ItemStatus!
     _unpublishingScheduledAt: DateTime
     _updatedAt: DateTime!
-    content: ContentBlocModelContentField
     header: String
     id: ItemId!
+    structuredText: ContentBlocModelStructuredTextField
 }
 
 type FileField implements FileFieldInterface {
@@ -415,12 +411,6 @@ type ImageGalleryBlockRecord implements RecordInterface {
     id: ItemId!
 }
 
-type PageModelStructuredTextField {
-    blocks: [PageModelStructuredTextBlocksField!]!
-    links: [PageModelStructuredTextLinksField!]!
-    value: JsonField!
-}
-
 "Record of type  Page (page)"
 type PageRecord implements RecordInterface {
     _createdAt: DateTime!
@@ -448,14 +438,7 @@ type PageRecord implements RecordInterface {
         markdown: Boolean
     ): String
     slug: String
-    structuredText: PageModelStructuredTextField!
     title: String!
-}
-
-type ProjectModelContentField {
-    blocks: [ProjectModelContentBlocksField!]!
-    links: [ProjectModelContentLinksField!]!
-    value: JsonField!
 }
 
 type ProjectModelShortDescriptionField {
@@ -486,8 +469,8 @@ type ProjectRecord implements RecordInterface {
     bgFill: ColorField
     client: String
     clientTextFill: ColorField
-    content: ProjectModelContentField!
-    copy: [ContentBlocRecord!]!
+    company: String
+    content: [ProjectModelContentField!]!
     featurePills: String
     heroImage: FileField
     id: ItemId!
@@ -662,6 +645,30 @@ type SchemaMigrationRecord implements RecordInterface {
     _updatedAt: DateTime!
     id: ItemId!
     name: String!
+}
+
+"Block of type Section Block (section_block)"
+type SectionBlockRecord implements RecordInterface {
+    _createdAt: DateTime!
+    "Editing URL"
+    _editingUrl: String
+    _firstPublishedAt: DateTime
+    _isValid: BooleanType!
+    _modelApiKey: String!
+    _publicationScheduledAt: DateTime
+    _publishedAt: DateTime
+    "Generates SEO and Social card meta tags to be used in your frontend"
+    _seoMetaTags(
+        "The locale to use to fetch the field's content"
+        locale: SiteLocale
+    ): [Tag!]!
+    _status: ItemStatus!
+    _unpublishingScheduledAt: DateTime
+    _updatedAt: DateTime!
+    blocs: [ContentBlocRecord!]!
+    collapsed: BooleanType!
+    header: String
+    id: ItemId!
 }
 
 type SeoField {
@@ -1125,6 +1132,8 @@ enum ProjectModelOrderBy {
     _updatedAt_DESC
     client_ASC
     client_DESC
+    company_ASC
+    company_DESC
     featurePills_ASC
     featurePills_DESC
     id_ASC
@@ -2907,7 +2916,6 @@ input PageModelFilter {
     seoSettingsSocial: SeoFilter
     shortDescription: TextFilter
     slug: SlugFilter
-    structuredText: StructuredTextFilter
     title: StringFilter
 }
 
@@ -2926,7 +2934,7 @@ input ProjectModelFilter {
     bgFill: ColorFilter
     client: StringFilter
     clientTextFill: ColorFilter
-    content: StructuredTextFilter
+    company: StringFilter
     featurePills: StringFilter
     heroImage: FileFilter
     id: ItemIdFilter
