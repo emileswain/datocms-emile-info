@@ -1,10 +1,16 @@
 <script lang="ts">
-    export  let direction = 'column';
+    interface Props {
+        direction?: string;
+        children?: import('svelte').Snippet;
+        [key: string]: any
+    }
+
+    let { direction = 'column', children, ...rest }: Props = $props();
 
 </script>
 
-<div class="page-bloc {$$restProps.class} direction-{direction} ">
-    <slot></slot>
+<div class="page-bloc {rest.class} direction-{direction} ">
+    {@render children?.()}
 </div>
 
 <!--

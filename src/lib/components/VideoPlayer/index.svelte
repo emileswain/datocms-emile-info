@@ -8,9 +8,14 @@
     data: FragmentOf<typeof VideoPlayerFragment>;
   };
 
-  export let data: $$Props['data'];
+  interface Props {
+    data: $$Props['data'];
+    [key: string]: any
+  }
 
-  $: unmaskedData = readFragment(VideoPlayerFragment, data);
+  let { data, ...rest }: Props = $props();
+
+  let unmaskedData = $derived(readFragment(VideoPlayerFragment, data));
 </script>
 
 <!--
@@ -20,4 +25,4 @@
   wherever needed.
 -->
 
-<VideoPlayer {...$$restProps} data={unmaskedData.video} accentColor="var(--color-accent)" />
+<VideoPlayer {...rest} data={unmaskedData.video} accentColor="var(--color-accent)" />

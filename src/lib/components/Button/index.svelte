@@ -1,5 +1,9 @@
 <script lang="ts">
-    export  let label = 'explore';
+    interface Props {
+        label?: string;
+    }
+
+    let { label = 'explore' }: Props = $props();
 
 </script>
 
@@ -8,5 +12,4 @@
 <style>
     .button {
     }
-
 </style>

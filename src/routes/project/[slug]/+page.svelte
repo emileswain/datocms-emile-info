@@ -1,3 +1,4 @@
+<!-- @migration-task Error while migrating Svelte code: Can't migrate code with afterUpdate. Please migrate by hand. -->
 <script lang="ts">
     import {Head, querySubscription, StructuredText} from '@datocms/svelte';
     import {
@@ -101,7 +102,7 @@
       The <Head> component provided by @datocms/svelte automates the creation of
       meta tags based on the `_seoMetaTags` present in a DatoCMS GraphQL query.
     -->
-    <Head data={project._seoMetaTags}/>
+<!--    <Head data={project._seoMetaTags}/>-->
     <!--    <button on:click={up}>up</button>-->
     <!--    <button on:click={down}>down</button>-->
     <!--    <button on:click={upBar}>up Bar</button>-->
@@ -129,34 +130,26 @@
                 {/if}
             </div>
             <div class="content-bloc-column">
+                {#snippet CustomContent(content)}
+                    <h1>{content.header}</h1>
+                    <StructuredText
+                            data={content.structuredText}
+                            components={[
+                            [isCode, Code],
+                            [isHeading, HeadingWithAnchorLink],
+                            [isBlock, Block],
+                            [isInlineItem, InlineItem],
+                            [isItemLink, ItemLink],
+                          ]}/>
+                {/snippet}
 
-                <!--{#if copyBlocs}-->
                 {#each projectContent as content , i}
-                    <BlockLayout data="{content}">
+                    <BlockLayout data={content} {CustomContent}>
+
                     </BlockLayout>
                 {/each}
-<!--                        <div class="copy-bloc">-->
-<!--                            <h1>{copybloc.header}</h1>-->
-<!--                            <StructuredText data={copybloc.content.value}/>-->
-<!--                        </div>-->
-                <!--{/if}-->
 
             </div>
-            <!--  rebuild this as it doesn't work oniOS chrome. -->
-            <!--            <div class="remaining-space">-->
-            <!--                <div class="content">-->
-            <!--                    <StructuredText-->
-            <!--                            data={project.content}-->
-            <!--                            components={[-->
-            <!--              [isCode, Code],-->
-            <!--              [isHeading, HeadingWithAnchorLink],-->
-            <!--              [isBlock, Block],-->
-            <!--              [isInlineItem, InlineItem],-->
-            <!--              [isItemLink, ItemLink],-->
-            <!--            ]}-->
-            <!--                    />-->
-            <!--                </div>-->
-            <!--            </div>-->
 
         </div>
         <div class="project-nav">
@@ -172,6 +165,7 @@
         </div>
     </div>
 {/if}
+
 
 
 <style lang="css">
@@ -190,7 +184,7 @@
         width: 100%;
         gap: 10px;
         /* 16 is the bottom nav padding dimension*/
-        margin-bottom: calc(var(--page-border-thickness) * 2 + (16 * 2) * 1px + 20px);
+        margin-bottom: calc(var(--page-border-thickness) * 2 + (16 * 2) * 1px );
     }
 
     .copy-bloc {
@@ -222,9 +216,10 @@
         background-color: var(--bg-fill);
         overflow-y: auto;
         /* not sure why, but some pages from the cms wouldn't render correctly without width and height set. */
-        width: 100 dvw;
-        min-height: 100 dvh;
-        max-height: 100 dvh;
+
+        width: 100dvw;
+        min-height: 100dvh;
+        max-height: 100dvh;
         /* Animation   */
         transition: background-color 300ms ease-out, border-color 300ms ease-out;
     }

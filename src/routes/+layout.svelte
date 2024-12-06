@@ -4,8 +4,13 @@
     import type {LayoutData} from './$types';
     import DraftModeToggler from '$lib/components/DraftModeToggler/index.svelte';
 
-    export let data: LayoutData;
-    $: subscription = querySubscription(data.subscription);
+  interface Props {
+    data: LayoutData;
+    children?: import('svelte').Snippet;
+  }
+
+  let { data, children }: Props = $props();
+    let subscription = $derived(querySubscription(data.subscription));
 </script>
 
 <svelte:head>
@@ -18,7 +23,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
+
 </svelte:head>
 
 <!--
@@ -36,7 +44,7 @@
 <!--</header>-->
 
 <div class="container">
-    <slot/>
+    {@render children?.()}
 </div>
 
 <style>
@@ -46,7 +54,7 @@
     /* CSS Reset */
     /* global styling further down */
     /* ########################################################################################### */
-    @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+    /*@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');*/
 
     :global(*, *::before, *::after) {
         box-sizing: border-box;
@@ -137,7 +145,7 @@
 
         /* Button styling parameters
          */
-        --btn-color-fill:rgba(0, 0, 0, 0.37);
+        --btn-color-fill: rgba(108, 138, 121, 0.82);
         --btn-color-fill--hover:#cfe5d9;
         --btn-color-stroke:#fff;
         --btn-color-stroke--hover:#fff;
@@ -215,6 +223,11 @@
     :global(p a) {
         text-decoration: underline;
     }
+
+    /*:global(h4 a:after)*/
+    /*{*/
+    /*    content: "🔗";*/
+    /*}*/
 
     /*
         P

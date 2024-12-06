@@ -2,47 +2,56 @@
 <script lang="ts">
     import {fade} from 'svelte/transition';
 
-    export let flush = false;
-    export let useMaxWidth = false;
-    export let align = "top";
     import {onMount,} from 'svelte';
 
-    export let numberWang: number = 0;
+   interface Props {
+      flush?: boolean;
+      useMaxWidth?: boolean;
+      align?: string;
+      numberWang?: number;
+      children?: import('svelte').Snippet;
+   }
+
+   let {
+      flush = false,
+      useMaxWidth = false,
+      align = "top",
+      numberWang = 0,
+      children
+   }: Props = $props();
 
     // WIP - animate when in view.
-    let element;
-    let height;
-    let scrollY;
-    let innerHeight;
+    let innerHeight = $state();
+    let element = $state();
+    let elementHeight = $state();
+    let scrollY = $state();
 
-    $: offset = (element && element.offsetTop)
-    $: result = scrollY / (offset + height) * 100
-    $: inView = offset - scrollY < innerHeight * 0.9;
+    let offset = ($derived(element && element.offsetTop))
+    let height = $derived(scrollY / (offset + elementHeight) * 100);
+    let innerHeightCalc = $derived(offset - scrollY < innerHeight * 0.9);
     // end WIP.
-
-    let loaded = false;
+    let loaded = $state(false);
     onMount(() => loaded = true);
-</script>
-<!-- Investigate SSR approach for animations. -->
 
-<!--{#key numberWang}-->
-<!--    <div in:fade={{delay: 500 * key, duration: 500}} class="content-bloc {flush ? 'flush' : ''} {useMaxWidth ? 'content-maxWidth' : ''}  {align === 'bottom' ? 'content-align-bottom' : 'content-align-top'}">-->
-<!--        <slot></slot>-->
-<!--    </div>-->
-<!--{/key}-->
+//     <!-- Investigate SSR approach for animations. -->
+//
+//     <!--{#key numberWang}-->
+//     <!--    <div in:fade={{delay: 500 * key, duration: 500}} class="content-bloc {flush ? 'flush' : ''} {useMaxWidth ? 'content-maxWidth' : ''}  {align === 'bottom' ? 'content-align-bottom' : 'content-align-top'}">-->
+//     <!--        <slot></slot>-->
+// <!--    </div>-->
+//     <!--{/key}-->
+</script>
+
 {#if loaded}
-        <div bind:this="{element}" bind:clientHeight="{height}" in:fade={{delay: (500  * numberWang), duration: 500}} class="content-bloc {flush ? 'flush' : ''} {useMaxWidth ? 'content-maxWidth' : ''}  {align === 'bottom' ? 'content-align-bottom' : 'content-align-top'}">
-            <slot></slot>
+        <div bind:this={element} bind:clientHeight="{elementHeight}" in:fade={{delay: (500  * numberWang), duration: 500}} class="content-bloc {flush ? 'flush' : ''} {useMaxWidth ? 'content-maxWidth' : ''}  {align === 'bottom' ? 'content-align-bottom' : 'content-align-top'}">
+            {@render children?.()}
         </div>
 {:else}
     <div class="content-bloc {flush ? 'flush' : ''} {useMaxWidth ? 'content-maxWidth' : ''}  {align === 'bottom' ? 'content-align-bottom' : 'content-align-top'}">
-        <slot></slot>
+        {@render children?.()}
     </div>
 {/if}
 
-<!--
-   Wraps visible content elements such as h1, p, a, elements.
--->
 <style>
     /* set default margins of content.*/
     .content-bloc {

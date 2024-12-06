@@ -1,31 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="WIP - detect in view animation.">
-      <change afterPath="$PROJECT_DIR$/src/lib/components/BlockLayout/ContentBloc/fragments.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/components/BlockLayout/SectionBlock/fragments.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/components/BlockLayout/SectionBlock/index.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/components/BlockLayout/fragments.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/components/BlockLayout/index.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.graphqlconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.graphqlconfig" afterDir="false" />
+    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="Added nested block content. dato:main-v1-0-1">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/schema.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schema_inteli_plugin.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/schema_inteli_plugin.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/Block/fragments.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/Block/fragments.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/Block/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/Block/index.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/ContentBloc/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/BlockLayout/ContentBloc/index.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/InlineItem/fragments.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/InlineItem/fragments.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/ItemLink/fragments.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ItemLink/fragments.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/datocms/commonFragments.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/datocms/commonFragments.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/datocms/graphql-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/datocms/graphql-env.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/datocms/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/datocms/queries.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+page.server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/Block/ImageBlock/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/Block/ImageBlock/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/Block/ImageByTextBlock/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/Block/ImageByTextBlock/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/Block/ImageGalleryBlock/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/Block/ImageGalleryBlock/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/Block/VideoBlock/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/Block/VideoBlock/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/BlockLayout/ContentBloc/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/BlockLayout/ContentBloc/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/BlockLayout/SectionBlock/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/BlockLayout/SectionBlock/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/BlockLayout/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/BlockLayout/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/Button/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/Button/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/Code/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/Code/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/DraftModeToggler/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/DraftModeToggler/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/HeadingWithAnchorLink/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/HeadingWithAnchorLink/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/Icon/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/Icon/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/InlineItem/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/InlineItem/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ItemLink/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ItemLink/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/LayoutBloc/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/LayoutBloc/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/Link/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/Link/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/PageBloc/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/PageBloc/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/Pill/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/Pill/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/ResponsiveImage/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/ResponsiveImage/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/TopNav/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/TopNav/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/VideoPlayer/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/VideoPlayer/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/+layout.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+layout.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+page.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/components/[slug]/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/components/[slug]/+page.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/page/[slug]/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/page/[slug]/+page.server.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/page/[slug]/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/page/[slug]/+page.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/project/[slug]/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/project/[slug]/+page.server.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/project/[slug]/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/project/[slug]/+page.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +101,7 @@
       <workItem from="1730388822890" duration="19084000" />
       <workItem from="1730718517490" duration="35498000" />
       <workItem from="1732633006377" duration="17483000" />
-      <workItem from="1732712628486" duration="104447000" />
+      <workItem from="1732712628486" duration="118416000" />
     </task>
     <task id="LOCAL-00001" summary="tweeks">
       <created>1729525638478</created>
@@ -336,7 +341,14 @@
       <option name="project" value="LOCAL" />
       <updated>1733168597076</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Added nested block content. dato:main-v1-0-1">
+      <created>1733488980327</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1733488980327</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -354,7 +366,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Styled image banding effect." />
     <MESSAGE value="Client logo text css corrected." />
     <MESSAGE value="Added sub nav to homepage and styled project pages." />
     <MESSAGE value="Various tweeks and updates to layouts and styles." />
@@ -379,6 +390,7 @@
     <MESSAGE value="removed the hidden as it may affect seo. Need to check for animation glitches." />
     <MESSAGE value="Added reference articles for animating and issues with SSR, SSG etc." />
     <MESSAGE value="WIP - detect in view animation." />
-    <option name="LAST_COMMIT_MESSAGE" value="WIP - detect in view animation." />
+    <MESSAGE value="Added nested block content. dato:main-v1-0-1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added nested block content. dato:main-v1-0-1" />
   </component>
 </project>

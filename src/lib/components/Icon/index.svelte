@@ -3,9 +3,13 @@
 <!-- https://stackoverflow.com/questions/67337435/how-to-config-for-using-svg-file-in-sveltekit-->
 
 <script  lang="ts">
-    export let type;
+    interface Props {
+        type: any;
+    }
 
-    let svgContent;
+    let { type }: Props = $props();
+
+    let svgContent = $state();
 
     // Dynamically import the SVG based on the type prop
     import(`../../images/icons/${type}.svg?raw`).then(module => {

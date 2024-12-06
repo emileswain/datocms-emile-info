@@ -1,9 +1,15 @@
 <script lang="ts">
-    export let href:string = '';
+    interface Props {
+        href?: string;
+        children?: import('svelte').Snippet;
+        [key: string]: any
+    }
+
+    let { href = '', children, ...rest }: Props = $props();
 </script>
 
-<a class="link" href={href} {...$$restProps}>
-    <slot></slot>
+<a class="link" href={href} {...rest}>
+    {@render children?.()}
 </a>
 
 <style>
@@ -13,7 +19,7 @@
         padding: 10px 20px;
         border-radius: 25px; /* Adjust for more or less rounded corners */
         background-color: var(--btn-color-fill); /* Fill color */
-        border: 4px solid var(--btn-color-stroke); /* Border color */
+        border: 2.5px solid var(--btn-color-stroke); /* Border color */
         color: white; /* Text color */
         text-align: center;
         text-decoration: none; /* Remove underline */

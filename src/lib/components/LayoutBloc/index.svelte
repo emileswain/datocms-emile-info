@@ -1,11 +1,23 @@
 <script lang="ts">
-    export let direction = 'column';
-    export let collapseRow = false; /* set true if row elements should convert to column layout when width is too small. */
-    export let alternateDirection = false;
+    interface Props {
+        direction?: string;
+        collapseRow?: boolean;
+        alternateDirection?: boolean;
+        children?: import('svelte').Snippet;
+        [key: string]: any
+    }
+
+    let {
+        direction = 'column',
+        collapseRow = false,
+        alternateDirection = false,
+        children,
+        ...rest
+    }: Props = $props();
 </script>
 
-<div class="layout-bloc {direction} {alternateDirection ? 'alternate-direction' : ''} {collapseRow ? 'wrap-settings':''}  " {...$$restProps}>
-    <slot></slot>
+<div class="layout-bloc {direction} {alternateDirection ? 'alternate-direction' : ''} {collapseRow ? 'wrap-settings':''}  " {...rest}>
+    {@render children?.()}
 </div>
 
 <!--

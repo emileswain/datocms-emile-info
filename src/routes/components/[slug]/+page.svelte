@@ -1,17 +1,5 @@
 <script lang="ts">
     import {Head, querySubscription, StructuredText} from '@datocms/svelte';
-    import {
-        isBlock,
-        isCode,
-        isHeading,
-        isInlineItem,
-        isItemLink,
-    } from 'datocms-structured-text-utils';
-    import HeadingWithAnchorLink from '$lib/components/HeadingWithAnchorLink/index.svelte';
-    import Block from '$lib/components/Block/index.svelte';
-    import InlineItem from '$lib/components/InlineItem/index.svelte';
-    import ItemLink from '$lib/components/ItemLink/index.svelte';
-    import Code from '$lib/components/Code/index.svelte';
     import type {PageData} from './$types';
     import LayoutBloc from "../../../lib/components/LayoutBloc/index.svelte";
     import ContentBloc from "../../../lib/components/BlockLayout/ContentBloc/index.svelte";
@@ -19,9 +7,13 @@
     import Link from "../../../lib/components/Link/index.svelte";
     import TopNav from "../../../lib/components/TopNav/index.svelte";
 
-    export let data: PageData;
-    $: subscription = querySubscription(data.subscription);
-    $: page = $subscription.data?.page;
+    interface Props {
+        data: PageData;
+    }
+
+    let { data }: Props = $props();
+    let subscription = $derived(querySubscription(data.subscription));
+    let page = $derived($subscription.data?.page);
 </script>
 
 {#if page}
@@ -29,7 +21,7 @@
       The <Head> component provided by @datocms/svelte automates the creation of
       meta tags based on the `_seoMetaTags` present in a DatoCMS GraphQL query.
     -->
-    <Head data={page._seoMetaTags}/>
+<!--    <Head data={page._seoMetaTags}/>-->
 
     <PageBloc class="article-page">
         <TopNav></TopNav>

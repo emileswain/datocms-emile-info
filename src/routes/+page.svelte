@@ -18,15 +18,18 @@
     import ContentBloc from "../lib/components/BlockLayout/ContentBloc/index.svelte";
     import TopNav from "../lib/components/TopNav/index.svelte";
     import Link from "../lib/components/Link/index.svelte";
+    import SectionBlock from "../lib/components/BlockLayout/SectionBlock/index.svelte";
 
-    export let data: PageData;
-    $: subscription = querySubscription(data.subscription);
-    $: homepage = $subscription.data?.homepage;
-    // $: projects = $subscription.data?.allProjects;
+    interface Props {
+        data: PageData;
+    }
 
-    $: projects = $subscription.data?.homepage.projects;
+    let {data}: Props = $props();
+    let subscription = $derived(querySubscription(data.subscription));
+    let homepage = $derived($subscription.data?.homepage);
+    let projects = $derived($subscription.data?.homepage.projects);
+    let pages = $derived([{title: "work"}, {title: "projects"}, {title: "other"}])
 
-    $: pages = [{title: "work"}, {title: "projects"}, {title: "other"}]
 </script>
 
 {#if homepage}
@@ -34,13 +37,13 @@
         The <Head> component provided by @datocms/svelte automates the creation of
         meta tags based on the `_seoMetaTags` present in a DatoCMS GraphQL query.
       -->
-    <Head data={homepage._seoMetaTags}></Head>
+    <!--    <Head data={homepage._seoMetaTags}></Head>-->
 
     <TopNav>Emile swain</TopNav>
     <PageBloc class="home-page">
         <LayoutBloc>
             <LayoutBloc direction="row" collapseRow="true">
-                <ContentBloc numberWang="0"  useMaxWidth="true">
+                <ContentBloc numberWang="0" useMaxWidth="true">
                     <img class="profile-image" src={homepage.profileImage.responsiveImage.src} alt={homepage.profileImage.alt?? "profile image"}/>
                 </ContentBloc>
                 <ContentBloc numberWang="0" useMaxWidth="true" align="bottom">
@@ -55,63 +58,48 @@
                       ]}/>
                 </ContentBloc>
             </LayoutBloc>
-
-            <LayoutBloc>
-                <ContentBloc>
-                    <h1 class="section-header">Projects</h1>
-                </ContentBloc>
-            </LayoutBloc>
-
-            <LayoutBloc>
-                {#if projects }
-                    {#each projects as project, i}
-                        <LayoutBloc direction="row" alternateDirection="true" collapseRow="true">
-                            <ContentBloc numberWang="{i+1}">
-                                <img class="project-image" src={project.heroImage.responsiveImage.src} alt={project.heroImage.alt?? "image of project"}/>
-                            </ContentBloc>
-                            <ContentBloc numberWang="{i+1}" useMaxWidth="true">
-                                <h1>{project.title}</h1>
-                                <StructuredText data={project.shortDescription}/>
-                                <Link  href="/project/{project.slug}" rel="no-prefetch">Explore</Link>
-                            </ContentBloc>
-                        </LayoutBloc>
+            <SectionBlock title="Work">
+                <LayoutBloc>
+                    {#if projects }
+                        {#each projects as project, i}
+                            <LayoutBloc direction="row" alternateDirection="true" collapseRow="true">
+                                <ContentBloc numberWang={i+1}>
+                                    <img class="project-image" src={project.heroImage.responsiveImage.src} alt={project.heroImage.alt?? "image of project"}/>
+                                </ContentBloc>
+                                <ContentBloc numberWang={i+1} useMaxWidth="true">
+                                    <h1>{project.title}</h1>
+                                    <StructuredText data={project.shortDescription}/>
+                                    <Link href="/project/{project.slug}" rel="no-prefetch">Explore</Link>
+                                </ContentBloc>
+                            </LayoutBloc>
+                        {/each}
+                    {:else}
+                        <p>Loading projects...</p>
+                    {/if}
+                </LayoutBloc>
+            </SectionBlock>
+            <SectionBlock title="Side Projects">
+                <LayoutBloc>
+                    {#each homepage.pages as page, i}
+                        <!--                        <a href="/page/{page.title}" rel="no-prefetch">{page.title}</a>-->
+                        <!--                    <li><a href="/page/{page.slug}" rel="no-prefetch">{page.title}</a></li>-->
+                        <ContentBloc>
+                            <h1>{page.title}</h1>
+                            <StructuredText data={page.shortDescription}/>
+                            <Link href="/page/{page.slug}" rel="no-prefetch">Explore</Link>
+                        </ContentBloc>
                     {/each}
-                {:else}
-                    <p>Loading projects...</p>
-                {/if}
-            </LayoutBloc>
-
-            <LayoutBloc>
-                <ContentBloc>
-                    <h1 class="section-header">Side Projects</h1>
-                </ContentBloc>
-            </LayoutBloc>
-
-            <LayoutBloc>
-                {#each homepage.pages as page, i}
-                    <!--                        <a href="/page/{page.title}" rel="no-prefetch">{page.title}</a>-->
-<!--                    <li><a href="/page/{page.slug}" rel="no-prefetch">{page.title}</a></li>-->
-                    <ContentBloc>
-                        <h1>{page.title}</h1>
-                        <StructuredText data={page.shortDescription}/>
-                        <Link  href="/page/{page.slug}" rel="no-prefetch">Explore</Link>
-                    </ContentBloc>
-                {/each}
-            </LayoutBloc>
-
+                </LayoutBloc>
+            </SectionBlock>
         </LayoutBloc>
     </PageBloc>
 
 {/if}
 
 <style lang="css">
-    /*.section-header {*/
-    /*    font-size: 4rem;*/
-    /*    margin-bottom: unset;*/
-    /*}*/
 
     /* global required to override the class properties that are applied to the PageBloc */
-    :global(.container){
+    :global(.container) {
         /*height: 100%;*/
         /*overflow-y: auto;*/
         /*min-height: 100vh;*/

@@ -4,15 +4,20 @@
   import { defaultMetaTransformer } from 'datocms-structured-text-generic-html-renderer';
   import { ItemLinkFragment } from './fragments';
 
-  export let node: ItemLink;
-  export let link: FragmentOf<typeof ItemLinkFragment>;
+  interface Props {
+    node: ItemLink;
+    link: FragmentOf<typeof ItemLinkFragment>;
+    children?: import('svelte').Snippet;
+  }
 
-  $: unmaskedLink = readFragment(ItemLinkFragment, link);
+  let { node, link, children }: Props = $props();
 
-  $: ({ meta } = node);
-  $: transformedMeta = meta ? defaultMetaTransformer({ node, meta }) : null;
+  let unmaskedLink = $derived(readFragment(ItemLinkFragment, link));
 
-  $: sublink = unmaskedLink.slug ? '/page/' + unmaskedLink.slug : '/';
+  let { meta } = $derived(node);
+  let transformedMeta = $derived(meta ? defaultMetaTransformer({ node, meta }) : null);
+
+  let sublink = $derived(unmaskedLink.slug ? '/page/' + unmaskedLink.slug : '/');
 </script>
 
 <!--
@@ -23,6 +28,6 @@
 
 {#if unmaskedLink.__typename === 'HomepageRecord' || unmaskedLink.__typename === 'PageRecord'}
   <a {...transformedMeta} href={sublink}>
-    <slot />
+    {@render children?.()}
   </a>
 {/if}

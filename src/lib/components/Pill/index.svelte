@@ -1,7 +1,11 @@
 <script lang="ts">
     // export let href:string = '';
-    export let label = '';
-    export let rounded = false;
+    interface Props {
+        label?: string;
+        rounded?: boolean;
+    }
+
+    let { label = '', rounded = false }: Props = $props();
 </script>
 
 <div class="pill {rounded ? 'rounded' : ''}">{label}</div>

@@ -3,9 +3,13 @@
   import { type FragmentOf, readFragment } from '$lib/datocms/graphql';
   import { ImageByTextBlockFragment } from './fragments';
 
-  export let data: FragmentOf<typeof ImageByTextBlockFragment>;
+  interface Props {
+    data: FragmentOf<typeof ImageByTextBlockFragment>;
+  }
 
-  $: unmaskedData = readFragment(ImageByTextBlockFragment, data);
+  let { data }: Props = $props();
+
+  let unmaskedData = $derived(readFragment(ImageByTextBlockFragment, data));
 </script>
 
 <div class="image-by-text {unmaskedData.isAlignedRight ? 'reverse' : ''}">

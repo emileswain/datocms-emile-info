@@ -8,9 +8,14 @@
     data: FragmentOf<typeof ResponsiveImageFragment>;
   };
 
-  export let data: $$Props['data'];
+  interface Props {
+    data: $$Props['data'];
+    [key: string]: any
+  }
 
-  $: unmaskedData = readFragment(ResponsiveImageFragment, data);
+  let { data, ...rest }: Props = $props();
+
+  let unmaskedData = $derived(readFragment(ResponsiveImageFragment, data));
 </script>
 
 <!--
@@ -20,4 +25,4 @@
   wherever needed.
 -->
 
-<NakedImage {...$$restProps} data={unmaskedData} />
+<NakedImage {...rest} data={unmaskedData} />
