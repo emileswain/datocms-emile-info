@@ -1,15 +1,14 @@
 <script lang="ts">
-    interface Props {
-        label?: string;
-    }
+  interface Props {
+    label?: string;
+  }
 
-    let { label = 'explore' }: Props = $props();
-
+  let { label = 'explore' }: Props = $props();
 </script>
 
 <button class="button">label</button>
 
 <style>
-    .button {
-    }
+  .button {
+  }
 </style>

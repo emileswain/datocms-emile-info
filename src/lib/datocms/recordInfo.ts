@@ -50,7 +50,7 @@ export async function recordToSlug(
       return item.attributes.slug as string;
     }
     case 'homepage': {
-      return "/" as string;
+      return '/' as string;
     }
     default:
       return null;

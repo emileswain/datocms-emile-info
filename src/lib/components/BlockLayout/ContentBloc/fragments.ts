@@ -1,10 +1,10 @@
-import {graphql} from '$lib/datocms/graphql';
-import {ItemLinkFragment} from "../../ItemLink/fragments";
-import {InlineItemFragment} from "../../InlineItem/fragments";
-import {ImageByTextBlockFragment} from "../../Block/ImageByTextBlock/fragments";
-import {ImageBlockFragment} from "../../Block/ImageBlock/fragments";
-import {ImageGalleryBlockFragment} from "../../Block/ImageGalleryBlock/fragments";
-import {VideoBlockFragment} from "../../Block/VideoBlock/fragments";
+import { graphql } from '$lib/datocms/graphql';
+import { ItemLinkFragment } from '../../ItemLink/fragments';
+import { InlineItemFragment } from '../../InlineItem/fragments';
+import { ImageByTextBlockFragment } from '../../Block/ImageByTextBlock/fragments';
+import { ImageBlockFragment } from '../../Block/ImageBlock/fragments';
+import { ImageGalleryBlockFragment } from '../../Block/ImageGalleryBlock/fragments';
+import { VideoBlockFragment } from '../../Block/VideoBlock/fragments';
 
 /**
  * Let's define the GraphQL fragment needed for the component to function.
@@ -19,43 +19,52 @@ import {VideoBlockFragment} from "../../Block/VideoBlock/fragments";
  * Learn more: https://gql-tada.0no.co/guides/fragment-colocation
  */
 
-export const ContentBlocFragment = graphql(/* GraphQL */  `
+export const ContentBlocFragment = graphql(
+  /* GraphQL */ `
     fragment ContentBlocFragment on ContentBlocRecord {
-        id
-        __typename
-        header
-        structuredText {
-            value
-            blocks {
-                ... on RecordInterface {
-                    id
-                    __typename
-                }
-                ... on ImageBlockRecord {
-                    ...ImageBlockFragment
-                }
-                ... on ImageGalleryBlockRecord {
-                    ...ImageGalleryBlockFragment
-                }
-                ... on VideoBlockRecord {
-                    ...VideoBlockFragment
-                }
-                ... on ImageByTextBlockRecord {
-                    ...ImageByTextBlockFragment
-                }
-            }
-            links {
-                ... on RecordInterface {
-                    id
-                    __typename
-                }
-                ...ItemLinkFragment
-                ...InlineItemFragment
-            }
+      id
+      __typename
+      header
+      structuredText {
+        value
+        blocks {
+          ... on RecordInterface {
+            id
+            __typename
+          }
+          ... on ImageBlockRecord {
+            ...ImageBlockFragment
+          }
+          ... on ImageGalleryBlockRecord {
+            ...ImageGalleryBlockFragment
+          }
+          ... on VideoBlockRecord {
+            ...VideoBlockFragment
+          }
+          ... on ImageByTextBlockRecord {
+            ...ImageByTextBlockFragment
+          }
         }
+        links {
+          ... on RecordInterface {
+            id
+            __typename
+          }
+          ...ItemLinkFragment
+          ...InlineItemFragment
+        }
+      }
     }
-
-`, [ItemLinkFragment, InlineItemFragment, ImageBlockFragment,  ImageGalleryBlockFragment, VideoBlockFragment,ImageByTextBlockFragment,]);
+  `,
+  [
+    ItemLinkFragment,
+    InlineItemFragment,
+    ImageBlockFragment,
+    ImageGalleryBlockFragment,
+    VideoBlockFragment,
+    ImageByTextBlockFragment,
+  ],
+);
 
 //[ItemLinkFragment, InlineItemFragment]
 //

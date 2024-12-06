@@ -10,7 +10,7 @@
 
   interface Props {
     data: $$Props['data'];
-    [key: string]: any
+    [key: string]: any;
   }
 
   let { data, ...rest }: Props = $props();

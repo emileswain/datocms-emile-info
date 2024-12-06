@@ -5,8 +5,8 @@ import { graphql } from '$lib/datocms/graphql';
 import { generateRealtimeSubscription } from '$lib/datocms/queries';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import {ImageBlockFragment} from "$lib/components/Block/ImageBlock/fragments";
-import {HomeStructuredTextFragment} from "$lib/components/Block/fragments";
+import { ImageBlockFragment } from '$lib/components/Block/ImageBlock/fragments';
+import { HomeStructuredTextFragment } from '$lib/components/Block/fragments';
 
 /**
  * The GraphQL query that will be executed for this route to generate the page
@@ -22,9 +22,9 @@ const query = graphql(
           ...TagFragment
         }
         title
-        profileImage{
+        profileImage {
           alt
-          responsiveImage{
+          responsiveImage {
             src
           }
         }
@@ -47,28 +47,33 @@ const query = graphql(
             ...InlineItemFragment
           }
         }
-        pages{
+        pages {
           title
           slug
         }
-        projects{
+        projects {
           title
           shortDescription {
             value
           }
           slug
-          heroImage{
+          heroImage {
             alt
-            responsiveImage{
+            responsiveImage {
               src
             }
           }
         }
       }
-      
     }
   `,
-  [TagFragment, HomeStructuredTextFragment, ItemLinkFragment, InlineItemFragment, ImageBlockFragment],
+  [
+    TagFragment,
+    HomeStructuredTextFragment,
+    ItemLinkFragment,
+    InlineItemFragment,
+    ImageBlockFragment,
+  ],
 );
 
 /**

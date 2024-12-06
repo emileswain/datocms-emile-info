@@ -19,14 +19,13 @@ export const InlineItemFragment = graphql(/* GraphQL */ `
       id
       __typename
     }
-#    ... on HomepageRecord {
-#      title
-#    }
+    #    ... on HomepageRecord {
+    #      title
+    #    }
     ... on ProjectRecord {
       title
     }
-    ... on PageRecord
-    {
+    ... on PageRecord {
       title
     }
   }

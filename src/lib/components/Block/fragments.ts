@@ -1,8 +1,8 @@
-import {graphql} from '$lib/datocms/graphql';
-import {ImageBlockFragment} from './ImageBlock/fragments';
-import {ImageGalleryBlockFragment} from './ImageGalleryBlock/fragments';
-import {VideoBlockFragment} from './VideoBlock/fragments';
-import {ImageByTextBlockFragment} from './ImageByTextBlock/fragments';
+import { graphql } from '$lib/datocms/graphql';
+import { ImageBlockFragment } from './ImageBlock/fragments';
+import { ImageGalleryBlockFragment } from './ImageGalleryBlock/fragments';
+import { VideoBlockFragment } from './VideoBlock/fragments';
+import { ImageByTextBlockFragment } from './ImageByTextBlock/fragments';
 
 /**
  * Let's define the GraphQL fragment needed for the component to function.
@@ -42,28 +42,27 @@ import {ImageByTextBlockFragment} from './ImageByTextBlock/fragments';
 //     [ImageBlockFragment, ImageGalleryBlockFragment, VideoBlockFragment, ImageByTextBlockFragment],
 // );
 
-
 export const HomeStructuredTextFragment = graphql(
-    //  fragment BlockFragment on HomepageModelStructuredTextBlocksField {
-    /* GraphQL */ `
-        fragment HomeStructuredTextFragment on HomepageModelStructuredTextBlocksField {
-            ... on RecordInterface {
-                id
-                __typename
-            }
-            ... on ImageBlockRecord {
-                ...ImageBlockFragment
-            }
-            ... on ImageGalleryBlockRecord {
-                ...ImageGalleryBlockFragment
-            }
-            ... on VideoBlockRecord {
-                ...VideoBlockFragment
-            }
-            ... on ImageByTextBlockRecord {
-                ...ImageByTextBlockFragment
-            }
-        }
-    `,
-    [ImageBlockFragment, ImageGalleryBlockFragment, VideoBlockFragment, ImageByTextBlockFragment],
+  //  fragment BlockFragment on HomepageModelStructuredTextBlocksField {
+  /* GraphQL */ `
+    fragment HomeStructuredTextFragment on HomepageModelStructuredTextBlocksField {
+      ... on RecordInterface {
+        id
+        __typename
+      }
+      ... on ImageBlockRecord {
+        ...ImageBlockFragment
+      }
+      ... on ImageGalleryBlockRecord {
+        ...ImageGalleryBlockFragment
+      }
+      ... on VideoBlockRecord {
+        ...VideoBlockFragment
+      }
+      ... on ImageByTextBlockRecord {
+        ...ImageByTextBlockFragment
+      }
+    }
+  `,
+  [ImageBlockFragment, ImageGalleryBlockFragment, VideoBlockFragment, ImageByTextBlockFragment],
 );

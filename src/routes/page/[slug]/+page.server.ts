@@ -1,10 +1,9 @@
-
 import { TagFragment } from '$lib/datocms/commonFragments';
 import { graphql } from '$lib/datocms/graphql';
 import { generateRealtimeSubscription } from '$lib/datocms/queries';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import {BlockLayoutFragment} from "$lib/components/BlockLayout/fragments";
+import { BlockLayoutFragment } from '$lib/components/BlockLayout/fragments';
 
 /**
  * The GraphQL query that will be executed for this route to generate the page
@@ -22,7 +21,7 @@ const query = graphql(
         title
         shortDescription
         _firstPublishedAt
-        content{
+        content {
           ...BlockLayoutFragment
         }
       }

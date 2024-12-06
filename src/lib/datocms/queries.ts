@@ -21,7 +21,7 @@ export async function generateRealtimeSubscription<Result, Variables>(
 ): Promise<QuerySubscriptionOptions<Result, Variables>> {
   const draftModeEnabled = isDraftModeEnabled(event);
 
-   // console.log(`emile generateRealtimeSubscription() : ${JSON.stringify(query, null, 4)} `);
+  // console.log(`emile generateRealtimeSubscription() : ${JSON.stringify(query, null, 4)} `);
   const data = await executeQuery(query, {
     variables,
     includeDrafts: draftModeEnabled,
@@ -42,8 +42,6 @@ export async function generateRealtimeSubscription<Result, Variables>(
       initialData: data,
     };
   }
-
-
 
   // Enable the subscription, passing all the necessary options to the client,
   // including the DatoCMS API token required to execute requests in draft mode

@@ -1,5 +1,5 @@
-import {graphql} from '$lib/datocms/graphql';
-import {ContentBlocFragment} from "../ContentBloc/fragments";
+import { graphql } from '$lib/datocms/graphql';
+import { ContentBlocFragment } from '../ContentBloc/fragments';
 
 /**
  * Let's define the GraphQL fragment needed for the component to function.
@@ -15,25 +15,24 @@ import {ContentBlocFragment} from "../ContentBloc/fragments";
  */
 
 export const SectionBlocFragment = graphql(
-    /* GraphQL */ `
-        fragment SectionBlocFragment on SectionBlockRecord {
-            ... on RecordInterface {
-                id
-                __typename
-            }
+  /* GraphQL */ `
+    fragment SectionBlocFragment on SectionBlockRecord {
+      ... on RecordInterface {
+        id
+        __typename
+      }
 
-            header
-            blocs {
-                ... on RecordInterface {
-                    id
-                    __typename
-                }
-                ... on ContentBlocRecord
-                {
-                    ...ContentBlocFragment
-                }
-            }
+      header
+      blocs {
+        ... on RecordInterface {
+          id
+          __typename
         }
-    `,
-    [ContentBlocFragment],
+        ... on ContentBlocRecord {
+          ...ContentBlocFragment
+        }
+      }
+    }
+  `,
+  [ContentBlocFragment],
 );

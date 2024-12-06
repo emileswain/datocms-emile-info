@@ -1,23 +1,28 @@
 <script lang="ts">
-    interface Props {
-        direction?: string;
-        collapseRow?: boolean;
-        alternateDirection?: boolean;
-        children?: import('svelte').Snippet;
-        [key: string]: any
-    }
+  interface Props {
+    direction?: string;
+    collapseRow?: boolean;
+    alternateDirection?: boolean;
+    children?: import('svelte').Snippet;
+    [key: string]: any;
+  }
 
-    let {
-        direction = 'column',
-        collapseRow = false,
-        alternateDirection = false,
-        children,
-        ...rest
-    }: Props = $props();
+  let {
+    direction = 'column',
+    collapseRow = false,
+    alternateDirection = false,
+    children,
+    ...rest
+  }: Props = $props();
 </script>
 
-<div class="layout-bloc {direction} {alternateDirection ? 'alternate-direction' : ''} {collapseRow ? 'wrap-settings':''}  " {...rest}>
-    {@render children?.()}
+<div
+  class="layout-bloc {direction} {alternateDirection ? 'alternate-direction' : ''} {collapseRow
+    ? 'wrap-settings'
+    : ''}  "
+  {...rest}
+>
+  {@render children?.()}
 </div>
 
 <!--
@@ -25,64 +30,62 @@
     Manages layout of child elements.
 -->
 <style>
-    .layout-bloc {
-        display: flex;
-        flex: 1 1 0;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
+  .layout-bloc {
+    display: flex;
+    flex: 1 1 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .column {
+    flex-direction: column;
+  }
+
+  .row {
+    flex-direction: row;
+  }
+
+  @media (min-width: 992px) {
+    .alternate-direction:nth-child(odd) {
+      align-items: flex-start; /* Default alignment */
     }
 
-    .column {
-        flex-direction: column;
+    .alternate-direction:nth-child(even) {
+      flex-direction: row-reverse; /* Reverse the order of child items */
+      align-items: flex-start; /* Align to the right */
     }
+  }
 
-    .row {
-        flex-direction: row;
-    }
-
-    @media (min-width: 992px) {
-        .alternate-direction:nth-child(odd) {
-            align-items: flex-start; /* Default alignment */
-        }
-
-        .alternate-direction:nth-child(even) {
-            flex-direction: row-reverse; /* Reverse the order of child items */
-            align-items: flex-start; /* Align to the right */
-        }
-    }
-
-    /**
+  /**
     On mobile, we can define if we want row elements to switch to column when not enough space.
      */
+  .wrap-settings {
+    flex-direction: column;
+  }
+
+  @media (min-width: 500px) {
     .wrap-settings {
-        flex-direction: column;
+      flex-direction: column;
     }
+  }
 
-    @media (min-width: 500px) {
-        .wrap-settings {
-            flex-direction: column;
-        }
+  @media (min-width: 768px) {
+    .wrap-settings {
+      flex-direction: column;
     }
+  }
 
-    @media (min-width: 768px) {
-        .wrap-settings {
-            flex-direction: column;
-        }
+  @media (min-width: 992px) {
+    .wrap-settings {
+      flex-direction: row;
     }
+  }
 
-    @media (min-width: 992px) {
-        .wrap-settings {
-            flex-direction: row;
-        }
+  @media (min-width: 1200px) {
+    .wrap-settings {
+      flex-direction: row;
     }
-
-    @media (min-width: 1200px) {
-        .wrap-settings {
-            flex-direction: row;
-        }
-    }
-
+  }
 </style>
-
