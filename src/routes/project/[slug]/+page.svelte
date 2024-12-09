@@ -99,9 +99,9 @@
 
 {#if project}
   <!--
-      The <Head> component provided by @datocms/svelte automates the creation of
-      meta tags based on the `_seoMetaTags` present in a DatoCMS GraphQL query.
-    -->
+        The <Head> component provided by @datocms/svelte automates the creation of
+        meta tags based on the `_seoMetaTags` present in a DatoCMS GraphQL query.
+      -->
   <!--    <Head data={project._seoMetaTags}/>-->
   <!--    <button on:click={up}>up</button>-->
   <!--    <button on:click={down}>down</button>-->
@@ -133,17 +133,19 @@
       </div>
       <div class="content-bloc-column">
         {#snippet CustomContent(content)}
-          <h1>{content.header}</h1>
-          <StructuredText
-            data={content.structuredText}
-            components={[
-              [isCode, Code],
-              [isHeading, HeadingWithAnchorLink],
-              [isBlock, Block],
-              [isInlineItem, InlineItem],
-              [isItemLink, ItemLink],
-            ]}
-          />
+          <div class="copy-bloc">
+            <h1>{content.header}</h1>
+            <StructuredText
+              data={content.structuredText}
+              components={[
+                [isCode, Code],
+                [isHeading, HeadingWithAnchorLink],
+                [isBlock, Block],
+                [isInlineItem, InlineItem],
+                [isItemLink, ItemLink],
+              ]}
+            />
+          </div>
         {/snippet}
 
         {#each projectContent as content, i}
@@ -226,8 +228,8 @@
   }
 
   /*
-    Page specific.
-    */
+      Page specific.
+      */
   .project {
     transition: padding 0.5s ease;
     display: flex;
@@ -266,22 +268,22 @@
   /*}*/
 
   /*
-     :global .project-page xyz seems to be the only way to style elements that are dynamically added by code.
-     Note that you should avoid styling such as :global(p) as this will style all subsequent pages loaded.
-     instead make sure to include the .project-page selector.
-     */
+       :global .project-page xyz seems to be the only way to style elements that are dynamically added by code.
+       Note that you should avoid styling such as :global(p) as this will style all subsequent pages loaded.
+       instead make sure to include the .project-page selector.
+       */
   :global(.project-page .content *) {
     max-width: var(--page-max-content-width);
   }
 
   /*
-        Very specific setup to get text to sit behind content at an angle and fit the page width.
-        .title-wrapper and .client-title work together to get the effect I wanted, angle text
-        that scales to fit the dimensions of the window.
-        Note: Angle elements break overflows and sizing of parent/sibling elements, hence the pain.
-        Also, the element needs to sit above the coloured border of the .page-content styling, but
-        below everythign else.
-    */
+          Very specific setup to get text to sit behind content at an angle and fit the page width.
+          .title-wrapper and .client-title work together to get the effect I wanted, angle text
+          that scales to fit the dimensions of the window.
+          Note: Angle elements break overflows and sizing of parent/sibling elements, hence the pain.
+          Also, the element needs to sit above the coloured border of the .page-content styling, but
+          below everythign else.
+      */
   .title-wrapper {
     position: absolute;
     top: 0;
@@ -374,7 +376,7 @@
     filter: unset !important;
     margin-left: unset !important;
     /*--bar-width: 4;
-        --bar-start: 60;*/
+            --bar-start: 60;*/
     mask-image: linear-gradient(
         to right,
         black 0%,

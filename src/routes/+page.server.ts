@@ -7,7 +7,7 @@ import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { ImageBlockFragment } from '$lib/components/Block/ImageBlock/fragments';
 import { HomeStructuredTextFragment } from '$lib/components/Block/fragments';
-
+import { browser } from '$app/environment';
 /**
  * The GraphQL query that will be executed for this route to generate the page
  * content and metadata.
@@ -88,5 +88,5 @@ export const load: PageServerLoad = async (event) => {
     error(404, 'Page not found');
   }
 
-  return { subscription };
+  return { subscription, props: { isBrowser: browser } };
 };
