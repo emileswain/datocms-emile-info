@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="Animates element into view when appears on the page.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="Added animations.">
       <change beforePath="$PROJECT_DIR$/src/lib/components/BlockLayout/ContentBloc/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/BlockLayout/ContentBloc/index.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/components/Inview/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/Inview/index.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+page.server.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+page.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/project/[slug]/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/project/[slug]/+page.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +74,7 @@
       <workItem from="1730388822890" duration="19084000" />
       <workItem from="1730718517490" duration="35498000" />
       <workItem from="1732633006377" duration="17483000" />
-      <workItem from="1732712628486" duration="131975000" />
+      <workItem from="1732712628486" duration="132623000" />
     </task>
     <task id="LOCAL-00001" summary="tweeks">
       <created>1729525638478</created>
@@ -352,7 +349,14 @@
       <option name="project" value="LOCAL" />
       <updated>1733753108030</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Added animations.">
+      <created>1733756224570</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1733756224570</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,7 +374,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Various tweeks and updates to layouts and styles." />
     <MESSAGE value="graphql tweeks" />
     <MESSAGE value="Styled homepage" />
     <MESSAGE value="accessibility" />
@@ -395,6 +398,7 @@
     <MESSAGE value="Added nested block content. dato:main-v1-0-1" />
     <MESSAGE value="Upgraded to svelte 5." />
     <MESSAGE value="Animates element into view when appears on the page." />
-    <option name="LAST_COMMIT_MESSAGE" value="Animates element into view when appears on the page." />
+    <MESSAGE value="Added animations." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added animations." />
   </component>
 </project>
