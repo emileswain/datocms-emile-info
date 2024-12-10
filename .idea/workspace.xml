@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="Fixed bad component import breaking netlify build.">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/components/[slug]/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/components/[slug]/+page.server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,15 +41,19 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="C:/NVPACK/android-sdk-windows" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/lib/components/Inview" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="G:\workspace_websites\datocms-emile-info\node_modules\prettier" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2643857" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
     <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="ts.external.directory.path" value="G:\workspace_websites\datocms-emile-info\node_modules\typescript\lib" />
   </component>
@@ -389,7 +396,21 @@
       <option name="project" value="LOCAL" />
       <updated>1733834882001</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Fixed bad component import breaking netlify build.">
+      <created>1733834998751</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1733834998751</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Fixed bad component import breaking netlify build.">
+      <created>1733835012765</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1733835012765</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -433,5 +454,9 @@
     <MESSAGE value="Erroneously Prettified" />
     <MESSAGE value="Fixed bad component import breaking netlify build." />
     <option name="LAST_COMMIT_MESSAGE" value="Fixed bad component import breaking netlify build." />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
