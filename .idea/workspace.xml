@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="Erroneously Prettified">
+    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="Fixed bad component import breaking netlify build.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+page.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/components/[slug]/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/components/[slug]/+page.server.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -383,7 +382,14 @@
       <option name="project" value="LOCAL" />
       <updated>1733833710539</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Fixed bad component import breaking netlify build.">
+      <created>1733834882001</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1733834882001</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -401,7 +407,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="accessibility" />
     <MESSAGE value="safari text issue." />
     <MESSAGE value="scroll bounce" />
     <MESSAGE value="wip fix layout issue on ios." />
@@ -426,6 +431,7 @@
     <MESSAGE value="Added animations." />
     <MESSAGE value="Swapped out bugged datocms head component." />
     <MESSAGE value="Erroneously Prettified" />
-    <option name="LAST_COMMIT_MESSAGE" value="Erroneously Prettified" />
+    <MESSAGE value="Fixed bad component import breaking netlify build." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bad component import breaking netlify build." />
   </component>
 </project>
