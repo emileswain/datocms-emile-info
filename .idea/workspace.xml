@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="Updated dependencies.">
+    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="Shader experiment.">
+      <change afterPath="$PROJECT_DIR$/src/routes/page/shader/+page.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/shader.frag" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/BlockLayout/SectionBlock/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/BlockLayout/SectionBlock/index.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/LayoutBloc/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/LayoutBloc/index.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/+layout.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+layout.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.prettierignore" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +44,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="C:/NVPACK/android-sdk-windows" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/lib/components/Inview" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/routes/page" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -53,22 +52,24 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2643857" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="ts.external.directory.path" value="G:\workspace_websites\datocms-emile-info\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\workspace_websites\datocms-emile-info\src\routes\page" />
       <recent name="G:\workspace_websites\datocms-emile-info\src\lib\components\Inview" />
       <recent name="G:\workspace_websites\datocms-emile-info\src\lib\components\BlockLayout" />
       <recent name="G:\workspace_websites\datocms-emile-info\src\lib\components\Block\SectionBlock" />
       <recent name="G:\workspace_websites\datocms-emile-info\src\lib\components\ContentBloc" />
-      <recent name="G:\workspace_websites\datocms-emile-info\src\lib\components\Pill" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\workspace_websites\datocms-emile-info\static" />
+      <recent name="G:\workspace_websites\datocms-emile-info\src\routes\page\shader" />
+      <recent name="G:\workspace_websites\datocms-emile-info\src\routes\page\+page" />
       <recent name="G:\workspace_websites\datocms-emile-info\src\lib\components\MyTag" />
       <recent name="G:\workspace_websites\datocms-emile-info\src\lib\components\BlockLayout" />
-      <recent name="G:\workspace_websites\datocms-emile-info\src\lib\components\Block" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -87,6 +88,10 @@
       <workItem from="1730718517490" duration="35498000" />
       <workItem from="1732633006377" duration="17483000" />
       <workItem from="1732712628486" duration="133361000" />
+      <workItem from="1733851078232" duration="137000" />
+      <workItem from="1733851231858" duration="73000" />
+      <workItem from="1733851322056" duration="68000" />
+      <workItem from="1733851413434" duration="5433000" />
     </task>
     <task id="LOCAL-00001" summary="tweeks">
       <created>1729525638478</created>
@@ -417,7 +422,21 @@
       <option name="project" value="LOCAL" />
       <updated>1733837805495</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Added Tabbed homepage content.">
+      <created>1733847597140</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1733847597140</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Added Tabbed homepage content.">
+      <created>1733848023594</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1733848023594</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -435,8 +454,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="scroll bounce" />
-    <MESSAGE value="wip fix layout issue on ios." />
     <MESSAGE value="Project page renders bloc content from cms." />
     <MESSAGE value="project nav re-positioned." />
     <MESSAGE value="adjusting page dimensions." />
@@ -460,7 +477,9 @@
     <MESSAGE value="Erroneously Prettified" />
     <MESSAGE value="Fixed bad component import breaking netlify build." />
     <MESSAGE value="Updated dependencies." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated dependencies." />
+    <MESSAGE value="Added Tabbed homepage content." />
+    <MESSAGE value="Shader experiment." />
+    <option name="LAST_COMMIT_MESSAGE" value="Shader experiment." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
