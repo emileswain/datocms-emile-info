@@ -20,7 +20,6 @@
   import Link from '../lib/components/Link/index.svelte';
   import SectionBlock from '../lib/components/BlockLayout/SectionBlock/index.svelte';
   import { onMount } from 'svelte';
-  import Inview from '../lib/components/Inview/index.svelte';
   import MyHead from '../lib/components/MyHead/index.svelte';
 
   interface Props {

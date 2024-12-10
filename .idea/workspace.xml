@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="Created migration script though not using it.">
-      <change afterPath="$PROJECT_DIR$/src/lib/components/MyHead/index.svelte" afterDir="false" />
+    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="Erroneously Prettified">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/components/[slug]/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/components/[slug]/+page.server.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -369,7 +369,21 @@
       <option name="project" value="LOCAL" />
       <updated>1733757244302</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Swapped out bugged datocms head component.">
+      <created>1733833604676</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1733833604676</updated>
+    </task>
+    <task id="LOCAL-00043" summary="intellij git missed elements?">
+      <created>1733833710539</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1733833710539</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,8 +401,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="graphql tweeks" />
-    <MESSAGE value="Styled homepage" />
     <MESSAGE value="accessibility" />
     <MESSAGE value="safari text issue." />
     <MESSAGE value="scroll bounce" />
@@ -412,6 +424,8 @@
     <MESSAGE value="Upgraded to svelte 5." />
     <MESSAGE value="Animates element into view when appears on the page." />
     <MESSAGE value="Added animations." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added animations." />
+    <MESSAGE value="Swapped out bugged datocms head component." />
+    <MESSAGE value="Erroneously Prettified" />
+    <option name="LAST_COMMIT_MESSAGE" value="Erroneously Prettified" />
   </component>
 </project>
