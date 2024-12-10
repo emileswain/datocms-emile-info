@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="Fixed bad component import breaking netlify build.">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
+    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="Updated dependencies.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/BlockLayout/SectionBlock/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/BlockLayout/SectionBlock/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/components/LayoutBloc/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/LayoutBloc/index.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/+layout.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+layout.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+page.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -410,7 +410,14 @@
       <option name="project" value="LOCAL" />
       <updated>1733835012765</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Updated dependencies.">
+      <created>1733837805495</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1733837805495</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,7 +435,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="safari text issue." />
     <MESSAGE value="scroll bounce" />
     <MESSAGE value="wip fix layout issue on ios." />
     <MESSAGE value="Project page renders bloc content from cms." />
@@ -453,7 +459,8 @@
     <MESSAGE value="Swapped out bugged datocms head component." />
     <MESSAGE value="Erroneously Prettified" />
     <MESSAGE value="Fixed bad component import breaking netlify build." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bad component import breaking netlify build." />
+    <MESSAGE value="Updated dependencies." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated dependencies." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
