@@ -28,7 +28,7 @@
   {#if CustomContent}
     {@render CustomContent(content)}
   {:else}
-    <h1>{content.header}</h1>
+    <h2>{content.header}</h2>
     <StructuredText
       data={content.structuredText}
       components={[
@@ -43,7 +43,7 @@
 {/snippet}
 
 {#if unmaskedBlock.__typename === 'SectionBlockRecord'}
-  <SectionBlock data={unmaskedBlock}>
+  <SectionBlock data={unmaskedBlock} title={unmaskedBlock.header} showHeader="true">
     {#each unmaskedBlock.blocs as blocContent, i}
       <ContentBloc data={blocContent}>
         {@render StructuredTextBloc(blocContent)}
