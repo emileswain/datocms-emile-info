@@ -20,8 +20,6 @@
   import Link from '../lib/components/Link/index.svelte';
   import SectionBlock from '../lib/components/BlockLayout/SectionBlock/index.svelte';
   import { onMount } from 'svelte';
-  import MyHead from '../lib/components/MyHead/index.svelte';
-
   import { writable } from 'svelte/store';
 
   // Create a store to manage the visible state of sections
@@ -66,7 +64,6 @@
 </script>
 
 {#if homepage}
-  <MyHead data={homepage._seoMetaTags}></MyHead>
 
   <!--  <TopNav>Emile swain</TopNav>-->
   <PageBloc class="home-page">

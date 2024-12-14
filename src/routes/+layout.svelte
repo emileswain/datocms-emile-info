@@ -2,6 +2,7 @@
     import 'sanitize.css';
     import {Head, querySubscription} from '@datocms/svelte';
     import type {LayoutData} from './$types';
+
     // import DraftModeToggler from '$lib/components/DraftModeToggler/index.svelte';
 
     interface Props {
@@ -100,7 +101,7 @@
 
     /* Remove all animations and transitions for people that prefer not to see them */
     @media (prefers-reduced-motion: reduce) {
-        :global( *, *::before, *::after ) {
+        :global(*, *::before, *::after) {
             animation-duration: 0.01ms !important;
             animation-iteration-count: 1 !important;
             transition-duration: 0.01ms !important;
@@ -138,14 +139,14 @@
         --page-gap: 8px;
 
         /* Flat Button styling parameters
-                 */
+                     */
         --btn-color-fill: rgba(108, 138, 121, 0.82);
         --btn-color-fill--hover: #cfe5d9;
         --btn-color-stroke: #fff;
         --btn-color-stroke--hover: #fff;
 
         /* Button styling parameters
-             */
+                 */
         --txt-btn-color-fill: rgba(38, 49, 43, 0.82);
         --txt-btn-color-fill--hover: #444d49;
         --txt-btn-color-stroke: #312626;
@@ -172,12 +173,12 @@
     }
 
     /*
-            .container
-            Child of <body> wraps all pages that use this layout.
-            <body>
-                <div style=".container">
-                    <div class="homepage|projectpage|blogpage|etc" />
-        */
+              .container
+              Child of <body> wraps all pages that use this layout.
+              <body>
+                  <div style=".container">
+                      <div class="homepage|projectpage|blogpage|etc" />
+          */
     .container {
         display: flex;
         flex-direction: column;
@@ -185,15 +186,18 @@
         height: 100%;
         margin-right: auto;
         margin-left: auto;
-        /*  Adding to see if it ensure we get a full gradient even when content is shorter than view height */
+        /* 100lvh required to fill are with little content.
+         Disable formatting required due to old version of intellij.*/
         /*noinspection CssInvalidPropertyValue*/
+        /*@formatter:off*/
         min-height: 100lvh;
+        /*@formatter:on*/
     }
 
     /*
-            figure
-            use variables to style max, min widths.
-        */
+              figure
+              use variables to style max, min widths.
+          */
     :global(figure) {
         max-width: 460px;
         margin: 0;
@@ -202,9 +206,9 @@
     }
 
     /*
-            h1
-            use variables to style colour, font size, etc
-        */
+              h1
+              use variables to style colour, font size, etc
+          */
     :global(h1) {
         color: var(--text-color);
         text-decoration: none;
@@ -214,9 +218,9 @@
     }
 
     /*
-            a links
-            use variables to style colour, font size, etc
-        */
+              a links
+              use variables to style colour, font size, etc
+          */
     :global(a) {
         color: var(--text-color);
         text-decoration: none;
@@ -234,9 +238,9 @@
     /*}*/
 
     /*
-            P
-            use variables to style colour, font size, etc
-        */
+              P
+              use variables to style colour, font size, etc
+          */
     :global(p) {
         color: var(--text-color);
         /*margin-bottom: 16px;*/
@@ -255,8 +259,8 @@
     }
 
     /*
-            nav
-        */
+              nav
+          */
     :global(nav) {
         background-color: #333;
         color: #fff;

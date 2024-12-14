@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="section header added">
+    <list default="true" id="c276a884-1a8e-4666-a107-6cda24dd7e64" name="Changes" comment="Optimise font weights">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/+layout.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+layout.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/project/[slug]/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/project/[slug]/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+page.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +51,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2643857" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
     <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="ts.external.directory.path" value="G:\workspace_websites\datocms-emile-info\node_modules\typescript\lib" />
   </component>
@@ -90,14 +90,7 @@
       <workItem from="1733851078232" duration="137000" />
       <workItem from="1733851231858" duration="73000" />
       <workItem from="1733851322056" duration="68000" />
-      <workItem from="1733851413434" duration="11828000" />
-    </task>
-    <task id="LOCAL-00003" summary="Project page styling tests.">
-      <created>1730475862064</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1730475862064</updated>
+      <workItem from="1733851413434" duration="12948000" />
     </task>
     <task id="LOCAL-00004" summary="Added Project section">
       <created>1730478206302</created>
@@ -435,7 +428,14 @@
       <option name="project" value="LOCAL" />
       <updated>1734023315348</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Optimise font weights">
+      <created>1734190044827</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1734190044827</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -453,7 +453,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="project nav re-positioned." />
     <MESSAGE value="adjusting page dimensions." />
     <MESSAGE value="refactoring and experimenting with components." />
     <MESSAGE value="Refactored home page with common layout components." />
@@ -478,7 +477,8 @@
     <MESSAGE value="Added Tabbed homepage content." />
     <MESSAGE value="Shader experiment." />
     <MESSAGE value="section header added" />
-    <option name="LAST_COMMIT_MESSAGE" value="section header added" />
+    <MESSAGE value="Optimise font weights" />
+    <option name="LAST_COMMIT_MESSAGE" value="Optimise font weights" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
