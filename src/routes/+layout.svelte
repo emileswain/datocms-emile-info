@@ -1,38 +1,38 @@
 <script lang="ts">
-    import 'sanitize.css';
-    import {Head, querySubscription} from '@datocms/svelte';
-    import type {LayoutData} from './$types';
+  import 'sanitize.css';
+  import { Head, querySubscription } from '@datocms/svelte';
+  import type { LayoutData } from './$types';
 
-    // import DraftModeToggler from '$lib/components/DraftModeToggler/index.svelte';
+  // import DraftModeToggler from '$lib/components/DraftModeToggler/index.svelte';
 
-    interface Props {
-        data: LayoutData;
-        children?: import('svelte').Snippet;
-    }
+  interface Props {
+    data: LayoutData;
+    children?: import('svelte').Snippet;
+  }
 
-    let {data, children}: Props = $props();
-    let subscription = $derived(querySubscription(data.subscription));
+  let { data, children }: Props = $props();
+  let subscription = $derived(querySubscription(data.subscription));
 </script>
 
 <svelte:head>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link
-            href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..400&display=swap"
-            rel="stylesheet"
-    />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..400&display=swap"
+    rel="stylesheet"
+  />
 
-    <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css"
-    />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css"
+  />
 </svelte:head>
 
 <!--
   The <Head> component provided by @datocms/svelte automates the creation of
   meta tags based on the `_seoMetaTags` present in a DatoCMS GraphQL query.
 -->
-<Head data={$subscription.data?._site.faviconMetaTags}/>
+<Head data={$subscription.data?._site.faviconMetaTags} />
 
 <!--<header>-->
 <!--    &lt;!&ndash;  <h1>DatoCMS + SvelteKit Starter Kit</h1>&ndash;&gt;-->
@@ -43,256 +43,256 @@
 <!--</header>-->
 
 <div class="container">
-    {@render children?.()}
+  {@render children?.()}
 </div>
 
 <style>
-    /* ########################################################################################### */
-    /* CSS Reset */
-    /* global styling further down */
-    /* ########################################################################################### */
+  /* ########################################################################################### */
+  /* CSS Reset */
+  /* global styling further down */
+  /* ########################################################################################### */
 
+  :global(*, *::before, *::after) {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :global(html, body) {
+    /*height: auto;*/
+    /*width: auto;*/
+    font-family: 'Roboto Flex', Helvetica, Arial, serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    overscroll-behavior: none;
+    /*scrollbar-gutter: stable;*/
+  }
+
+  :global(h1, h2, h3, h4, h5, h6, h7) {
+    margin-bottom: 12px;
+  }
+
+  :global(img, picture, video, canvas, svg) {
+    display: block;
+    /*max-width: 100%;*/
+  }
+
+  :global(button, input, select, textarea) {
+    font-family: inherit;
+  }
+
+  /* Remove default padding */
+  :global(ul, ol) {
+    padding: 0;
+  }
+
+  /*  */
+  :global(img) {
+    display: block;
+  }
+
+  /* Inherit fonts for inputs and buttons */
+  :global(input, button, textarea, select) {
+    font: inherit;
+  }
+
+  /* Remove all animations and transitions for people that prefer not to see them */
+  @media (prefers-reduced-motion: reduce) {
     :global(*, *::before, *::after) {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
     }
+  }
 
-    :global(html, body) {
-        /*height: auto;*/
-        /*width: auto;*/
-        font-family: 'Roboto Flex', Helvetica, Arial, serif;
-        line-height: 1.5;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        margin: 0;
-        padding: 0;
-        overscroll-behavior: none;
-        /*scrollbar-gutter: stable;*/
-    }
+  /* Why the marker sits outside disrespecting everyone's layout i dont know. what nasty will this do. */
+  :global(li) {
+    list-style-position: inside;
+  }
 
-    :global(h1, h2, h3, h4, h5, h6, h7) {
-        margin-bottom: 12px;
-    }
+  /* ########################################################################################### */
+  /*  Global element styles */
+  /* ########################################################################################### */
 
-    :global(img, picture, video, canvas, svg) {
-        display: block;
-        /*max-width: 100%;*/
-    }
+  :global(body) {
+    --text-color: #000000;
+    --bg-fill: #ffffff;
+    --border-fill: #333333;
 
-    :global(button, input, select, textarea) {
-        font-family: inherit;
-    }
+    /*--text-color: #FFFFFF;*/
+    /*--bg-fill: #000000;*/
+    /*--border-fill: #333333;*/
 
-    /* Remove default padding */
-    :global(ul, ol) {
-        padding: 0;
-    }
+    /* colour is stroke colour */
+    --icon-color: #000000;
+    --icon-fill: #000000;
 
-    /*  */
-    :global(img) {
-        display: block;
-    }
+    /* Layout parameters */
+    --page-max-content-width: 300px;
+    --page-margin: 18px;
+    --bloc-margin-bottom: 18px;
+    --page-border-thickness: 15px; /* used on project page.*/
+    --page-gap: 8px;
 
-    /* Inherit fonts for inputs and buttons */
-    :global(input, button, textarea, select) {
-        font: inherit;
-    }
-
-    /* Remove all animations and transitions for people that prefer not to see them */
-    @media (prefers-reduced-motion: reduce) {
-        :global(*, *::before, *::after) {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-            scroll-behavior: auto !important;
-        }
-    }
-
-    /* Why the marker sits outside disrespecting everyone's layout i dont know. what nasty will this do. */
-    :global(li) {
-        list-style-position: inside;
-    }
-
-    /* ########################################################################################### */
-    /*  Global element styles */
-    /* ########################################################################################### */
-
-    :global(body) {
-        --text-color: #000000;
-        --bg-fill: #ffffff;
-        --border-fill: #333333;
-
-        /*--text-color: #FFFFFF;*/
-        /*--bg-fill: #000000;*/
-        /*--border-fill: #333333;*/
-
-        /* colour is stroke colour */
-        --icon-color: #000000;
-        --icon-fill: #000000;
-
-        /* Layout parameters */
-        --page-max-content-width: 300px;
-        --page-margin: 18px;
-        --bloc-margin-bottom: 18px;
-        --page-border-thickness: 15px; /* used on project page.*/
-        --page-gap: 8px;
-
-        /* Flat Button styling parameters
+    /* Flat Button styling parameters
                      */
-        --btn-color-fill: rgba(108, 138, 121, 0.82);
-        --btn-color-fill--hover: #cfe5d9;
-        --btn-color-stroke: #fff;
-        --btn-color-stroke--hover: #fff;
+    --btn-color-fill: rgba(108, 138, 121, 0.82);
+    --btn-color-fill--hover: #cfe5d9;
+    --btn-color-stroke: #fff;
+    --btn-color-stroke--hover: #fff;
 
-        /* Button styling parameters
+    /* Button styling parameters
                  */
-        --txt-btn-color-fill: rgba(38, 49, 43, 0.82);
-        --txt-btn-color-fill--hover: #444d49;
-        --txt-btn-color-stroke: #312626;
-        --txt-btn-color-stroke--hover: #493b3b;
-    }
+    --txt-btn-color-fill: rgba(38, 49, 43, 0.82);
+    --txt-btn-color-fill--hover: #444d49;
+    --txt-btn-color-stroke: #312626;
+    --txt-btn-color-stroke--hover: #493b3b;
+  }
 
-    /* applied when over 500 */
-    @media (min-width: 500px) {
-        :global(body) {
-            --page-max-content-width: 460px;
-            --page-margin: 32px;
-            --bloc-margin-bottom: 32px;
-            --page-border-thickness: 20px; /* used on project page.*/
-        }
+  /* applied when over 500 */
+  @media (min-width: 500px) {
+    :global(body) {
+      --page-max-content-width: 460px;
+      --page-margin: 32px;
+      --bloc-margin-bottom: 32px;
+      --page-border-thickness: 20px; /* used on project page.*/
     }
+  }
 
-    /* applied when over 700 */
-    @media (min-width: 700px) {
-        :global(body) {
-            --page-margin: 32px;
-            --bloc-margin-bottom: 32px;
-            --page-border-thickness: 20px; /* used on project page.*/
-        }
+  /* applied when over 700 */
+  @media (min-width: 700px) {
+    :global(body) {
+      --page-margin: 32px;
+      --bloc-margin-bottom: 32px;
+      --page-border-thickness: 20px; /* used on project page.*/
     }
+  }
 
-    /*
+  /*
               .container
               Child of <body> wraps all pages that use this layout.
               <body>
                   <div style=".container">
                       <div class="homepage|projectpage|blogpage|etc" />
           */
-    .container {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: 100%;
-        margin-right: auto;
-        margin-left: auto;
-        /* 100lvh required to fill are with little content.
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    /* 100lvh required to fill are with little content.
          Disable formatting required due to old version of intellij.*/
-        /*noinspection CssInvalidPropertyValue*/
-        /*@formatter:off*/
-        min-height: 100lvh;
-        /*@formatter:on*/
-    }
+    /*noinspection CssInvalidPropertyValue*/
+    /*@formatter:off*/
+    min-height: 100lvh;
+    /*@formatter:on*/
+  }
 
-    /*
+  /*
               figure
               use variables to style max, min widths.
           */
-    :global(figure) {
-        max-width: 460px;
-        margin: 0;
-        padding: 0;
-        margin-bottom: 1rem;
-    }
+  :global(figure) {
+    max-width: 460px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
 
-    /*
+  /*
               h1
               use variables to style colour, font size, etc
           */
-    :global(h1) {
-        color: var(--text-color);
-        text-decoration: none;
-        font-family: 'Roboto Flex';
-        font-weight: 100;
-        margin-bottom: 1rem;
-    }
+  :global(h1) {
+    color: var(--text-color);
+    text-decoration: none;
+    font-family: 'Roboto Flex';
+    font-weight: 100;
+    margin-bottom: 1rem;
+  }
 
-    /*
+  /*
               a links
               use variables to style colour, font size, etc
           */
-    :global(a) {
-        color: var(--text-color);
-        text-decoration: none;
-        font-weight: lighter;
-        margin-bottom: 1rem;
-    }
+  :global(a) {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: lighter;
+    margin-bottom: 1rem;
+  }
 
-    :global(p a) {
-        text-decoration: underline;
-    }
+  :global(p a) {
+    text-decoration: underline;
+  }
 
-    /*:global(h4 a:after)*/
-    /*{*/
-    /*    content: "🔗";*/
-    /*}*/
+  /*:global(h4 a:after)*/
+  /*{*/
+  /*    content: "🔗";*/
+  /*}*/
 
-    /*
+  /*
               P
               use variables to style colour, font size, etc
           */
-    :global(p) {
-        color: var(--text-color);
-        /*margin-bottom: 16px;*/
-        margin-bottom: 1rem;
-        letter-spacing: 1px;
-        font-weight: 100;
-    }
+  :global(p) {
+    color: var(--text-color);
+    /*margin-bottom: 16px;*/
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    font-weight: 100;
+  }
 
-    /* Styling utils used in say routes/project/slug/+page.svelte to fill space.*/
-    :global(.remaining-space) {
-        /* Bad solution doesn't work on chrome on ios. */
-        /*flex: 1; !* Allow the container to grow and fill the remaining space *!*/
-        /*display: flex;*/
-        /*flex-direction: column;*/
-        /*height: 1px; !* This fixes a weird behaviour, but breaks something else. *!*/
-    }
+  /* Styling utils used in say routes/project/slug/+page.svelte to fill space.*/
+  :global(.remaining-space) {
+    /* Bad solution doesn't work on chrome on ios. */
+    /*flex: 1; !* Allow the container to grow and fill the remaining space *!*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*height: 1px; !* This fixes a weird behaviour, but breaks something else. *!*/
+  }
 
-    /*
+  /*
               nav
           */
-    :global(nav) {
-        background-color: #333;
-        color: #fff;
-    }
+  :global(nav) {
+    background-color: #333;
+    color: #fff;
+  }
 
-    :global(nav a) {
-        color: #fff;
-        text-decoration: none;
-    }
+  :global(nav a) {
+    color: #fff;
+    text-decoration: none;
+  }
 
-    :global(nav a:hover) {
-        background-color: #575757;
-    }
+  :global(nav a:hover) {
+    background-color: #575757;
+  }
 
-    /*@media ( min-width: 500px) {*/
-    /*  .container {*/
-    /*    max-width: 460px;*/
-    /*  }*/
-    /*}*/
-    /*@media (min-width: 768px) {*/
-    /*  .container {*/
-    /*    max-width: 720px;*/
-    /*  }*/
-    /*}*/
-    /*@media (min-width: 992px) {*/
-    /*  .container {*/
-    /*    max-width: 960px;*/
-    /*  }*/
-    /*}*/
-    /*@media (min-width: 1200px) {*/
-    /*  .container {*/
-    /*    max-width: 1140px;*/
-    /*  }*/
-    /*}*/
+  /*@media ( min-width: 500px) {*/
+  /*  .container {*/
+  /*    max-width: 460px;*/
+  /*  }*/
+  /*}*/
+  /*@media (min-width: 768px) {*/
+  /*  .container {*/
+  /*    max-width: 720px;*/
+  /*  }*/
+  /*}*/
+  /*@media (min-width: 992px) {*/
+  /*  .container {*/
+  /*    max-width: 960px;*/
+  /*  }*/
+  /*}*/
+  /*@media (min-width: 1200px) {*/
+  /*  .container {*/
+  /*    max-width: 1140px;*/
+  /*  }*/
+  /*}*/
 </style>

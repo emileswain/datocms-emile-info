@@ -64,7 +64,6 @@
 </script>
 
 {#if homepage}
-
   <!--  <TopNav>Emile swain</TopNav>-->
   <PageBloc class="home-page">
     <LayoutBloc>
