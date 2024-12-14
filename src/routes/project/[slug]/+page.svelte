@@ -303,7 +303,7 @@
     /*font-size: calc(  (45 + (6 * (5 - var(--letter-count)  ) ) ) * 1vw );*/
     font-size: 45vw;
     color: var(--text-fill);
-    font-weight: bold;
+    font-weight: 400;
     font-family: 'Arial', sans-serif; /*THis is the text that sits behind everything, it should be the client font.*/
     /*z-index: 1;*/
     white-space: nowrap;
