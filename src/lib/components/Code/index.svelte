@@ -14,7 +14,6 @@
        * this heavy library, so that it is only requested when the component is
        * actually rendered on the page..
        */
-      console.log('Highlighting code.');
       const { default: hljs } = await import('highlight.js');
       hljs.highlightElement(node);
     };

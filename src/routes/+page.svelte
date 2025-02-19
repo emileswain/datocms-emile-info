@@ -16,7 +16,6 @@
   import PageBloc from '../lib/components/PageBloc/index.svelte';
   import LayoutBloc from '../lib/components/LayoutBloc/index.svelte';
   import ContentBloc from '../lib/components/BlockLayout/ContentBloc/index.svelte';
-  import TopNav from '../lib/components/TopNav/index.svelte';
   import Link from '../lib/components/Link/index.svelte';
   import SectionBlock from '../lib/components/BlockLayout/SectionBlock/index.svelte';
   import { onMount } from 'svelte';
@@ -165,10 +164,15 @@
   }
 
   .profile-image {
-    /*max-width: 512px;*/
-    /*max-height: 512px;*/
     max-width: 100%;
     max-height: 100%;
+  }
+
+  @media (min-width: 700px) {
+    .profile-image {
+      max-width: 512px;
+      max-height: 512px;
+    }
   }
 
   .project-image {

@@ -1,7 +1,4 @@
 import { graphql } from '$lib/datocms/graphql';
-// import {InlineItemFragment} from "../components/InlineItem/fragments";
-// import {ItemLinkFragment} from "../components/ItemLink/fragments";
-// import {BlockFragment} from "../components/Block/fragments";
 
 /*
  * This file lists a series of fragments not related to any specific

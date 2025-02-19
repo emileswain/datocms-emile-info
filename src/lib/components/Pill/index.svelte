@@ -28,7 +28,7 @@
     /*border-radius: 25px;*/
     /*background-color: var(--btn-color-fill);*/
     /*border: 2px solid var(--btn-color-stroke);*/
-    color: white;
+    color: var(--text-color);
     text-align: center;
     text-decoration: none;
     font-size: 14px;

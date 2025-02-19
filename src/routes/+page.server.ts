@@ -6,7 +6,9 @@ import { generateRealtimeSubscription } from '$lib/datocms/queries';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { ImageBlockFragment } from '$lib/components/Block/ImageBlock/fragments';
-import { HomeStructuredTextFragment } from '$lib/components/Block/fragments';
+import { BlockLayoutFragment } from '../lib/components/BlockLayout/fragments';
+import { BlockFragment } from '$lib/components/Block/fragments';
+
 import { browser } from '$app/environment';
 /**
  * The GraphQL query that will be executed for this route to generate the page
@@ -36,7 +38,7 @@ const query = graphql(
               id
               __typename
             }
-            ...HomeStructuredTextFragment
+              ...BlockFragment
           }
           links {
             ... on RecordInterface {
@@ -69,10 +71,11 @@ const query = graphql(
   `,
   [
     TagFragment,
-    HomeStructuredTextFragment,
+    BlockFragment,
     ItemLinkFragment,
     InlineItemFragment,
     ImageBlockFragment,
+    // BlockLayoutFragment,
   ],
 );
 

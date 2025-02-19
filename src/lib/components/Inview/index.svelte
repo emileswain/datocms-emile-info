@@ -83,6 +83,7 @@
   {@render children?.()}
 </div>
 
+<!--  -global ensure svelte doesnt remove the css. -->
 <style>
   @keyframes -global-fadeIn {
     from {

@@ -36,22 +36,13 @@
     flex-direction: row;
   }
 
-  @media (min-width: 500px) {
+  @media (min-width: 768px) {
     .page-bloc {
       max-width: 100%;
     }
   }
-  @media (min-width: 768px) {
-    .page-bloc {
-      max-width: 720px;
-    }
-  }
-  @media (min-width: 992px) {
-    .page-bloc {
-      max-width: 960px;
-    }
-  }
-  @media (min-width: 1200px) {
+
+  @media (min-width: 1140px) {
     .page-bloc {
       max-width: 1140px;
     }

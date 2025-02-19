@@ -10,6 +10,7 @@
 
   interface Props {
     data: $$Props['data'];
+
     [key: string]: any;
   }
 
@@ -26,3 +27,10 @@
 -->
 
 <NakedImage {...rest} data={unmaskedData} />
+
+<!-- TODO(emileswain) Determine what this does and why.-->
+<style>
+  :global(img.landscape) {
+    width: 100% !important;
+  }
+</style>

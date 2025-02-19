@@ -59,6 +59,7 @@
   }
 
   :global(html, body) {
+    font-size: 18px;
     /*height: auto;*/
     /*width: auto;*/
     font-family: 'Roboto Flex', Helvetica, Arial, serif;
@@ -71,13 +72,42 @@
     /*scrollbar-gutter: stable;*/
   }
 
+  /*
+    Header styling
+    */
   :global(h1, h2, h3, h4, h5, h6, h7) {
     margin-bottom: 12px;
+    font-family: 'Roboto Flex', Helvetica, Arial, serif;
+    font-weight: 250;
+    color: var(--text-color);
+  }
+
+  :global(h1) {
+    font-size: 1.5rem; /* Previously h2 size */
+  }
+
+  :global(h2) {
+    font-size: 1.17rem; /* Previously h3 size */
+  }
+
+  :global(h3) {
+    font-size: 1rem; /* Previously h4 size */
+  }
+
+  :global(h4) {
+    font-size: 0.83rem; /* Previously h5 size */
+  }
+
+  :global(h5) {
+    font-size: 0.67rem; /* Previously h6 size */
+  }
+
+  :global(h6) {
+    font-size: 0.5rem; /* New size, smaller than previous h6 */
   }
 
   :global(img, picture, video, canvas, svg) {
     display: block;
-    /*max-width: 100%;*/
   }
 
   :global(button, input, select, textarea) {
@@ -132,39 +162,39 @@
     --icon-fill: #000000;
 
     /* Layout parameters */
-    --page-max-content-width: 300px;
+    --page-max-content-width: 100%;
     --page-margin: 18px;
     --bloc-margin-bottom: 18px;
     --page-border-thickness: 15px; /* used on project page.*/
     --page-gap: 8px;
 
     /* Flat Button styling parameters
-                     */
+                         */
     --btn-color-fill: rgba(108, 138, 121, 0.82);
     --btn-color-fill--hover: #cfe5d9;
     --btn-color-stroke: #fff;
     --btn-color-stroke--hover: #fff;
 
     /* Button styling parameters
-                 */
+                     */
     --txt-btn-color-fill: rgba(38, 49, 43, 0.82);
     --txt-btn-color-fill--hover: #444d49;
     --txt-btn-color-stroke: #312626;
     --txt-btn-color-stroke--hover: #493b3b;
   }
 
-  /* applied when over 500 */
-  @media (min-width: 500px) {
+  /* applied when over 768 for Tablet */
+  @media (min-width: 768px) {
     :global(body) {
-      --page-max-content-width: 460px;
+      --page-max-content-width: 100%;
       --page-margin: 32px;
       --bloc-margin-bottom: 32px;
       --page-border-thickness: 20px; /* used on project page.*/
     }
   }
 
-  /* applied when over 700 */
-  @media (min-width: 700px) {
+  /* applied when over 1024 for desktop */
+  @media (min-width: 1024px) {
     :global(body) {
       --page-margin: 32px;
       --bloc-margin-bottom: 32px;
@@ -173,12 +203,12 @@
   }
 
   /*
-              .container
-              Child of <body> wraps all pages that use this layout.
-              <body>
-                  <div style=".container">
-                      <div class="homepage|projectpage|blogpage|etc" />
-          */
+    .container
+    Child of <body> wraps all pages that use this layout.
+    <body>
+        <div style=".container">
+            <div class="homepage|projectpage|blogpage|etc" />
+    */
   .container {
     display: flex;
     flex-direction: column;
@@ -187,40 +217,19 @@
     margin-right: auto;
     margin-left: auto;
     /* 100lvh required to fill are with little content.
-         Disable formatting required due to old version of intellij.*/
-    /*noinspection CssInvalidPropertyValue*/
+             Disable formatting required due to old version of intellij.*/
+    /* prettier-ignore-start */
     /*@formatter:off*/
+    /*noinspection CssInvalidPropertyValue*/
     min-height: 100lvh;
     /*@formatter:on*/
+    /* prettier-ignore-end */
   }
 
   /*
-              figure
-              use variables to style max, min widths.
-          */
-  :global(figure) {
-    max-width: 460px;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 1rem;
-  }
-
-  /*
-              h1
-              use variables to style colour, font size, etc
-          */
-  :global(h1) {
-    color: var(--text-color);
-    text-decoration: none;
-    font-family: 'Roboto Flex';
-    font-weight: 100;
-    margin-bottom: 1rem;
-  }
-
-  /*
-              a links
-              use variables to style colour, font size, etc
-          */
+        a links
+        use variables to style colour, font size, etc
+    */
   :global(a) {
     color: var(--text-color);
     text-decoration: none;
@@ -228,19 +237,29 @@
     margin-bottom: 1rem;
   }
 
+  /* Text links within p text content. See next style of p > a */
   :global(p a) {
     text-decoration: underline;
   }
+
+  /*
+     Style <a/> elements that are not associated with some sibling text.
+     For BCC website this is a black box with white text matching the logo.
+     */
+
+  /*:global(p > a:first-child:last-child) {*/
+  /*  text-decoration: underline;*/
+  /*  background-color: black;*/
+  /*  color: white;*/
+  /*  padding: 4px;*/
+  /*  font-style: oblique;*/
+  /*}*/
 
   /*:global(h4 a:after)*/
   /*{*/
   /*    content: "🔗";*/
   /*}*/
 
-  /*
-              P
-              use variables to style colour, font size, etc
-          */
   :global(p) {
     color: var(--text-color);
     /*margin-bottom: 16px;*/
@@ -249,18 +268,6 @@
     font-weight: 100;
   }
 
-  /* Styling utils used in say routes/project/slug/+page.svelte to fill space.*/
-  :global(.remaining-space) {
-    /* Bad solution doesn't work on chrome on ios. */
-    /*flex: 1; !* Allow the container to grow and fill the remaining space *!*/
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*height: 1px; !* This fixes a weird behaviour, but breaks something else. *!*/
-  }
-
-  /*
-              nav
-          */
   :global(nav) {
     background-color: #333;
     color: #fff;
@@ -274,25 +281,4 @@
   :global(nav a:hover) {
     background-color: #575757;
   }
-
-  /*@media ( min-width: 500px) {*/
-  /*  .container {*/
-  /*    max-width: 460px;*/
-  /*  }*/
-  /*}*/
-  /*@media (min-width: 768px) {*/
-  /*  .container {*/
-  /*    max-width: 720px;*/
-  /*  }*/
-  /*}*/
-  /*@media (min-width: 992px) {*/
-  /*  .container {*/
-  /*    max-width: 960px;*/
-  /*  }*/
-  /*}*/
-  /*@media (min-width: 1200px) {*/
-  /*  .container {*/
-  /*    max-width: 1140px;*/
-  /*  }*/
-  /*}*/
 </style>

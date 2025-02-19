@@ -16,36 +16,11 @@ import { ImageByTextBlockFragment } from './ImageByTextBlock/fragments';
  *
  * Learn more: https://gql-tada.0no.co/guides/fragment-colocation
  */
-//
-// export const BlockFragment = graphql(
-//     //  fragment BlockFragment on HomepageModelStructuredTextBlocksField {
-//     /* GraphQL */ `
-//         fragment BlockFragment on ContentBlocModelContentBlocksField {
-//             ... on RecordInterface {
-//                 id
-//                 __typename
-//             }
-//             ... on ImageBlockRecord {
-//                 ...ImageBlockFragment
-//             }
-//             ... on ImageGalleryBlockRecord {
-//                 ...ImageGalleryBlockFragment
-//             }
-//             ... on VideoBlockRecord {
-//                 ...VideoBlockFragment
-//             }
-//             ... on ImageByTextBlockRecord {
-//                 ...ImageByTextBlockFragment
-//             }
-//         }
-//     `,
-//     [ImageBlockFragment, ImageGalleryBlockFragment, VideoBlockFragment, ImageByTextBlockFragment],
-// );
 
-export const HomeStructuredTextFragment = graphql(
+export const BlockFragment = graphql(
   //  fragment BlockFragment on HomepageModelStructuredTextBlocksField {
   /* GraphQL */ `
-    fragment HomeStructuredTextFragment on HomepageModelStructuredTextBlocksField {
+    fragment BlockFragment on RecordInterface {
       ... on RecordInterface {
         id
         __typename
