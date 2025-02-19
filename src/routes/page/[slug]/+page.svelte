@@ -40,7 +40,7 @@
       </ContentBloc>
       <LayoutBloc direction="column">
         {#each page.content as content, i}
-          <BlockLayout data={content}/>
+          <BlockLayout data={content} />
         {/each}
       </LayoutBloc>
     </LayoutBloc>

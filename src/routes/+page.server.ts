@@ -38,7 +38,7 @@ const query = graphql(
               id
               __typename
             }
-              ...BlockFragment
+            ...BlockFragment
           }
           links {
             ... on RecordInterface {
