@@ -14,8 +14,8 @@
     direction = 'column',
     collapseRow = false,
     alternateDirection = false,
-    shrink = 'unset',
-    grow = 'unset',
+    shrink = 1,
+    grow = 1,
     children,
     ...rest
   }: Props = $props();
